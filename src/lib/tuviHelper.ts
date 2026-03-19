@@ -13,25 +13,28 @@ export function generateTuViAIPrompt(data: TuViInput): string {
 - Giờ sinh: ${data.time}
 - Giới tính: ${genderStr}
 
-Hãy viết một bài luận giải CỰC KỲ CHI TIẾT VÀ CHUYÊN SÂU (như một quyển cẩm nang vận mệnh đầy đủ), định dạng Markdown rõ ràng, bao gồm đầy đủ 14 phần sau:
+YÊU CẦU ĐẶC BIỆT VỀ ĐỘ DÀI VÀ CHI TIẾT (RẤT QUAN TRỌNG):
+Bài luận này là một dịch vụ cao cấp, do đó bạn PHẢI viết cực kỳ dông dài, chi tiết và sâu sắc. Tổng bài luận PHẢI dài trên 2500 từ. Tại mỗi phần trong 14 phần dưới đây, bạn phải viết ít nhất 200 từ (khoảng 3-5 đoạn văn chi tiết). Hãy bóc tách vấn đề theo nhiều góc độ: ưu điểm, nhược điểm, lời khuyên hóa giải hung hiểm, phản biện, và ví dụ cụ thể hình tượng hóa. KHÔNG ĐƯỢC VIẾT NGẮN GỌN CHUNG CHUNG.
+
+Hãy viết bài luận theo định dạng Markdown, bao gồm ĐẦY ĐỦ 14 phần sau:
 
 ## 1. Bản Mệnh
-Vóc dáng trưởng thành, tính cách, tư chất, tài năng, chỉ số IQ, học vấn, khả năng giao tiếp, sức khoẻ.
+Vóc dáng trưởng thành, tính cách, tư chất, tài năng, chỉ số IQ, học vấn, khả năng giao tiếp, sức khoẻ. (Hãy phân tích thật tỉ mỉ nhiều khía cạnh).
 
 ## 2. Cung Phu Thê
-Đời sống hôn nhân, vợ/chồng là người thế nào, ảnh hưởng ra sao, gia thế, tình cảm, hạnh phúc hay khổ đau, mức độ đào hoa, điểm cần lưu ý.
+Đời sống hôn nhân, vợ/chồng là người thế nào, ảnh hưởng ra sao, gia thế, tình cảm, hạnh phúc hay khổ đau, mức độ đào hoa, điểm cần lưu ý. (Khai thác sâu vào tâm lý hôn nhân).
 
 ## 3. Tài Sản và Nghề Nghiệp (Cung Tài Bạch)
-Đánh giá tài chính, độ giàu có, ngành nghề phù hợp, cách kiếm tiền hoặc kinh doanh.
+Đánh giá tài chính, độ giàu có, ngành nghề phù hợp, cách kiếm tiền hoặc kinh doanh. (Viết chi tiết các luồng sinh tài và rủi ro thất thoát).
 
 ## 4. Phụ Mẫu
-Cha mẹ ra sao, học vấn, kinh tế, cách cư xử với mọi người.
+Cha mẹ ra sao, học vấn, kinh tế, cách cư xử với mọi người. (Đánh giá tương tác nhân quả với cha mẹ).
 
 ## 5. Cung Thiên Di
 Biểu hiện khi ra ngoài, xã hội đánh giá thế nào, khả năng giao tiếp, độ thích nghi, các tài năng chính, thử thách thường gặp, mức độ đào hoa.
 
 ## 6. Cung Tật Ách
-Bệnh tật dễ mắc, tai ương, lưu ý về sức khoẻ.
+Bệnh tật dễ mắc, tai ương, lưu ý về sức khoẻ. (Chỉ ra nguyên nhân tâm bệnh và thân bệnh).
 
 ## 7. Cung Nô Bộc
 Bạn bè, quan hệ xã hội, hợp làm ăn không, nên kết giao với ai, quan hệ với cấp trên, kiểu sếp phù hợp.
@@ -52,10 +55,10 @@ Nhà mấy anh chị em? Có được nhờ anh chị em không hay ngược l�
 Trong họ thường có bà cô tổ, ông tổ cậu nào chết trẻ linh thiêng hay phù hộ không? Gia tiên có linh thiêng không? Phúc phần của gia tộc ảnh hưởng đến người này thế nào? Niềm tin Tâm linh, tín ngưỡng của người này có mạnh không? Nghiệp báo, nhân quả có tác động hay đã được báo hiệu gì trước trong lá số?
 
 ## 13. Đại Vận & Năm 2026
-Đánh giá vận hiện tại (tuổi), dự báo năm 2026 về công việc, thu nhập, tình duyên, gia đạo, sức khoẻ, điểm cần lưu ý.
+Đánh giá vận hiện tại (tuổi), dự báo năm 2026 về công việc, thu nhập, tình duyên, gia đạo, sức khoẻ, điểm cần lưu ý. (Đưa ra dự báo chi tiết theo tháng nếu có thể).
 
 ## 14. Tổng Kết Vận Hạn Trong Đời
-Những đại vận đáng chú ý nhất (thịnh vượng hay khó khăn)? Giai đoạn nào cần cẩn trọng nhất?`;
+Những đại vận đáng chú ý nhất (thịnh vượng hay khó khăn)? Giai đoạn nào cần cẩn trọng nhất? Lời khuyên vàng ngọc cuối cùng từ lão phu.`;
 }
 
 export function generateTuViMock(data: TuViInput): string {
