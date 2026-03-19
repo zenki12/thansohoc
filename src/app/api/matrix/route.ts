@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey || apiKey === "undefined") {
-      return NextResponse.json({ text: generateMatrixMockReport(name, stats) });
+      return NextResponse.json({ text: `**[LỖI HỆ THỐNG]: Không tìm thấy GROQ_API_KEY!**\nTrình duyệt / Server chưa có biến môi trường này.\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateMatrixMockReport(name, stats)}` });
     }
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -41,16 +41,26 @@ export async function POST(req: Request) {
     });
 
     if (!response.ok) {
-      throw new Error(`Groq API Error: ${response.status}`);
+      const errBody = await response.text();
+      throw new Error(`Groq API Error: ${response.status} - ${errBody}`);
     }
 
     const result = await response.json();
     const responseText = result.choices?.[0]?.message?.content;
+    const finishReason = result.choices?.[0]?.finish_reason;
+
+    if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
+      return NextResponse.json({ text: responseText + `\n\n*(Hệ thống: AI đã ngừng tạo văn bản giữa chừng. Lý do: ${finishReason} - Vui lòng thử lại)*` });
+    }
+
+    if (!responseText) {
+      throw new Error("Groq API returned empty response");
+    }
 
     return NextResponse.json({ text: responseText });
-  } catch (error) {
+  } catch (error: any) {
     console.error("AI Error:", error);
     if (!stats) stats = calculateMatrixDestiny(name, dob);
-    return NextResponse.json({ text: generateMatrixMockReport(name, stats) });
+    return NextResponse.json({ text: `**[HỆ THỐNG GHI NHẬN LỖI TỪ AI:** ${error?.message || "Lỗi không xác định"}]**\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateMatrixMockReport(name, stats)}` });
   }
 }
