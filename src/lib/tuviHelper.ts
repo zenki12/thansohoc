@@ -13,7 +13,7 @@ export function generateTuViAIPrompt(data: TuViInput): string {
 - Giờ sinh: ${data.time}
 - Giới tính: ${genderStr}
 
-Hãy viết một bài luận giải CỰC KỲ CHI TIẾT VÀ CHUYÊN SÂU (tối thiểu 2500 từ), định dạng Markdown rõ ràng, bao gồm đầy đủ 14 phần sau:
+Hãy viết một bài luận giải CỰC KỲ CHI TIẾT VÀ CHUYÊN SÂU (như một quyển cẩm nang vận mệnh đầy đủ), định dạng Markdown rõ ràng, bao gồm đầy đủ 14 phần sau:
 
 ## 1. Bản Mệnh
 Vóc dáng trưởng thành, tính cách, tư chất, tài năng, chỉ số IQ, học vấn, khả năng giao tiếp, sức khoẻ.

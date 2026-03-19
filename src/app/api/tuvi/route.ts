@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     
     // Tắt các bộ lọc an toàn vì Tử Vi/Huyền học hay có các cung Tật Ách, Tử Tức, Nô Bộc dễ bị nhận diện nhầm là "Harassment" hoặc "Dangerous Content"
     const safetySettings = [
@@ -45,14 +45,20 @@ export async function POST(req: Request) {
       },
     ];
 
-    // Tăng maxOutputTokens lên cực đại để AI có thể viết phân tích rất dài
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       safetySettings,
-      generationConfig: { temperature: 0.8, topP: 0.9, maxOutputTokens: 6000 }
+      generationConfig: { temperature: 0.7, topP: 0.9, maxOutputTokens: 8192 }
     });
 
-    return NextResponse.json({ text: result.response.text() });
+    const responseText = result.response.text();
+    const finishReason = result.response.candidates?.[0]?.finishReason;
+
+    if (finishReason && finishReason !== 'STOP') {
+      return NextResponse.json({ text: responseText + `\n\n*(Hệ thống: AI đã ngừng tạo văn bản giữa chừng. Lý do: ${finishReason} - Vui lòng thử lại)*` });
+    }
+
+    return NextResponse.json({ text: responseText });
   } catch (error: any) {
     console.error("AI Error in TuVi:", error);
     // Trả về kèm LỖI THỰC TẾ để dễ debug nếu nó vẫn fail, cộng theo mock report để dự phòng
