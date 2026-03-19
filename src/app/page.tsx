@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp, Atom } from "lucide-react";
+import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp, Atom, X } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
@@ -11,6 +11,9 @@ export default function Home() {
   const [time, setTime] = useState("");
   const [gender, setGender] = useState("nam");
   const [selectedFeature, setSelectedFeature] = useState<"tuvi" | "numerology" | "matrix">("tuvi");
+
+  // State cho Modal Liên Hệ
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const handleNavigate = () => {
     if (!name || !dob) {
@@ -360,16 +363,68 @@ export default function Home() {
             </div>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 font-medium tracking-wide">
-              <a href="#" className="hover:text-orange-500 transition-colors">Chính sách bảo mật</a>
+              <span onClick={() => router.push('/privacy')} className="hover:text-orange-500 transition-colors cursor-pointer">Chính sách bảo mật</span>
               <span className="text-gray-300 hidden md:inline">•</span>
-              <a href="#" className="hover:text-orange-500 transition-colors">Điều khoản dịch vụ</a>
-              <span className="text-gray-300 hidden md:inline">•</span>
-              <a href="#" className="hover:text-orange-500 transition-colors">Liên hệ</a>
+              <span onClick={() => setIsContactModalOpen(true)} className="hover:text-orange-500 transition-colors cursor-pointer">Liên hệ</span>
             </div>
             
             <p className="text-gray-400 text-xs text-center mt-2 uppercase tracking-widest font-medium">© 2026 Xuân Thái. All rights reserved.</p>
           </div>
         </footer>
+
+      {/* Contact Modal */}
+      {isContactModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" onClick={() => setIsContactModalOpen(false)}></div>
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="bg-gradient-to-r from-orange-400 to-rose-500 p-6 text-center">
+              <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full mx-auto flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <span className="text-4xl text-white font-serif">XT</span>
+              </div>
+              <h3 className="text-2xl font-black text-white tracking-tight">Nông Xuân Thái</h3>
+              <p className="text-orange-100 text-sm mt-1 font-medium">Tác giả & Phát triển</p>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-colors">
+                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white shrink-0"><span className="font-bold text-xs">Zalo</span></div>
+                <div className="flex-1">
+                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Zalo</p>
+                  <p className="font-bold text-gray-800">0969 504 696</p>
+                </div>
+              </div>
+              
+              <a href="https://www.facebook.com/okthaiday/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-colors group">
+                <div className="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center text-white shrink-0">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </div>
+                <div className="flex-1 truncate">
+                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Facebook</p>
+                  <p className="font-bold text-gray-800 truncate group-hover:text-[#1877F2] transition-colors">/okthaiday</p>
+                </div>
+              </a>
+
+              <a href="mailto:okthaiday@gmail.com" className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-colors group">
+                <div className="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center text-white shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+                <div className="flex-1 truncate">
+                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Email</p>
+                  <p className="font-bold text-gray-800 truncate group-hover:text-rose-500 transition-colors">okthaiday@gmail.com</p>
+                </div>
+              </a>
+            </div>
+            <div className="p-4 border-t border-gray-100 flex justify-center">
+              <button 
+                onClick={() => setIsContactModalOpen(false)}
+                className="px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Back to Top Floating Button */}
       <button 
         onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
