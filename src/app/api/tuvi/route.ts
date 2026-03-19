@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey || apiKey === "undefined") {
-      return NextResponse.json({ text: generateTuViMock(inputData) });
+      return NextResponse.json({ text: `**[LỖI HỆ THỐNG]: Không tìm thấy GROQ_API_KEY!**\nBạn vừa tạo file \`.env.local\` nhưng Next.js chưa nhận diện được vì server đang chạy. Vui lòng quay lại Terminal/CMD, bấm \`Ctrl + C\` để tắt, sau đó gõ lệnh để chạy lại dự án (ví dụ \`npm run dev\`), khi đó server mới đọc được API Key mới!\n\n*(Dưới đây là phần luận giải dự phòng)*\n\n${generateTuViMock(inputData)}` });
     }
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {

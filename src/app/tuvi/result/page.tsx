@@ -43,9 +43,9 @@ function TuViResultContent() {
 
         const data = await response.json();
         setReport(data.text);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Lỗi phân tích Tử Vi:", error);
-        setReport(generateTuViMock(inputData));
+        setReport(`**[LỖI MẠNG / TIMEOUT TỪ TRÌNH DUYỆT]:** ${error.message || "Lỗi không xác định"}\nCó thể yêu cầu phản hồi quá dài khiến trình duyệt chặn hoặc vượt quá thời gian chờ (Timeout) của Vercel/NextJS.\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateTuViMock(inputData)}`);
       } finally {
         setLoading(false);
       }
