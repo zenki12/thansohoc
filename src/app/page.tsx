@@ -53,10 +53,8 @@ export default function Home() {
           <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-600 tracking-tight">Khám Phá AI</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
-          <a href="#" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Lá Số Tử Vi</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Thần Số Học</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Ma Trận Định Mệnh</a>
+          <a href="#gioi-thieu" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
+          <a href="#loi-ich" className="hover:text-orange-500 transition-colors">Lợi ích</a>
         </div>
       </nav>
 
@@ -174,7 +172,7 @@ export default function Home() {
         </section>
 
         {/* -------------------- KHOA HỌC TRONG LUẬN GIẢI -------------------- */}
-        <section className="py-24 bg-white relative">
+        <section id="gioi-thieu" className="py-24 bg-white relative">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-[#1A202C] mb-6 tracking-tight">
@@ -288,7 +286,7 @@ export default function Home() {
         </section>
 
         {/* -------------------- BENEFITS GRID -------------------- */}
-        <section className="py-24 bg-white relative">
+        <section id="loi-ich" className="py-24 bg-white relative">
           <div className="absolute left-0 bottom-0 w-full h-[500px] bg-gradient-to-t from-orange-50/50 to-transparent pointer-events-none"></div>
 
           <div className="max-w-6xl mx-auto px-6 relative z-10">
