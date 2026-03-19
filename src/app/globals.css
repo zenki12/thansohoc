@@ -58,3 +58,11 @@ body {
 .prose li {
   line-height: 1.7 !important;
 }
+
+@media print {
+  body, html {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #020617 !important;
+  }
+}

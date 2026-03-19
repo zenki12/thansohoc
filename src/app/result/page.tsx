@@ -57,7 +57,7 @@ function ResultContent() {
         </button>
       </div>
 
-      <div ref={contentRef} className="max-w-3xl mx-auto bg-[#020617] print:p-8 print:w-[800px] print:bg-white print:text-black overflow-hidden relative">
+      <div ref={contentRef} className="max-w-3xl mx-auto bg-[#020617] print:p-8 print:w-[800px] overflow-hidden relative">
         
         {/* Header Section */}
         <header className="px-6 py-12 text-center relative">
@@ -145,8 +145,7 @@ function ResultContent() {
               prose-li:text-white/80 prose-li:leading-[1.7]
               prose-strong:text-white prose-strong:font-bold
               prose-a:text-purple-400 
-              break-words 
-              print:text-black print:prose-headings:text-black print:prose-p:text-black print:prose-strong:text-black relative z-10">
+              break-words relative z-10">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {report}
               </ReactMarkdown>
