@@ -20,6 +20,10 @@ export default function Home() {
       alert("Vui lòng nhập đầy đủ Họ tên và Ngày sinh!");
       return;
     }
+    if (selectedFeature === 'tuvi' && !time) {
+      alert("Luận giải Lá Số Tử Vi yêu cầu độ chính xác cao. Vui lòng nhập Giờ sinh của bạn!");
+      return;
+    }
     const params = new URLSearchParams({ name, dob });
     if (time) params.append("time", time);
     params.append("gender", gender);
@@ -86,8 +90,19 @@ export default function Home() {
               {/* Form Glow */}
               <div className="absolute inset-0 bg-white/60 rounded-3xl pointer-events-none"></div>
               
-              <div className="relative z-10 space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="relative z-10 space-y-6">
+                
+                {/* Feature Selector - MOVED TO TOP FOR DYNAMIC VIBE */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Bạn muốn xem gì?</label>
+                  <div className="grid grid-cols-3 gap-2 p-1.5 bg-gray-100/80 rounded-2xl border border-gray-200">
+                    <button onClick={() => setSelectedFeature("tuvi")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'tuvi' ? 'bg-white text-orange-600 shadow-md ring-1 ring-orange-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Lá Số Tử Vi</button>
+                    <button onClick={() => setSelectedFeature("numerology")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'numerology' ? 'bg-white text-amber-600 shadow-md ring-1 ring-amber-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Thần Số Học</button>
+                    <button onClick={() => setSelectedFeature("matrix")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'matrix' ? 'bg-white text-cyan-600 shadow-md ring-1 ring-cyan-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Ma Trận Định Mệnh</button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-in fade-in duration-300 slide-in-from-bottom-2">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Họ và Tên</label>
                     <input 
@@ -95,19 +110,8 @@ export default function Home() {
                       className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Giới tính</label>
-                    <select 
-                      value={gender} onChange={(e) => setGender(e.target.value)}
-                      className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium cursor-pointer"
-                    >
-                      <option value="nam">Nam giới</option>
-                      <option value="nu">Nữ giới</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  
+                  {/* Ngày sinh is always required */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Ngày sinh (Dương)</label>
                     <input 
@@ -115,23 +119,29 @@ export default function Home() {
                       className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Giờ sinh (Có thể bỏ)</label>
-                    <input 
-                      type="time" value={time} onChange={(e) => setTime(e.target.value)}
-                      className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium"
-                    />
-                  </div>
-                </div>
 
-                {/* Feature Selector */}
-                <div className="space-y-2 pt-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Bạn muốn xem gì?</label>
-                  <div className="grid grid-cols-3 gap-2 p-1.5 bg-gray-100/80 rounded-2xl border border-gray-200">
-                    <button onClick={() => setSelectedFeature("tuvi")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'tuvi' ? 'bg-white text-orange-600 shadow-md ring-1 ring-orange-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Lá Số Tử Vi</button>
-                    <button onClick={() => setSelectedFeature("numerology")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'numerology' ? 'bg-white text-amber-600 shadow-md ring-1 ring-amber-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Thần Số Học</button>
-                    <button onClick={() => setSelectedFeature("matrix")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'matrix' ? 'bg-white text-cyan-600 shadow-md ring-1 ring-cyan-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Ma Trận Định Mệnh</button>
-                  </div>
+                  {selectedFeature === 'tuvi' && (
+                    <>
+                      <div className="space-y-1.5 animate-in fade-in zoom-in-95 duration-300">
+                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Giới tính</label>
+                        <select 
+                          value={gender} onChange={(e) => setGender(e.target.value)}
+                          className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium cursor-pointer"
+                        >
+                          <option value="nam">Nam giới</option>
+                          <option value="nu">Nữ giới</option>
+                        </select>
+                      </div>
+                      
+                      <div className="space-y-1.5 animate-in fade-in zoom-in-95 duration-300">
+                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Giờ sinh</label>
+                        <input 
+                          type="time" value={time} onChange={(e) => setTime(e.target.value)}
+                          className="w-full bg-white/70 border border-gray-200 text-gray-800 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition-all shadow-inner font-medium"
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Single Submit Button */}
