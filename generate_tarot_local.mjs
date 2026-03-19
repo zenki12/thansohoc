@@ -34,19 +34,19 @@ const suits = [
 
 const ranks = [
   ['01', 'Ace', 'Ace', 'Khởi đầu mới, Tiềm năng'],
-  ['02', 'Two', 'Hai', 'Lựa chọn, Lên kế hoạch'],
-  ['03', 'Three', 'Ba', 'Mở rộng, Làm việc nhóm'],
-  ['04', 'Four', 'Bốn', 'Ổn định, Lễ kỷ niệm'],
-  ['05', 'Five', 'Năm', 'Khó khăn, Xung đột'],
-  ['06', 'Six', 'Sáu', 'Thành công, Hỗ trợ'],
-  ['07', 'Seven', 'Bảy', 'Phòng thủ, Đánh giá'],
-  ['08', 'Eight', 'Tám', 'Chuyển động, Học hỏi'],
-  ['09', 'Nine', 'Chín', 'Khát vọng, Tự hào'],
-  ['10', 'Ten', 'Mười', 'Hoàn tất, Gánh nặng'],
-  ['11', 'Page', 'Page', 'Cơ hội mới, Khám phá'],
-  ['12', 'Knight', 'Knight', 'Hành động, Chuyển động nhanh'],
-  ['13', 'Queen', 'Queen', 'Nuôi dưỡng, Tự tin'],
-  ['14', 'King', 'King', 'Kiểm soát, Lãnh đạo']
+  ['02', '02', 'Hai', 'Lựa chọn, Lên kế hoạch'],
+  ['03', '03', 'Ba', 'Mở rộng, Làm việc nhóm'],
+  ['04', '04', 'Bốn', 'Ổn định, Lễ kỷ niệm'],
+  ['05', '05', 'Năm', 'Khó khăn, Xung đột'],
+  ['06', '06', 'Sáu', 'Thành công, Hỗ trợ'],
+  ['07', '07', 'Bảy', 'Phòng thủ, Đánh giá'],
+  ['08', '08', 'Tám', 'Chuyển động, Học hỏi'],
+  ['09', '09', 'Chín', 'Khát vọng, Tự hào'],
+  ['10', '10', 'Mười', 'Hoàn tất, Gánh nặng'],
+  ['11', 'pa', 'Page', 'Cơ hội mới, Khám phá'],
+  ['12', 'kn', 'Knight', 'Hành động, Chuyển động nhanh'],
+  ['13', 'qu', 'Queen', 'Nuôi dưỡng, Tự tin'],
+  ['14', 'ki', 'King', 'Kiểm soát, Lãnh đạo']
 ];
 
 let cards = [];
@@ -57,7 +57,7 @@ majors.forEach(m => {
     name_en: m[1],
     name_vn: m[2],
     type: 'major',
-    image: `https://raw.githubusercontent.com/howarder3/tarot-api/main/static/cards/${m[0]}.jpg`,
+    image: `https://sacred-texts.com/tarot/pkt/img/${m[0]}.jpg`,
     uprightMeaning: m[3],
     reversedMeaning: m[4],
     description: "Lá bài Ẩn chính"
@@ -68,10 +68,10 @@ suits.forEach(s => {
   ranks.forEach(r => {
     cards.push({
       id: `${s[0]}${r[0]}`,
-      name_en: `${r[1]} of ${s[1]}`,
+      name_en: `${r[1].length > 2 ? r[1] : parseInt(r[1])} of ${s[1]}`, // Just to format english name properly if wanted, but fine
       name_vn: `${r[2]} ${s[2]}`,
       type: 'minor',
-      image: `https://raw.githubusercontent.com/howarder3/tarot-api/main/static/cards/${s[0]}${r[0]}.jpg`,
+      image: `https://sacred-texts.com/tarot/pkt/img/${s[0]}${r[0]}.jpg`,
       uprightMeaning: `${r[3]} kết hợp với ${s[3]}`,
       reversedMeaning: `Cản trở: ${r[3]} kết hợp với ${s[4]}`,
       description: `Lá bài Ẩn phụ bộ ${s[2]}`
@@ -94,4 +94,4 @@ export const tarotDeck: TarotCard[] = ${JSON.stringify(cards, null, 2)};
 `;
 
 fs.writeFileSync('src/lib/tarotData.ts', content);
-console.log('Done generating 78 cards offline!');
+console.log('Done generating 78 cards with Sacred Texts URLs!');
