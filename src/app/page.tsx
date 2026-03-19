@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Sparkles, ArrowRight, Compass, Moon, Star, Sun, User, Clock } from "lucide-react";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'thansohoc' | 'tuvi'>('thansohoc');
+  const [activeTab, setActiveTab] = useState<'thansohoc' | 'tuvi' | 'matrix'>('thansohoc');
   
   // Shared state
   const [name, setName] = useState("");
@@ -24,6 +24,9 @@ export default function Home() {
     if (activeTab === 'thansohoc') {
       const params = new URLSearchParams({ name, dob });
       router.push(`/result?${params.toString()}`);
+    } else if (activeTab === 'matrix') {
+      const params = new URLSearchParams({ name, dob });
+      router.push(`/matrix/result?${params.toString()}`);
     } else {
       if (!birthTime) return;
       const params = new URLSearchParams({ name, dob, time: birthTime, gender });
@@ -48,20 +51,27 @@ export default function Home() {
       <div className="z-10 w-full max-w-xl mx-auto mt-8">
         
         {/* Tab Selector */}
-        <div className="flex bg-white/5 backdrop-blur-md rounded-full p-1.5 mb-8 border border-white/10 shadow-lg max-w-sm mx-auto relative z-20">
+        <div className="flex bg-white/5 backdrop-blur-md rounded-full p-1.5 mb-8 border border-white/10 shadow-lg max-w-lg mx-auto relative z-20">
           <button 
             type="button"
             onClick={() => setActiveTab('thansohoc')}
-            className={`flex-1 py-3 px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 ${activeTab === 'thansohoc' ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
+            className={`flex-1 py-3 px-2 sm:px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-1 sm:gap-2 ${activeTab === 'thansohoc' ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
           >
-            <Compass className="w-4 h-4" /> Thần Số Học
+            <Compass className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Thần Số Học</span><span className="sm:hidden">Thần Số</span>
           </button>
           <button 
             type="button"
             onClick={() => setActiveTab('tuvi')}
-            className={`flex-1 py-3 px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 ${activeTab === 'tuvi' ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
+            className={`flex-1 py-3 px-2 sm:px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-1 sm:gap-2 ${activeTab === 'tuvi' ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
           >
-            <Sun className="w-4 h-4" /> Lá Số Tử Vi
+            <Sun className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Lá Số Tử Vi</span><span className="sm:hidden">Tử Vi</span>
+          </button>
+          <button 
+            type="button"
+            onClick={() => setActiveTab('matrix')}
+            className={`flex-1 py-3 px-2 sm:px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-1 sm:gap-2 ${activeTab === 'matrix' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
+          >
+            <Star className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Ma Trận CĐ</span><span className="sm:hidden">Ma Trận</span>
           </button>
         </div>
 
@@ -74,12 +84,14 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-widest uppercase text-white drop-shadow-lg leading-tight">
                 {activeTab === 'thansohoc' ? (
                   <>Bản Đồ <br/><span className="gold-gradient-text">Thần Số Học</span></>
-                ) : (
+                ) : activeTab === 'tuvi' ? (
                   <>Giải Mã <br/><span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-500 to-orange-500">Lá Số Tử Vi</span></>
+                ) : (
+                  <>Ma Trận <br/><span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-teal-400 to-cyan-500">Định Mệnh</span></>
                 )}
               </h1>
               <p className="text-white/60 text-xs sm:text-sm tracking-[0.2em] font-medium uppercase">
-                {activeTab === 'thansohoc' ? "Khám phá thiết kế linh hồn" : "Bình giải vận mệnh trọn đời"}
+                {activeTab === 'thansohoc' ? "Khám phá thiết kế linh hồn" : activeTab === 'tuvi' ? "Bình giải vận mệnh trọn đời" : "Đánh thức tiềm năng ẩn sâu"}
               </p>
             </div>
 
@@ -156,14 +168,16 @@ export default function Home() {
               <div className="pt-6">
                 <button
                   type="submit"
-                  className={`w-full py-5 px-6 rounded-2xl font-black text-lg transform transition-all active:scale-[0.98] flex items-center justify-center gap-3 group border border-white/20 tracking-wider ${
+                  className={`w-full py-5 px-6 rounded-2xl font-black text-lg transform transition-all active:scale-[0.98] flex items-center justify-center gap-3 group border border-white/20 tracking-wider text-white ${
                     activeTab === 'thansohoc' 
-                      ? 'bg-gradient-to-r from-purple-600 via-fuchsia-600 to-orange-500 hover:from-purple-500 hover:via-fuchsia-500 hover:to-orange-400 shadow-[0_0_30px_rgba(192,132,252,0.4)] text-white'
-                      : 'bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-500 hover:via-orange-500 hover:to-red-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] text-white'
+                      ? 'bg-gradient-to-r from-purple-600 via-fuchsia-600 to-orange-500 hover:from-purple-500 hover:via-fuchsia-500 hover:to-orange-400 shadow-[0_0_30px_rgba(192,132,252,0.4)]'
+                      : activeTab === 'tuvi'
+                      ? 'bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-500 hover:via-orange-500 hover:to-red-500 shadow-[0_0_30px_rgba(245,158,11,0.4)]'
+                      : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:via-teal-500 hover:to-cyan-500 shadow-[0_0_30px_rgba(20,184,166,0.4)]'
                   }`}
                 >
                   <Sparkles className="w-5 h-5 text-yellow-200" />
-                  {activeTab === 'thansohoc' ? 'GIẢI MÃ BẢN MỆNH' : 'LẬP LÁ SỐ TỬ VI'}
+                  {activeTab === 'thansohoc' ? 'GIẢI MÃ BẢN MỆNH' : activeTab === 'tuvi' ? 'LẬP LÁ SỐ TỬ VI' : 'MỞ KHÓA MA TRẬN'}
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </button>
               </div>
