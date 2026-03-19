@@ -23,14 +23,15 @@ Mô tả ảnh: ${c.description}
 
     prompt += `
 Nhiệm vụ của bạn:
-Dựa vào ý nghĩa cốt gốc của các lá bài trên, hãy phân tích, tổng hợp và "kể một câu chuyện" luận giải bằng **Tiếng Việt** mượt mà, huyền bí, mang tính xoa dịu và chữa lành. KHÔNG dùng tiếng Anh. Phân tích sự liên kết giữa các lá bài (nếu >1 lá).
+Dựa vào ý nghĩa cốt gốc của các lá bài trên, hãy phân tích, tổng hợp và "kể một câu chuyện" luận giải bằng **Tiếng Việt** chuẩn xác, không bị lỗi font hay dùng từ dịch máy móc. 
+Hãy phân tích ĐÀO SÂU vào vấn đề tâm lý, cặn kẽ và chi tiết như một buổi tham vấn tâm lý trị giá hàng trăm đô. Phân tích gốc rễ của năng lượng kết nối, diễn giải kịch bản, và chỉ ra mặt khuất của vấn đề. Phân tích sự liên kết chặt chẽ giữa các lá bài (nếu >1 lá).
 
 BẮT BUỘC trả về ĐÚNG định dạng JSON nguyên bản như sau (không kèm text nào khác ngoài JSON):
 {
-  "hookInsight": "2-3 câu hội tụ tinh hoa trải bài, cực kỳ 'trúng tim đen', khơi gợi sự tò mò mạnh. Hiển thị ở phần Free để mồi.",
-  "fullStory": "Phân tích cụ thể từng lá bài khớp với bối cảnh câu hỏi, kết nối chúng thành câu chuyện diễn biến tâm lý/sự việc sâu sắc.",
-  "conclusion": "Kết luận tổng thể chốt gọn vấn đề.",
-  "advice": "Lời khuyên hành động chân thành, thực tế giúp họ vượt qua khó khăn."
+  "hookInsight": "2-3 câu hội tụ tinh hoa trải bài, cực kỳ 'trúng tim đen', khơi gợi sự tò mò mạnh. Không dùng từ Hán Việt khó hiểu.",
+  "fullStory": "Phân tích CỰC KỲ CHI TIẾT (khoảng 20-30 dòng) từng lá bài khớp với bối cảnh câu hỏi, kết nối chúng thành câu chuyện diễn biến tâm lý/sự việc sâu sắc đụng chạm đến phần con người nhất.",
+  "conclusion": "Kết luận tổng thể chốt gọn vấn đề một cách dứt khoát.",
+  "advice": "Lời khuyên hành động chân thành, thực tế, chỉ ra đúng 'huyệt đạo' giúp họ thay đổi cục diện hiện tại."
 }
 Đảm bảo bạn format JSON chuẩn.`;
 

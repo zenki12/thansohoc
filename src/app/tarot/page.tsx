@@ -9,7 +9,7 @@ const shuffle = (array: any[]) => array.sort(() => Math.random() - 0.5);
 export default function TarotPage() {
   const [step, setStep] = useState(0);
   
-  const [topic, setTopic] = useState("");
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const topics = ["❤️ Tình yêu", "💼 Công việc", "💰 Tiền bạc", "👨‍👩‍👧 Gia đình", "🧠 Tâm trạng", "🔮 Thông điệp"];
   
   const [spread, setSpread] = useState(3);
@@ -64,7 +64,7 @@ export default function TarotPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          topic,
+          topic: selectedTopics.join(", "),
           spreadType: spread,
           question,
           drawnCards
@@ -100,18 +100,40 @@ export default function TarotPage() {
         {step === 0 && (
           <div className="max-w-4xl mx-auto text-center space-y-12 animate-in fade-in zoom-in-95 duration-500">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 font-bold text-sm tracking-wide border border-indigo-100">
-              <Sparkles className="w-4 h-4" /> Bói Bài Tarot Trí Tuệ Nhận Tạo
+              <Sparkles className="w-4 h-4" /> Bói Bài Tarot Trí Tuệ Nhân Tạo
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-[#1A202C] tracking-tight leading-tight">
               Bạn đang băn khoăn <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">điều gì lúc này?</span>
             </h1>
+            <p className="text-gray-500 font-medium text-lg">Bạn có thể chọn tối đa 3 chủ đề ({selectedTopics.length}/3)</p>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {topics.map(t => (
-                <button key={t} onClick={() => { setTopic(t); setStep(1); }} 
-                  className="bg-white border-2 border-gray-100 hover:border-indigo-500 p-6 md:p-8 rounded-[2rem] shadow-sm text-lg md:text-xl font-bold text-gray-700 hover:text-indigo-600 hover:-translate-y-2 transition-all group">
-                  <span className="group-hover:scale-110 inline-block transition-transform">{t}</span>
-                </button>
-              ))}
+              {topics.map(t => {
+                const isSelected = selectedTopics.includes(t);
+                const isMax = selectedTopics.length >= 3;
+                const isDisabled = !isSelected && isMax;
+                return (
+                  <button key={t} 
+                    onClick={() => {
+                      if (isSelected) {
+                        setSelectedTopics(selectedTopics.filter(x => x !== t));
+                      } else if (!isMax) {
+                        setSelectedTopics([...selectedTopics, t]);
+                      }
+                    }} 
+                    disabled={isDisabled}
+                    className={`p-6 md:p-8 rounded-[2rem] shadow-sm text-lg md:text-xl font-bold transition-all border-2 
+                      ${isSelected ? 'bg-indigo-50 border-indigo-500 text-indigo-700 shadow-md ring-4 ring-indigo-500/20' : 'bg-white border-gray-100 text-gray-700 hover:border-indigo-300'} 
+                      ${isDisabled ? 'opacity-40 grayscale cursor-not-allowed' : 'hover:-translate-y-1'}
+                    `}>
+                    {t}
+                  </button>
+                );
+              })}
+            </div>
+            <div className={`transition-all duration-500 ${selectedTopics.length > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+              <button onClick={() => setStep(1)} className="px-12 py-4 bg-gray-900 text-white font-black rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all text-xl">
+                Tiếp Tục 
+              </button>
             </div>
           </div>
         )}
@@ -186,14 +208,15 @@ export default function TarotPage() {
                       
                       {/* Front of Card */}
                       <div className="absolute inset-0 w-full h-full rounded-2xl md:rounded-3xl bg-white overflow-hidden flex flex-col shadow-inner border border-gray-100" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-                        <div className={`flex-1 relative overflow-hidden bg-gray-50 p-2 md:p-3 ${card.isReversed ? 'rotate-180' : ''}`}>
-                           <div className="w-full h-full relative rounded-xl overflow-hidden border border-gray-200">
-                             <img src={card.image} alt={card.name_vn} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] hover:scale-110" />
-                           </div>
+                        <div className={`flex-1 relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50 p-4 border-b border-gray-100 flex flex-col items-center justify-center ${card.isReversed ? 'rotate-180' : ''}`}>
+                           <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+                           <Atom className="w-16 h-16 text-indigo-400 mb-4 opacity-50 relative z-10" />
+                           <p className="text-lg md:text-xl font-black text-indigo-900 text-center uppercase tracking-widest relative z-10">{card.name_vn}</p>
+                           <p className="text-xs font-bold text-indigo-400 mt-2 relative z-10">T.A.R.O.T</p>
                         </div>
-                        <div className="h-16 md:h-20 bg-white border-t border-gray-100 flex flex-col items-center justify-center shrink-0 w-full px-2">
+                        <div className="h-16 md:h-20 bg-white flex flex-col items-center justify-center shrink-0 w-full px-2">
                           <p className="font-bold text-gray-800 text-sm md:text-base text-center line-clamp-1 truncate w-full">{card.name_vn}</p>
-                          <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-widest mt-0.5">{card.isReversed ? 'Ngược (Reversed)' : 'Xuôi (Upright)'}</p>
+                          <p className="text-[10px] md:text-xs text-indigo-500 font-black uppercase tracking-widest mt-0.5">{card.isReversed ? 'NGƯỢC (REVERSED)' : 'XUÔI (UPRIGHT)'}</p>
                         </div>
                       </div>
                     </div>
@@ -226,8 +249,8 @@ export default function TarotPage() {
         {step === 5 && result && (
           <div className="max-w-4xl mx-auto space-y-10 animate-in slide-in-from-bottom-10 duration-700">
             <div className="text-center space-y-4 mb-12">
-              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-sm font-bold text-gray-500 uppercase tracking-widest mx-auto">
-                 <Sparkles className="w-4 h-4 text-purple-500" /> Chủ đề: {topic}
+              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-sm font-bold text-gray-500 uppercase tracking-widest mx-auto flex-wrap justify-center">
+                 <Sparkles className="w-4 h-4 text-purple-500" /> Chủ đề: {selectedTopics.join(", ")}
               </div>
               <h1 className="text-4xl md:text-5xl font-black text-[#1A202C]">Bản Thông Điệp Vũ Trụ</h1>
             </div>
@@ -237,7 +260,7 @@ export default function TarotPage() {
               <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-10 transition-opacity pointer-events-none">
                  <Sparkles className="w-40 h-40" />
               </div>
-              <p className="text-2xl md:text-3xl text-gray-800 font-serif leading-relaxed font-medium relative z-10 text-center">"{result.hookInsight}"</p>
+              <p className="text-2xl md:text-3xl text-gray-800 font-sans leading-relaxed font-bold relative z-10 text-center">"{result.hookInsight}"</p>
             </div>
 
             {/* Paywall Container */}
