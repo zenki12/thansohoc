@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
     
     // Increased maxOutputTokens to ensure deep analysis fits
     const result = await model.generateContent({
