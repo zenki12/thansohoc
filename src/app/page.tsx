@@ -50,7 +50,7 @@ export default function Home() {
           <div className="w-10 h-10 flex items-center justify-center text-orange-400 group-hover:rotate-[360deg] transition-transform duration-700 ease-in-out">
             <Atom className="w-10 h-10 relative z-10" strokeWidth={2.5} />
           </div>
-          <span className="text-[26px] font-black text-gray-600 tracking-tight">Giải Mã Bản Thân</span>
+          <span className="text-[26px] font-black text-gray-600 tracking-tight">Khám Phá Bản Thân</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
           <a href="#gioi-thieu" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
