@@ -1,65 +1,80 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export default function Home() {
+  const [name, setName] = useState("");
+  const [dob, setDob] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !dob) return;
+    const params = new URLSearchParams({ name, dob });
+    router.push(`/result?${params.toString()}`);
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-900/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
+
+      <div className="z-10 w-full max-w-lg glass-panel rounded-3xl p-8 sm:p-12 shadow-2xl relative border border-white/10 bg-white/5">
+        <div className="text-center mb-10">
+          <div className="mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 shadow-lg shadow-purple-500/30">
+            <Sparkles className="text-white w-8 h-8" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 tracking-tight text-white">
+            Bản Đồ <span className="gold-gradient-text">Thần Số Học</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-white/70 text-sm sm:text-base">
+            Khám phá mật ngữ các con số và thấu hiểu bản mệnh
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2 text-left">
+            <label htmlFor="name" className="block text-sm font-medium text-white/90">
+              Họ và tên khai sinh <span className="text-red-400">*</span>
+            </label>
+            <input
+              id="name"
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="VD: Nguyễn Văn A"
+              className="w-full px-5 py-4 bg-black/40 border border-white/10 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-white placeholder-white/30 transition-all outline-none"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <p className="text-xs text-white/50">Nhập đúng tên trên CCCD/Giấy khai sinh</p>
+          </div>
+
+          <div className="space-y-2 text-left">
+            <label htmlFor="dob" className="block text-sm font-medium text-white/90">
+              Ngày tháng năm sinh dương lịch <span className="text-red-400">*</span>
+            </label>
+            <input
+              id="dob"
+              type="date"
+              required
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              className="w-full px-5 py-4 bg-black/40 border border-white/10 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-white placeholder-white/30 transition-all outline-none appearance-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full mt-4 py-4 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl font-semibold shadow-xl shadow-purple-900/30 transform transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Bắt đầu Phân tích
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
