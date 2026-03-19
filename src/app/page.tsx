@@ -343,7 +343,7 @@ export default function Home() {
               <p className="text-gray-600 font-medium">✨ Khám phá bản thân hoàn toàn <span className="text-orange-500 font-bold uppercase">Miễn Phí</span></p>
               <div className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
                 <p>Sứ mệnh của công cụ này là mang đến một góc nhìn tham khảo hữu ích, giúp bạn có thêm nguồn động lực tích cực và vạch ra những định hướng mới cho tương lai.</p>
-                <p className="mt-2 text-gray-600 font-medium">Hãy luôn nhớ rằng lộ trình cuộc đời nằm trong tay bạn.</p>
+                <p className="mt-2 text-gray-600 font-medium">Hãy luôn nhớ rằng: Lộ trình cuộc đời bạn nằm chính trong tay của bạn.</p>
               </div>
               <p className="text-orange-500 italic text-lg md:text-xl mt-4 font-bold tracking-wide drop-shadow-sm">
                 "Đức năng thắng số..."
