@@ -6,6 +6,9 @@ export interface NumerologyAnalysis {
   maturity: number; // Trưởng thành
   attitude: number; // Thái độ
   birthDay: number; // Ngày sinh
+  personalYear: number;
+  personalMonth: number;
+  missingNumbers: number[];
   pinnacles: {
     year1: number; peak1: number;
     year2: number; peak2: number;
@@ -131,8 +134,19 @@ export function calculateNumerology(fullName: string, dobString: string): Numero
     if (d > 0) birthChart[d]++;
   }
 
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+  const personalYear = reduceNumber(redDay + redMonth + reduceNumber(currentYear));
+  const personalMonth = reduceNumber(personalYear + reduceNumber(currentMonth), false);
+
+  const missingNumbers: number[] = [];
+  for (let i = 1; i <= 9; i++) {
+    if (!nameChart[i]) missingNumbers.push(i);
+  }
+
   return {
     lifePath, destiny, soulUrge, personality, maturity, attitude, birthDay,
+    personalYear, personalMonth, missingNumbers,
     pinnacles: { year1, peak1, year2, peak2, year3, peak3, year4, peak4 },
     nameChart, birthChart
   };
@@ -154,6 +168,9 @@ Bộ số cốt lõi:
 - THÁI ĐỘ (Attitude): ${stats.attitude}
 - NGÀY SINH (Birth Day): ${stats.birthDay}
 - TRƯỞNG THÀNH (Maturity): ${stats.maturity}
+- NĂM CÁ NHÂN (Năm ${new Date().getFullYear()}): ${stats.personalYear}
+- THÁNG CÁ NHÂN (Tháng ${new Date().getMonth() + 1}): ${stats.personalMonth}
+- CHỈ SỐ THIẾU (Karmic Lessons): ${stats.missingNumbers.length > 0 ? stats.missingNumbers.join(', ') : 'Không có'}
 
 YÊU CẦU CẤU TRÚC MARKDOWN CHUẨN XÁC, sử dụng EMOJI Đinh Dạng như sau:
 
@@ -183,6 +200,12 @@ YÊU CẦU CẤU TRÚC MARKDOWN CHUẨN XÁC, sử dụng EMOJI Đinh Dạng nh�
 - **Đỉnh 2 (Tuổi ${stats.pinnacles.year2}):** Năng lượng đỉnh số ${stats.pinnacles.peak2}. Chi tiết thử thách.
 - **Đỉnh 3 (Tuổi ${stats.pinnacles.year3}):** Năng lượng đỉnh số ${stats.pinnacles.peak3}. Đỉnh cao tài chính/tinh thần ra sao?
 - **Đỉnh 4 (Tuổi ${stats.pinnacles.year4}):** Năng lượng đỉnh số ${stats.pinnacles.peak4}. Giai đoạn hậu vận.
+
+## ⏳ NHỊP ĐIỆU THỜI GIAN: NĂM CÁ NHÂN ${stats.personalYear}
+(Phân tích sâu sắc về vận trình năm nay, cơ hội và những cạm bẫy cần tránh. Bạn đang ở tháng cá nhân ${stats.personalMonth})
+
+## 🧩 CHỈ SỐ KHUYẾT (KARMIC LESSONS): ${stats.missingNumbers.length > 0 ? stats.missingNumbers.join(', ') : 'Không có'}
+(Bài học nghiệp quả do thiếu vắng các con số này trong ngày sinh và tên)
 
 ## 💡 TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
 (Kết luận truyền cảm hứng, sắc sảo).

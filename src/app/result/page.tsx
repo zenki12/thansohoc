@@ -3,10 +3,9 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { calculateNumerology, NumerologyAnalysis } from "@/lib/numerologyHelper";
-import { ArrowLeft, Sparkles, Loader2, Download, Star } from "lucide-react";
+import { ArrowLeft, Sparkles, Loader2, Star } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useReactToPrint } from "react-to-print";
 
 function ResultContent() {
   const searchParams = useSearchParams();
@@ -17,8 +16,6 @@ function ResultContent() {
   const [stats, setStats] = useState<NumerologyAnalysis | null>(null);
   const [report, setReport] = useState<string>("");
   const [loading, setLoading] = useState(true);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const handlePrint = useReactToPrint({ contentRef, documentTitle: `ThanSoHoc_${name}` });
 
   useEffect(() => {
     if (!name || !dob) {
@@ -52,12 +49,9 @@ function ResultContent() {
         <button onClick={() => router.push("/")} className="text-white/60 hover:text-white flex items-center gap-2 transition-colors">
           <ArrowLeft className="w-5 h-5" /> Quay lại
         </button>
-        <button onClick={() => handlePrint()} className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-full font-medium shadow-lg shadow-purple-600/30 active:scale-95 transition-all flex items-center gap-2">
-          <Download className="w-4 h-4" /> Tải về PDF
-        </button>
       </div>
 
-      <div ref={contentRef} className="max-w-3xl mx-auto bg-[#020617] print:p-8 print:w-[800px] overflow-hidden relative">
+      <div className="max-w-3xl mx-auto bg-[#020617] overflow-hidden relative">
         
         {/* Header Section */}
         <header className="px-6 py-12 text-center relative">
@@ -93,6 +87,25 @@ function ResultContent() {
               <SmallNumberCard label="Thái Độ" value={stats.attitude} />
               <SmallNumberCard label="Nhân Cách" value={stats.personality} />
               <SmallNumberCard label="Trưởng Thành" value={stats.maturity} />
+           </div>
+
+           {/* Personal Year, Month, Missing Numbers */}
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-[#1e1b4b]/60 to-[#0f172a]/60 border border-white/10 shadow-inner backdrop-blur-md relative overflow-hidden group">
+                 <div className="absolute inset-0 bg-yellow-500/5 group-hover:bg-yellow-500/10 transition-colors"></div>
+                 <span className="text-[11px] font-bold text-yellow-500/70 uppercase tracking-[0.15em] mb-2 z-10">Năm Cá Nhân</span>
+                 <span className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-md z-10">{stats.personalYear}</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-[#1e1b4b]/60 to-[#0f172a]/60 border border-white/10 shadow-inner backdrop-blur-md relative overflow-hidden group">
+                 <div className="absolute inset-0 bg-rose-500/5 group-hover:bg-rose-500/10 transition-colors"></div>
+                 <span className="text-[11px] font-bold text-rose-400/70 uppercase tracking-[0.15em] mb-2 z-10">Tháng Cá Nhân</span>
+                 <span className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-rose-300 to-rose-600 drop-shadow-md z-10">{stats.personalMonth}</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-[#1e1b4b]/60 to-[#0f172a]/60 border border-white/10 shadow-inner backdrop-blur-md relative overflow-hidden group">
+                 <div className="absolute inset-0 bg-sky-500/5 group-hover:bg-sky-500/10 transition-colors"></div>
+                 <span className="text-[11px] font-bold text-sky-400/70 uppercase tracking-[0.15em] mb-2 z-10">Chỉ Số Thiếu</span>
+                 <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-sky-300 to-sky-600 drop-shadow-md mt-1 z-10 tracking-widest">{stats.missingNumbers.length > 0 ? stats.missingNumbers.join(', ') : 'Không'}</span>
+              </div>
            </div>
         </section>
 
