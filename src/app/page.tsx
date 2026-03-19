@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp, Atom, X } from "lucide-react";
 
 export default function Home() {
@@ -60,6 +61,7 @@ export default function Home() {
           <span className="text-[26px] font-black text-gray-600 tracking-tight">Khám Phá Bản Thân</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
+          <Link href="/tarot" className="text-orange-600 hover:text-orange-700 transition-colors flex items-center gap-1.5 font-bold"><Sparkles className="w-4 h-4"/> Trải Bài Tarot</Link>
           <a href="#gioi-thieu" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
           <a href="#loi-ich" className="hover:text-orange-500 transition-colors">Lợi ích</a>
         </div>
