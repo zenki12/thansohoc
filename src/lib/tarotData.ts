@@ -231,11 +231,11 @@ export const tarotDeck: TarotCard[] = [
     "description": "Lá bài Ẩn chính"
   },
   {
-    "id": "wa01",
+    "id": "waac",
     "name_en": "Ace of Wands",
     "name_vn": "Ace Gậy",
     "type": "minor",
-    "image": "https://sacred-texts.com/tarot/pkt/img/wa01.jpg",
+    "image": "https://sacred-texts.com/tarot/pkt/img/waac.jpg",
     "uprightMeaning": "Khởi đầu mới, Tiềm năng kết hợp với Đam mê, Hành động, Sáng tạo",
     "reversedMeaning": "Cản trở: Khởi đầu mới, Tiềm năng kết hợp với Chậm trễ, Mất định hướng",
     "description": "Lá bài Ẩn phụ bộ Gậy"
@@ -371,11 +371,11 @@ export const tarotDeck: TarotCard[] = [
     "description": "Lá bài Ẩn phụ bộ Gậy"
   },
   {
-    "id": "cu01",
+    "id": "cuac",
     "name_en": "Ace of Cups",
     "name_vn": "Ace Cốc",
     "type": "minor",
-    "image": "https://sacred-texts.com/tarot/pkt/img/cu01.jpg",
+    "image": "https://sacred-texts.com/tarot/pkt/img/cuac.jpg",
     "uprightMeaning": "Khởi đầu mới, Tiềm năng kết hợp với Cảm xúc, Tình cảm, Trực giác",
     "reversedMeaning": "Cản trở: Khởi đầu mới, Tiềm năng kết hợp với Đè nén cảm xúc, Tổn thương",
     "description": "Lá bài Ẩn phụ bộ Cốc"
@@ -511,11 +511,11 @@ export const tarotDeck: TarotCard[] = [
     "description": "Lá bài Ẩn phụ bộ Cốc"
   },
   {
-    "id": "sw01",
+    "id": "swac",
     "name_en": "Ace of Swords",
     "name_vn": "Ace Kiếm",
     "type": "minor",
-    "image": "https://sacred-texts.com/tarot/pkt/img/sw01.jpg",
+    "image": "https://sacred-texts.com/tarot/pkt/img/swac.jpg",
     "uprightMeaning": "Khởi đầu mới, Tiềm năng kết hợp với Lý trí, Quyết định, Xung đột",
     "reversedMeaning": "Cản trở: Khởi đầu mới, Tiềm năng kết hợp với Nhầm lẫn, Lừa dối",
     "description": "Lá bài Ẩn phụ bộ Kiếm"
@@ -651,11 +651,11 @@ export const tarotDeck: TarotCard[] = [
     "description": "Lá bài Ẩn phụ bộ Kiếm"
   },
   {
-    "id": "pe01",
+    "id": "peac",
     "name_en": "Ace of Pentacles",
     "name_vn": "Ace Tiền",
     "type": "minor",
-    "image": "https://sacred-texts.com/tarot/pkt/img/pe01.jpg",
+    "image": "https://sacred-texts.com/tarot/pkt/img/peac.jpg",
     "uprightMeaning": "Khởi đầu mới, Tiềm năng kết hợp với Vật chất, Thực tế, Công việc",
     "reversedMeaning": "Cản trở: Khởi đầu mới, Tiềm năng kết hợp với Mất mát tài chính, Tham lam",
     "description": "Lá bài Ẩn phụ bộ Tiền"

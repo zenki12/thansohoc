@@ -33,7 +33,7 @@ const suits = [
 ];
 
 const ranks = [
-  ['01', 'Ace', 'Ace', 'Khởi đầu mới, Tiềm năng'],
+  ['ac', 'Ace', 'Ace', 'Khởi đầu mới, Tiềm năng'],
   ['02', '02', 'Hai', 'Lựa chọn, Lên kế hoạch'],
   ['03', '03', 'Ba', 'Mở rộng, Làm việc nhóm'],
   ['04', '04', 'Bốn', 'Ổn định, Lễ kỷ niệm'],
