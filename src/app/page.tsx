@@ -142,31 +142,36 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: Illustrations Floating */}
-          <div className="relative h-[500px] w-full hidden lg:block">
+          {/* Right Column: 12 Zodiac Orbit Illustration */}
+          <div className="relative h-[600px] w-full hidden lg:block">
             {/* Center Main Circular Core */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-orange-200/40 to-rose-100/40 rounded-full border border-white/60 shadow-2xl backdrop-blur-3xl animate-pulse-slow"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border border-orange-300/30 rounded-full animate-[spin_30s_linear_infinite] border-dashed"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] border border-rose-300/20 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
-
-            {/* Floating Zodiac/Elements Cards */}
-            <div className="absolute top-[10%] left-[15%] w-24 h-24 bg-white rounded-2xl shadow-2xl shadow-orange-500/20 flex flex-col items-center justify-center animate-float rotate-[-10deg] border border-white">
-              <span className="text-3xl">🐉</span>
-              <span className="text-xs font-bold text-gray-400 mt-2">Thìn</span>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] bg-gradient-to-tr from-orange-200/40 to-rose-200/40 rounded-full border border-white/60 shadow-[0_0_80px_rgba(249,115,22,0.2)] backdrop-blur-3xl flex flex-col items-center justify-center z-10 animate-pulse-slow">
+               <Sparkles className="w-10 h-10 text-orange-500 mb-2" />
+               <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-500 uppercase tracking-widest text-center px-4">Đại Chu Kỳ<br/>Vận Mệnh</h3>
             </div>
             
-            <div className="absolute top-[25%] right-[10%] w-28 h-28 bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl shadow-[0_20px_40px_rgba(245,158,11,0.4)] flex flex-col items-center justify-center animate-float-delayed rotate-[12deg] text-white">
-              <Sparkles className="w-8 h-8 mb-1" />
-              <span className="text-xs font-black uppercase tracking-widest">Luận Khởi</span>
-            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] border border-orange-300/30 rounded-full animate-[spin_30s_linear_infinite] border-dashed z-0"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] border border-rose-200/20 rounded-full z-0"></div>
 
-            <div className="absolute bottom-[20%] left-[5%] w-32 h-20 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 flex flex-col items-center justify-center animate-float animation-delay-2000 rotate-[5deg]">
-              <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">GPT-4o &</span>
-              <span className="text-md font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">LLaMA 3</span>
-            </div>
-
-            <div className="absolute bottom-[10%] right-[20%] w-24 h-24 bg-white rounded-full shadow-2xl shadow-rose-500/20 flex flex-col items-center justify-center animate-float-delayed rotate-[-15deg] border-[6px] border-orange-50">
-              <span className="text-4xl text-rose-400"><Heart className="fill-rose-100" /></span>
+            {/* Rotating 12 Zodiacs */}
+            <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -ml-[260px] -mt-[260px] animate-[spin_60s_linear_infinite] z-20 pointer-events-none">
+              {["🐭 Tý", "🐃 Sửu", "🐯 Dần", "🐱 Mão", "🐲 Thìn", "🐍 Tỵ", "🐴 Ngọ", "🐐 Mùi", "🐵 Thân", "🐔 Dậu", "🐶 Tuất", "🐷 Hợi"].map((zodiac, i) => {
+                const angle = (i * 360) / 12;
+                return (
+                  <div 
+                    key={i}
+                    className="absolute top-1/2 left-1/2 w-20 h-20 -ml-10 -mt-10"
+                    style={{ transform: `rotate(${angle}deg) translateY(-260px)` }}
+                  >
+                     <div 
+                       className="w-full h-full bg-white/90 backdrop-blur-md border border-orange-100 shadow-xl rounded-2xl flex flex-col items-center justify-center animate-[spin_60s_linear_infinite_reverse]"
+                     >
+                       <span className="text-3xl drop-shadow-sm">{zodiac.split(' ')[0]}</span>
+                       <span className="text-[10px] font-black tracking-widest text-gray-400 uppercase mt-1">{zodiac.split(' ')[1]}</span>
+                     </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
