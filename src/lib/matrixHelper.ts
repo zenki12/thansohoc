@@ -130,5 +130,8 @@ YÊU CẦU CẤU TRÚC MARKDOWN (Sử dụng biểu tượng cực đẹp):
 ## 🏔️ 7. SỨ MỆNH LINH HỒN TỐI THƯỢNG (SỐ ${stats.purpose})
 (Điểm đến cuối cùng. Lời khuyên định hướng tương lai, đánh thức vị thần bên trong khách hàng.)
 
+## 💡 8. TỔNG KẾT & ĐỊNH HƯỚNG TRỌNG TÂM
+(Đưa ra một đoạn tổng kết tổng quan ngắn gọn, súc tích và mạch lạc nhất. Định hướng rõ ràng cho đương số biết họ cần làm gì tiếp theo, tập trung vào đâu để vươn tới ngưỡng cao nhất của bản thân. Lời khuyên phải mang tính thực tế, hành động, truyền cảm hứng và dễ hiểu.)
+
 LƯU Ý QUAN TRỌNG: Văn phong mang tính chất CHỮA LÀNH SÂU SẮC, KẾT HỢP KIẾN THỨC TAROT ĐỂ PHÂN TÍCH (Ví dụ số 1 là The Magician, 6 là The Lovers, 15 là The Devil...). Rất Chuyên Môn, Không giáo điều cứng nhắc. ĐẾM SỐ TỪ ĐỂ ĐẢM BẢO CHIỀU DÀI CHUYÊN SÂU THẬT SỰ (~1500 TỪ), KHÔNG VIẾT NGẮN CỤT LỦN! Mọi phân tích phải có tính cá nhân hóa cực cao.`;
 }

@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { calculateNumerology, NumerologyAnalysis } from "@/lib/numerologyHelper";
-import { ArrowLeft, Sparkles, Loader2, Star, Download } from "lucide-react";
+import { ArrowLeft, Sparkles, Loader2, Star, Download, ArrowUp } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -166,6 +166,15 @@ function ResultContent() {
           <p>Tạo bởi Thần Số Học AI © 2026</p>
         </footer>
       </div>
+      {/* Back to Top Floating Button */}
+      <button 
+        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+        className="fixed bottom-6 right-6 p-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-[0_10px_20px_rgba(245,158,11,0.3)] hover:shadow-[0_15px_25px_rgba(245,158,11,0.4)] hover:-translate-y-1 transition-all z-50 flex items-center justify-center group print:hidden"
+        aria-label="Trở về đầu trang"
+        title="Trở về đầu trang"
+      >
+        <ArrowUp className="w-6 h-6 group-hover:animate-bounce" />
+      </button>
     </div>
   );
 }

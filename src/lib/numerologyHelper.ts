@@ -208,7 +208,7 @@ YÊU CẦU CẤU TRÚC MARKDOWN CHUẨN XÁC, sử dụng EMOJI Đinh Dạng nh�
 (Bài học nghiệp quả do thiếu vắng các con số này trong ngày sinh và tên)
 
 ## 💡 TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
-(Kết luận truyền cảm hứng, sắc sảo).
+(Đưa ra một đoạn tổng kết toàn diện, ngắn gọn, súc tích và mạch lạc nhất. Định hướng rõ ràng cho đương số biết họ cần làm gì tiếp theo, tập trung vào đâu để phát triển cực thịnh con đường sự nghiệp và cuộc sống. Lời khuyên phải mang tính thực tế, hành động, truyền cảm hứng và dễ hiểu.)
 
 LƯU Ý QUAN TRỌNG: Văn phong mang tính chất chữa lành (healing) nhưng phải Đanh Thép, Chuyên Môn Cao. ĐẾM SỐ TỪ TRONG SUY NGHĨ ĐỂ ĐẢM BẢO CHIỀU DÀI THẬT SỰ CHUYÊN SÂU. CẤM VIẾT NGẮN CỤT LỦN!`;
 }

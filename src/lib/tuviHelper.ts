@@ -58,7 +58,10 @@ Trong họ thường có bà cô tổ, ông tổ cậu nào chết trẻ linh th
 Đánh giá vận hiện tại (tuổi), dự báo năm 2026 về công việc, thu nhập, tình duyên, gia đạo, sức khoẻ, điểm cần lưu ý. (Đưa ra dự báo chi tiết theo tháng nếu có thể).
 
 ## 14. Tổng Kết Vận Hạn Trong Đời
-Những đại vận đáng chú ý nhất (thịnh vượng hay khó khăn)? Giai đoạn nào cần cẩn trọng nhất? Lời khuyên vàng ngọc cuối cùng từ lão phu.`;
+Những đại vận đáng chú ý nhất (thịnh vượng hay khó khăn)? Giai đoạn nào cần cẩn trọng nhất? Lời khuyên vàng ngọc cuối cùng từ lão phu.
+
+## 15. TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
+Đưa ra một đoạn tổng kết ngắn gọn, súc tích và mạch lạc nhất. Định hướng rõ ràng cho đương số biết họ cần làm gì tiếp theo, tập trung vào đâu để cải thiện vận mệnh. Lời khuyên phải mang tính thực tế, hành động, truyền cảm hứng và dễ hiểu.`;
 }
 
 export function generateTuViMock(data: TuViInput): string {
@@ -104,5 +107,8 @@ Gia tiên phù hộ mạnh mẽ. Bạn là người có tín ngưỡng và nhạ
 Đại vận hiện tại mang tính chất chuyển giao. Năm 2026 là năm bản lề mở ra nhiều cơ hội thay đổi về công việc, tuy nhiên lưu ý sức khỏe vào giữa năm.
 
 ## 14. Tổng Kết Vận Hạn Trong Đời
-Giai đoạn thịnh vượng nhất rơi vào khoảng 35 - 55 tuổi. Giai đoạn cần cẩn trọng nhất là trước 30 tuổi. Trải qua phong ba, hậu vận vô cùng an nhàn và phú quý!`;
+Giai đoạn thịnh vượng nhất rơi vào khoảng 35 - 55 tuổi. Giai đoạn cần cẩn trọng nhất là trước 30 tuổi. Trải qua phong ba, hậu vận vô cùng an nhàn và phú quý!
+
+## 15. TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
+Tóm lại, lá số của bạn rất sáng ở hậu vận. Trong giai đoạn 3 năm sắp tới, hãy tập trung vào việc trau dồi chuyên môn và mở rộng mối quan hệ tích cực. Đừng ngại thử thách bản thân vì quý nhân đang chờ phía trước. Chúc bạn luôn giữ vững niềm tin và gặt hái thành công!`;
 }

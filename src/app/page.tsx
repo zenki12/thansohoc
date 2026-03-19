@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield } from "lucide-react";
+import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
@@ -54,9 +54,9 @@ export default function Home() {
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
           <a href="#" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Tử Vi</a>
+          <a href="#" className="hover:text-orange-500 transition-colors">Lá Số Tử Vi</a>
           <a href="#" className="hover:text-orange-500 transition-colors">Thần Số Học</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Ma Trận ĐM</a>
+          <a href="#" className="hover:text-orange-500 transition-colors">Ma Trận Định Mệnh</a>
         </div>
       </nav>
 
@@ -127,9 +127,9 @@ export default function Home() {
                 <div className="space-y-2 pt-2">
                   <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Bạn muốn xem gì?</label>
                   <div className="grid grid-cols-3 gap-2 p-1.5 bg-gray-100/80 rounded-2xl border border-gray-200">
-                    <button onClick={() => setSelectedFeature("tuvi")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'tuvi' ? 'bg-white text-orange-600 shadow-md ring-1 ring-orange-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Tử Vi</button>
-                    <button onClick={() => setSelectedFeature("numerology")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'numerology' ? 'bg-white text-amber-600 shadow-md ring-1 ring-amber-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Thần Số</button>
-                    <button onClick={() => setSelectedFeature("matrix")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'matrix' ? 'bg-white text-cyan-600 shadow-md ring-1 ring-cyan-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Ma Trận</button>
+                    <button onClick={() => setSelectedFeature("tuvi")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'tuvi' ? 'bg-white text-orange-600 shadow-md ring-1 ring-orange-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Lá Số Tử Vi</button>
+                    <button onClick={() => setSelectedFeature("numerology")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'numerology' ? 'bg-white text-amber-600 shadow-md ring-1 ring-amber-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Thần Số Học</button>
+                    <button onClick={() => setSelectedFeature("matrix")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'matrix' ? 'bg-white text-cyan-600 shadow-md ring-1 ring-cyan-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Ma Trận Định Mệnh</button>
                   </div>
                 </div>
 
@@ -340,6 +340,15 @@ export default function Home() {
            <a href="#" className="hover:text-orange-500 transition-colors">Điều khoản dịch vụ</a>
          </div>
       </footer>
+      {/* Back to Top Floating Button */}
+      <button 
+        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+        className="fixed bottom-6 right-6 p-4 rounded-full bg-gradient-to-r from-orange-500 to-rose-500 text-white shadow-[0_10px_20px_rgba(249,115,22,0.3)] hover:shadow-[0_15px_25px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all z-50 flex items-center justify-center group"
+        aria-label="Trở về đầu trang"
+        title="Trở về đầu trang"
+      >
+        <ArrowUp className="w-6 h-6 group-hover:animate-bounce" />
+      </button>
     </div>
   );
 }
