@@ -72,11 +72,17 @@ export default function TarotPage() {
         })
       });
       clearInterval(intId);
+      
       const data = await res.json();
+      
+      if (!res.ok || data.error) {
+         throw new Error(data.error || "Lỗi server");
+      }
+      
       setResult(data);
       setStep(3); // Result
-    } catch (e) {
-      alert("Năng lượng bị gián đoạn, vui lòng thử lại.");
+    } catch (e: any) {
+      alert("Năng lượng bị gián đoạn: " + (e.message || "Vui lòng thử lại."));
       setStep(1); // Back to draw
     }
   };

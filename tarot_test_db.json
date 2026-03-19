@@ -1,0 +1,60 @@
+[
+  {
+    "id": "major_0_fool",
+    "name_vn": "The Fool",
+    "name_en": "The Fool",
+    "type": "Major Arcana",
+    "suit": "None",
+    "description": "Lá bài The Fool dự đoán sự bắt đầu của một hành trình mới trong cuộc sống, với những thách thức và cơ hội mới. Lá bài này không khẳng định sự thành công hay thất bại, mà chỉ đơn thuần là điềm báo về sự thay đổi và bước nhảy trong cuộc đời. The Fool được đánh số 0, con số biểu thị sự mơ hồ và khó xác định giá trị.",
+    "upright": {
+      "keywords": [
+        "bắt đầu",
+        "thách thức",
+        "cơ hội"
+      ],
+      "general": "Sự bắt đầu của một hành trình mới, với những thách thức và cơ hội mới.",
+      "love": "Tình trạng yêu đương có nhiều rạn nứt, cần quan tâm và vun đắp mối quan hệ.",
+      "career": "Khó khăn khi định hướng công việc, cần xác định rõ ràng mục tiêu cụ thể để giảm thiểu rủi ro."
+    },
+    "reversed": {
+      "keywords": [
+        "sự chậm trễ",
+        "sự do dự",
+        "sự thiếu quyết đoán"
+      ],
+      "general": "Sự chậm trễ hoặc do dự trong việc bắt đầu một hành trình mới.",
+      "love": "Sự thiếu quan tâm hoặc vun đắp trong mối quan hệ yêu đương.",
+      "career": "Sự thiếu quyết đoán hoặc định hướng trong công việc."
+    },
+    "journey_story": "The Fool là lá bài của sự bắt đầu và thay đổi, với những thách thức và cơ hội mới. Lá bài này nhắc nhở chúng ta về sự tự phát và tính ngây thơ, và cần phải có niềm tin tuyệt đối vào cuộc sống. The Fool cũng đại diện cho sự hồn nhiên và tính tự nhiên, và cần phải được kết hợp với sự quyết đoán và định hướng để đạt được thành công."
+  },
+  {
+    "id": "major_1_magician",
+    "name_vn": "The Magician",
+    "name_en": "The Magician",
+    "type": "Major Arcana",
+    "suit": "None",
+    "description": "Lá bài The Magician đại diện cho sự sáng tạo, kỹ năng và khả năng đạt được thành công thông qua việc tận dụng hết năng lực tiềm ẩn của bản thân. Hình ảnh trên lá bài là một vị pháp sư, đôi khi pháp sư sẽ đại diện cho sự dối trá và lừa đảo. Lá bài này nhắc nhở đã đến lúc bạn nên khai thác hết năng lực bản thân mà không đắn đo.",
+    "upright": {
+      "keywords": [
+        "sáng tạo",
+        "kỹ năng",
+        "thành công"
+      ],
+      "general": "Lá bài này ám chỉ sự bắt đầu những thách thức mới, lúc này bạn sẽ luôn căng tràn năng lượng cùng sự nhiệt huyết, khao khát tự do phá bỏ mọi ràng buộc của bản thân từ trước đến nay.",
+      "love": "The Magician mang ý nghĩa một tình yêu nhiều thăng hoa. Mối quan hệ của hai bạn đang rất hoàn thuận.",
+      "career": "Lá bài này biểu hiện cho kỹ năng, các kỹ năng của bản thân đã đến lúc phải phô diễn hết sức để đạt được thành công."
+    },
+    "reversed": {
+      "keywords": [
+        "dối trá",
+        "lừa đảo",
+        "không thủy chung"
+      ],
+      "general": "Ý nghĩa tiêu cực của lá bài The Magician là sẽ có vài điều không tốt đẹp đến với bạn. Có thể là sự không thủy chung trong mối quan hệ tình yêu hoặc cảnh báo về sức khỏe.",
+      "love": "Dấu hiệu của sự không chung thủy. Mọi mật ngọt trong tình yêu của cả hai sẽ bị phá vỡ.",
+      "career": "Lá bài này có thể ám chỉ sự lừa đảo hoặc dối trá trong công việc."
+    },
+    "journey_story": "Lá bài The Magician là dấu hiệu nhắc nhở đã đến lúc bạn nên khai thác hết năng lực bản thân mà không đắn đo. Hãy tận dụng hết óc sáng tạo và năng lực tiềm ẩn để đạt được thành công. Lá bài này cũng nhắc nhở bạn về sự dối trá và lừa đảo, hãy cẩn thận trong mọi hành động và quyết định của mình."
+  }
+]
