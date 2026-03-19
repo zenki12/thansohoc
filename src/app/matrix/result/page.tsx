@@ -162,7 +162,7 @@ function MatrixResultContent() {
           )}
           
           <div className="mt-20 text-center border-t border-gray-200 pt-10 pb-6 relative z-10">
-             <p className="font-serif text-gray-600 text-xl md:text-2xl italic font-medium">
+             <p className="text-gray-700 text-xl md:text-2xl italic font-bold leading-relaxed px-4 drop-shadow-sm">
                "Tận nhân lực, tri thiên mệnh. Sự thành bại cốt yếu tại Tâm."
              </p>
           </div>
