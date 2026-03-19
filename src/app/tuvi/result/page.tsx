@@ -2,7 +2,7 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { ArrowLeft, Compass, Sun, Moon } from "lucide-react";
+import { ArrowLeft, Compass, Sun, Moon, Loader2, Download, Sparkles, Star } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { generateTuViAIPrompt, generateTuViMock, TuViInput } from "@/lib/tuviHelper";
@@ -38,7 +38,7 @@ function TuViResultContent() {
         });
 
         if (!response.ok) {
-          throw new Error("Lỗi gọi API Gemini");
+          throw new Error("Lỗi gọi API");
         }
 
         const data = await response.json();
@@ -56,112 +56,89 @@ function TuViResultContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#020617] flex flex-col items-center justify-center p-6 text-white relative overflow-hidden">
-        {/* Tu vi theme animation: Amber / Red / Gold */}
-        <div className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-orange-900/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-[20%] right-[20%] w-[500px] h-[500px] bg-red-900/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="min-h-screen bg-[#FFFDF9] flex flex-col items-center justify-center p-6 text-gray-800 relative overflow-hidden">
+        <div className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-orange-300/30 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-[20%] right-[20%] w-[500px] h-[500px] bg-rose-200/30 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
         
         <div className="relative z-10 flex flex-col items-center">
            <div className="w-24 h-24 mb-8 relative flex items-center justify-center" style={{ animation: "spin 5s linear infinite" }}>
-              <div className="absolute inset-0 border-4 border-amber-500/30 rounded-full border-t-amber-500"></div>
-              <Compass className="w-8 h-8 text-amber-400 rotate-45" />
+              <div className="absolute inset-0 border-4 border-orange-200 rounded-full border-t-orange-500"></div>
+              <Compass className="w-8 h-8 text-orange-500 rotate-45" />
            </div>
            
-           <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-orange-500 mb-4 tracking-widest uppercase text-center shadow-black drop-shadow-lg">
+           <h2 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-500 mb-4 tracking-widest uppercase text-center drop-shadow-sm">
              Đang Lập Lá Số...
            </h2>
-           <p className="text-amber-200/60 font-medium text-center">Xin chờ, các tinh tú đang dịch cung hoán số...</p>
+           <p className="text-gray-500 font-medium text-center">Xin chờ, các tinh tú đang dịch cung hoán số...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white selection:bg-amber-500/30 pb-24 relative font-sans">
+    <main className="min-h-screen bg-[#FFFDF9] text-gray-800 selection:bg-orange-200/80 pb-24 relative font-sans">
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-         <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-amber-900/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
-         <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-red-900/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse" style={{ animationDelay: '4s' }}></div>
+         <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-orange-100/50 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse"></div>
+         <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-rose-50/50 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-6 relative z-20 flex justify-between items-center">
-        <button onClick={() => router.push("/")} className="text-white/60 hover:text-amber-400 flex items-center gap-2 transition-colors font-medium">
-          <ArrowLeft className="w-5 h-5" /> Trở Về
+      <div className="max-w-4xl mx-auto px-6 py-6 relative z-20 flex justify-between items-center print:hidden">
+        <button onClick={() => router.push("/")} className="text-gray-500 hover:text-orange-500 flex items-center gap-2 transition-colors font-bold">
+          <ArrowLeft className="w-5 h-5" /> Trở Về Trang Chủ
+        </button>
+        <button onClick={() => window.print()} className="bg-orange-100 hover:bg-orange-200 text-orange-600 px-4 py-2 rounded-xl transition-colors flex items-center gap-2 font-bold shadow-sm">
+          <Download className="w-4 h-4" /> Lưu PDF
         </button>
       </div>
 
-      <div className="max-w-3xl mx-auto bg-[#050505]/40 backdrop-blur-sm overflow-hidden relative border border-white/5 rounded-3xl">
+      <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-xl overflow-hidden relative shadow-2xl rounded-3xl border border-gray-100 my-4 md:my-8">
         
-        <header className="px-6 py-12 text-center relative border-b border-white/5 bg-gradient-to-b from-amber-900/10 to-transparent">
-          <div className="flex justify-center mb-10">
-            {/* SVG Bát Quái Mockup */}
-            <div className="relative w-48 h-48 md:w-56 md:h-56">
-                <div className="absolute inset-0 bg-yellow-600/20 rounded-full filter blur-xl animate-pulse"></div>
-                <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_15px_rgba(217,119,6,0.3)]" style={{ animation: "spin 20s linear infinite" }}>
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(251, 191, 36, 0.4)" strokeWidth="1" strokeDasharray="4 6" />
-                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(251, 191, 36, 0.6)" strokeWidth="2" />
-                    <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(251, 191, 36, 0.8)" strokeWidth="1" />
-                    <circle cx="100" cy="100" r="35" fill="none" stroke="rgba(251, 191, 36, 0.4)" strokeWidth="1" />
-                    
-                    {/* Bát Quái Lines */}
-                    <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(251, 191, 36, 0.3)" strokeWidth="1" />
-                    <line x1="20" y1="100" x2="180" y2="100" stroke="rgba(251, 191, 36, 0.3)" strokeWidth="1" />
-                    <line x1="43" y1="43" x2="157" y2="157" stroke="rgba(251, 191, 36, 0.3)" strokeWidth="1" />
-                    <line x1="43" y1="157" x2="157" y2="43" stroke="rgba(251, 191, 36, 0.3)" strokeWidth="1" />
-                    
-                    {/* Yin Yang Center */}
-                    <circle cx="100" cy="100" r="25" fill="#1e1e1e" />
-                    <path d="M 100 75 A 25 25 0 0 1 100 125 A 12.5 12.5 0 0 0 100 75 Z" fill="#fbbf24" />
-                    <path d="M 100 75 A 12.5 12.5 0 0 1 100 125 A 25 25 0 0 0 100 75 Z" fill="#1e1e1e" />
-                    <circle cx="100" cy="87.5" r="3" fill="#1e1e1e" />
-                    <circle cx="100" cy="112.5" r="3" fill="#fbbf24" />
-                </svg>
-            </div>
+        <header className="px-6 py-12 text-center bg-gradient-to-br from-orange-50/50 to-white relative border-b border-orange-100/50">
+          <div className="flex justify-center mb-6 relative z-10">
+             <Star className="w-12 h-12 text-orange-400 fill-orange-200 drop-shadow-sm" />
           </div>
-
-          <p className="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center justify-center gap-2">
-            <Sun className="w-4 h-4" /> BÌNH GIẢI CHÂN MỆNH <Moon className="w-4 h-4" />
-          </p>
-          <h1 className="text-4xl md:text-5xl font-black mb-8 uppercase text-white drop-shadow-[0_0_15px_rgba(251,191,36,0.5)] tracking-widest">
-            LÁ SỐ TỬ VI
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-widest mb-6 text-gray-800 drop-shadow-sm relative z-10">
+            Lá Số Tử Vi
           </h1>
           
-          <div className="inline-block bg-[#0f0f0f] border border-amber-500/20 px-8 py-5 rounded-2xl shadow-xl shadow-black/50">
-            <h2 className="text-2xl md:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-orange-500 mb-3 uppercase tracking-widest leading-relaxed">
-              {name}
-            </h2>
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-bold text-amber-100/60 uppercase tracking-widest">
-               <span className="bg-white/5 py-1 px-3 rounded-full">{dob}</span>
-               <span className="w-1.5 h-1.5 rounded-full bg-amber-500/50"></span>
-               <span className="bg-white/5 py-1 px-3 rounded-full">{time}</span>
-               <span className="w-1.5 h-1.5 rounded-full bg-amber-500/50"></span>
-               <span className="bg-white/5 py-1 px-3 rounded-full text-amber-400">{gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng'}</span>
-            </div>
+          <div className="inline-flex flex-col items-center justify-center border border-gray-200 bg-white/60 px-10 py-5 rounded-2xl relative shadow-sm z-10 backdrop-blur-md">
+            <h2 className="text-2xl font-black text-gray-800 mb-1 tracking-widest uppercase">{name}</h2>
+            <p className="text-gray-500 font-bold tracking-widest text-sm uppercase">
+              {gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng'} • {dob} {time ? `• ${time}` : ''}
+            </p>
           </div>
         </header>
 
-        <section className="px-6 sm:px-10 py-12 relative z-10 w-full min-h-[500px]">
-            <div className="prose prose-invert prose-lg md:prose-xl max-w-none 
-              prose-headings:text-transparent prose-headings:bg-clip-text prose-headings:bg-gradient-to-r prose-headings:from-amber-300 prose-headings:to-orange-500
-              prose-h2:text-3xl prose-h2:font-black prose-h2:mt-14 prose-h2:mb-6 prose-h2:border-b prose-h2:border-amber-500/20 prose-h2:pb-4 prose-h2:uppercase prose-h2:tracking-wider
-              prose-h3:text-2xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-amber-200
-              prose-p:text-amber-50/80 prose-p:leading-relaxed prose-p:mb-6
-              prose-li:text-amber-50/80 prose-li:leading-[1.8]
-              prose-strong:text-amber-200 prose-strong:font-extrabold
-              prose-a:text-orange-400 
-              break-words relative z-10">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {report}
-              </ReactMarkdown>
-            </div>
-            
-            <div className="mt-20 text-center border-t border-amber-500/20 pt-10 pb-6">
-               <p className="text-amber-500/40 text-xs tracking-[0.3em] font-medium uppercase italic">
-                 "Tận nhân lực, tri thiên mệnh. Sự thành bại cốt yếu tại Tâm."
-               </p>
-            </div>
+        <section className="px-6 md:px-12 py-16 bg-white relative">
+          <div className="flex items-center justify-center gap-3 mb-10">
+            <Sparkles className="text-orange-400 w-5 h-5" />
+            <h3 className="text-xl font-bold text-gray-800 uppercase tracking-widest text-center">
+              Cẩm Nang Mệnh Lý
+            </h3>
+            <Sparkles className="text-orange-400 w-5 h-5" />
+          </div>
+          
+          <div className="prose prose-lg md:prose-xl max-w-none 
+            prose-headings:text-gray-900 prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:pb-3 prose-h2:mt-12
+            prose-h3:text-orange-600 prose-h3:mt-6
+            prose-p:text-gray-700 prose-p:leading-[1.8] prose-p:font-normal
+            prose-li:text-gray-700 prose-li:leading-[1.7]
+            prose-strong:text-gray-900 prose-strong:font-bold
+            prose-a:text-orange-500 
+            break-words">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {report}
+            </ReactMarkdown>
+          </div>
+          
+          <div className="mt-20 text-center border-t border-gray-100 pt-10 pb-6">
+             <p className="text-gray-400 text-xs tracking-[0.3em] font-bold uppercase italic">
+               "Tận nhân lực, tri thiên mệnh. Sự thành bại cốt yếu tại Tâm."
+             </p>
+          </div>
         </section>
-      </div>
 
+      </div>
     </main>
   );
 }
@@ -169,8 +146,8 @@ function TuViResultContent() {
 export default function TuViResultPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-         <div className="w-16 h-16 border-4 border-amber-500/30 border-t-amber-500 rounded-full animate-spin"></div>
+      <div className="min-h-screen bg-[#FFFDF9] flex items-center justify-center">
+         <Loader2 className="animate-spin w-8 h-8 text-orange-500" />
       </div>
     }>
       <TuViResultContent />

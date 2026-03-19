@@ -10,8 +10,9 @@ export default function Home() {
   const [dob, setDob] = useState("");
   const [time, setTime] = useState("");
   const [gender, setGender] = useState("nam");
+  const [selectedFeature, setSelectedFeature] = useState<"tuvi" | "numerology" | "matrix">("tuvi");
 
-  const handleNavigate = (path: string) => {
+  const handleNavigate = () => {
     if (!name || !dob) {
       alert("Vui lòng nhập đầy đủ Họ tên và Ngày sinh!");
       return;
@@ -19,7 +20,10 @@ export default function Home() {
     const params = new URLSearchParams({ name, dob });
     if (time) params.append("time", time);
     params.append("gender", gender);
-    router.push(`${path}?${params.toString()}`);
+    
+    if (selectedFeature === "tuvi") router.push(`/tuvi/result?${params.toString()}`);
+    else if (selectedFeature === "numerology") router.push(`/result?${params.toString()}`);
+    else if (selectedFeature === "matrix") router.push(`/matrix/result?${params.toString()}`);
   };
 
   return (
@@ -46,7 +50,7 @@ export default function Home() {
           <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-rose-500 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30">
             <Sparkles className="text-white w-6 h-6" />
           </div>
-          <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-600 tracking-tight">HuyenHoc.AI</span>
+          <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-600 tracking-tight">Khám Phá AI</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
           <a href="#" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
@@ -67,19 +71,19 @@ export default function Home() {
             
             <h1 className="text-5xl md:text-6xl font-black leading-[1.15] text-[#1A202C] tracking-tight">
               Khám phá <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 drop-shadow-sm">bản thân</span><br/>
-              qua lăng kính <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Tử Vi & AI</span>
+              qua lăng kính <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Trí tuệ Nhân tạo</span>
             </h1>
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg font-medium">
-              Bạn luôn tò mò về tương lai và muốn hiểu rõ hơn về bản thân?
-              Chúng tôi mang đến một trải nghiệm giải đoán vận mệnh hoàn toàn mới, 
-              kết hợp tinh hoa của Cổ học phương Đông và sức mạnh AI hiện đại.
+              Bạn luôn tò mò về tương lai?
+              Chúng tôi mang đến trải nghiệm giải đoán vận mệnh hoàn toàn mới, 
+              kết hợp tinh hoa Cổ học và sức mạnh AI hiện đại.
             </p>
 
             {/* Glassmorphic Form Container */}
-            <div className="glass-card p-8 rounded-3xl relative">
+            <div className="glass-card p-8 rounded-3xl relative shadow-[0_20px_60px_-15px_rgba(249,115,22,0.15)] block">
               {/* Form Glow */}
-              <div className="absolute inset-0 bg-white/40 rounded-3xl pointer-events-none"></div>
+              <div className="absolute inset-0 bg-white/60 rounded-3xl pointer-events-none"></div>
               
               <div className="relative z-10 space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -119,17 +123,21 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* 3 Action Buttons */}
-                <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <button onClick={() => handleNavigate("/tuvi/result")} className="col-span-1 border border-orange-500/20 bg-gradient-to-r from-orange-500 to-rose-500 text-white font-bold py-3.5 rounded-xl shadow-[0_10px_20px_rgba(249,115,22,0.3)] hover:shadow-[0_15px_25px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all overflow-hidden relative group">
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                    <span className="relative z-10 flex flex-col items-center">Lập lá số Tử Vi <span className="text-[10px] uppercase font-normal text-white/80 mt-0.5">Rất dài & chi tiết</span></span>
-                  </button>
-                  <button onClick={() => handleNavigate("/result")} className="col-span-1 border border-amber-500/30 bg-white/80 text-amber-600 font-bold py-4 rounded-xl shadow-lg shadow-amber-500/10 hover:bg-amber-50 hover:-translate-y-1 transition-all">
-                    <span className="flex flex-col items-center">Thần Số Học <span className="text-[10px] uppercase tracking-wider opacity-60 mt-0.5">Pitago</span></span>
-                  </button>
-                  <button onClick={() => handleNavigate("/matrix/result")} className="col-span-1 border border-cyan-500/30 bg-white/80 text-cyan-600 font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/10 hover:bg-cyan-50 hover:-translate-y-1 transition-all">
-                    <span className="flex flex-col items-center">Ma Trận Đ.Mệnh <span className="text-[10px] uppercase tracking-wider opacity-60 mt-0.5">Tarot Numerology</span></span>
+                {/* Feature Selector */}
+                <div className="space-y-2 pt-2">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Bạn muốn xem gì?</label>
+                  <div className="grid grid-cols-3 gap-2 p-1.5 bg-gray-100/80 rounded-2xl border border-gray-200">
+                    <button onClick={() => setSelectedFeature("tuvi")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'tuvi' ? 'bg-white text-orange-600 shadow-md ring-1 ring-orange-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Tử Vi</button>
+                    <button onClick={() => setSelectedFeature("numerology")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'numerology' ? 'bg-white text-amber-600 shadow-md ring-1 ring-amber-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Thần Số</button>
+                    <button onClick={() => setSelectedFeature("matrix")} className={`py-3 rounded-xl font-bold transition-all text-sm md:text-base ${selectedFeature === 'matrix' ? 'bg-white text-cyan-600 shadow-md ring-1 ring-cyan-500/20' : 'text-gray-500 hover:text-gray-800'}`}>Ma Trận</button>
+                  </div>
+                </div>
+
+                {/* Single Submit Button */}
+                <div className="pt-2">
+                  <button onClick={handleNavigate} className="w-full bg-gradient-to-r from-orange-500 to-rose-500 text-white font-bold py-4 rounded-xl shadow-[0_10px_20px_rgba(249,115,22,0.3)] hover:shadow-[0_15px_25px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 text-lg">
+                    <Sparkles className="w-5 h-5" />
+                    Bắt Đầu Giải Mã
                   </button>
                 </div>
               </div>
