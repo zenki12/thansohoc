@@ -160,6 +160,12 @@ function MatrixResultContent() {
               </ReactMarkdown>
             </div>
           )}
+          
+          <div className="mt-20 text-center border-t border-gray-200 pt-10 pb-6 relative z-10">
+             <p className="font-serif text-gray-600 text-xl md:text-2xl italic font-medium">
+               "Tận nhân lực, tri thiên mệnh. Sự thành bại cốt yếu tại Tâm."
+             </p>
+          </div>
         </section>
 
         <footer className="text-center py-10 text-gray-400 text-xs tracking-widest uppercase font-medium border-t border-gray-100 bg-gray-50">

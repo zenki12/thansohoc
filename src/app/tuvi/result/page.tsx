@@ -131,8 +131,8 @@ function TuViResultContent() {
             </ReactMarkdown>
           </div>
           
-          <div className="mt-20 text-center border-t border-gray-100 pt-10 pb-6">
-             <p className="text-gray-400 text-xs tracking-[0.3em] font-bold uppercase italic">
+          <div className="mt-20 text-center border-t border-gray-200 pt-10 pb-6 relative z-10">
+             <p className="font-serif text-gray-600 text-xl md:text-2xl italic font-medium">
                "Tận nhân lực, tri thiên mệnh. Sự thành bại cốt yếu tại Tâm."
              </p>
           </div>
