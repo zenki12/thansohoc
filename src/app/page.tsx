@@ -344,7 +344,7 @@ export default function Home() {
               <p className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
                 Sứ mệnh của công cụ này là mang đến một góc nhìn tham khảo hữu ích, giúp bạn có thêm nguồn động lực tích cực và vạch ra những định hướng mới cho tương lai. Hãy luôn nhớ rằng lộ trình cuộc đời nằm trong tay bạn.
               </p>
-              <p className="text-orange-500 italic font-serif text-lg md:text-xl mt-4 font-semibold tracking-wide">
+              <p className="text-orange-500 italic text-lg md:text-xl mt-4 font-bold tracking-wide drop-shadow-sm">
                 "Đức năng thắng số..."
               </p>
             </div>
