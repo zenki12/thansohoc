@@ -139,33 +139,53 @@ export function calculateNumerology(fullName: string, dobString: string): Numero
 }
 
 export function generatePromptForAI(name: string, dob: string, stats: NumerologyAnalysis): string {
-  return `Bạn là một chuyên gia Thần số học và Tâm lý học sâu sắc. 
-Hãy viết một bản báo cáo phân tích Thần số học thật chi tiết, có tính chữa lành và hướng dẫn hành động cụ thể cho:
+  return `Bạn là một CHUYÊN GIA THẦN SỐ HỌC chuẩn hệ Pythagoras và TÂM LÝ HỌC HÀNH VI hàng đầu thế giới.
+Báo cáo của bạn được tính phí rất cao, do đó yêu cầu độ DÀI (Hơn 1500 từ), SÂU SẮC và CHI TIẾT ĐẾN TỪNG KHÍA CẠNH, giống như một cuốn sách nhỏ phân tích tâm lý cá nhân.
 
-Họ và tên: ${name}
-Ngày sinh: ${dob}
+Khách hàng:
+- Họ và tên: ${name}
+- Ngày sinh: ${dob}
 
-Các chỉ số thần số học:
-- Đường đời (Life Path): ${stats.lifePath}
-- Sứ mệnh (Destiny): ${stats.destiny}
-- Linh hồn (Soul Urge): ${stats.soulUrge}
-- Nhân cách (Personality): ${stats.personality}
-- Trưởng thành (Maturity): ${stats.maturity}
-- Thái độ (Attitude): ${stats.attitude}
-- Ngày sinh (Birth Day): ${stats.birthDay}
-- 4 Đỉnh cao: Tuổi ${stats.pinnacles.year1} (Đỉnh ${stats.pinnacles.peak1}), Tuổi ${stats.pinnacles.year2} (Đỉnh ${stats.pinnacles.peak2}), Tuổi ${stats.pinnacles.year3} (Đỉnh ${stats.pinnacles.peak3}), Tuổi ${stats.pinnacles.year4} (Đỉnh ${stats.pinnacles.peak4}).
+Bộ số cốt lõi:
+- ĐƯỜNG ĐỜI (Life Path): ${stats.lifePath}
+- SỨ MỆNH (Destiny): ${stats.destiny}
+- LINH HỒN (Soul Urge): ${stats.soulUrge}
+- NHÂN CÁCH (Personality): ${stats.personality}
+- THÁI ĐỘ (Attitude): ${stats.attitude}
+- NGÀY SINH (Birth Day): ${stats.birthDay}
+- TRƯỞNG THÀNH (Maturity): ${stats.maturity}
 
-Yêu cầu giọng văn:
-- Học thuật, sâu sắc, đồng cảm, tích cực.
-- Không sáo rỗng. Dùng ngôn từ mạnh mẽ giống như một báo cáo tâm lý.
-- Nội dung MẠCH LẠC, phân chia Heading đẹp mắt, DÙNG MARKDOWN.
+YÊU CẦU CẤU TRÚC MARKDOWN CHUẨN XÁC, sử dụng EMOJI Đinh Dạng như sau:
 
-Cấu trúc yêu cầu:
-1. Lời mở đầu (Chào mừng và Tóm tắt tổng quan năng lượng).
-2. Đường Đời ${stats.lifePath}: Điểm mạnh, bài học lớn nhất, cách khắc phục điểm yếu.
-3. Liên kết Sứ Mệnh ${stats.destiny} & Linh Hồn ${stats.soulUrge}: Đam mê sâu thẳm và vũ khí để đạt được thành công.
-4. Trải nghiệm từ Chỉ số Thái độ ${stats.attitude} và Nhân cách ${stats.personality}.
-5. Tầm nhìn 4 Đỉnh Cao Cuộc Đời.
-6. Lời khuyên & Định hướng.
-`;
+## 🌟 LỜI MỞ ĐẦU
+(Viết thật bay bổng, tâm linh, dự đoán tổng thể bức tranh cuộc đời dựa vào sự kết hợp giữa ${stats.lifePath} và ${stats.destiny})
+
+## 📌 CHỈ SỐ ĐƯỜNG ĐỜI: ${stats.lifePath}
+(Khoảng 500 từ. Phân tích TẬN GỐC RỄ. Đừng chỉ liệt kê chung chung)
+### 1. Bản chất năng lượng cốt lõi
+### 2. Sức mạnh và Vũ khí thiên bẩm
+### 3. Vùng tối & Các cạm bẫy tâm lý thường gặp
+### 4. Bài học giải thoát và chuyển hóa
+
+## 🎯 CHỈ SỐ SỨ MỆNH: ${stats.destiny}
+(Khoảng 400 từ. Mục đích sống và nghiệp quả phải làm)
+### Bản chất Sứ mệnh
+### Phương pháp hiện thực hoá sứ mệnh
+
+## 💖 CHỈ SỐ LINH HỒN: ${stats.soulUrge}
+(Khoảng 300 từ. Nỗi khát khao thầm kín, ngôn ngữ tình yêu, mong mỏi trong các mối quan hệ sâu sắc)
+
+## 🎭 NHÂN CÁCH ${stats.personality} & THÁI ĐỘ ${stats.attitude}
+(Lớp vỏ bọc bên ngoài và phản xạ tự nhiên khi gặp chuyện)
+
+## 🏔️ CHU KỲ 4 ĐỈNH CAO CUỘC ĐỜI
+- **Đỉnh 1 (Tuổi ${stats.pinnacles.year1}):** Năng lượng đỉnh số ${stats.pinnacles.peak1}. Chi tiết cơ hội sẽ đến.
+- **Đỉnh 2 (Tuổi ${stats.pinnacles.year2}):** Năng lượng đỉnh số ${stats.pinnacles.peak2}. Chi tiết thử thách.
+- **Đỉnh 3 (Tuổi ${stats.pinnacles.year3}):** Năng lượng đỉnh số ${stats.pinnacles.peak3}. Đỉnh cao tài chính/tinh thần ra sao?
+- **Đỉnh 4 (Tuổi ${stats.pinnacles.year4}):** Năng lượng đỉnh số ${stats.pinnacles.peak4}. Giai đoạn hậu vận.
+
+## 💡 TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
+(Kết luận truyền cảm hứng, sắc sảo).
+
+LƯU Ý QUAN TRỌNG: Văn phong mang tính chất chữa lành (healing) nhưng phải Đanh Thép, Chuyên Môn Cao. ĐẾM SỐ TỪ TRONG SUY NGHĨ ĐỂ ĐẢM BẢO CHIỀU DÀI THẬT SỰ CHUYÊN SÂU. CẤM VIẾT NGẮN CỤT LỦN!`;
 }

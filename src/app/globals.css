@@ -34,3 +34,27 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Custom Typography for AI Report */
+.prose h2 {
+  color: #fbbf24 !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  margin-top: 3.5rem !important;
+  font-weight: 800 !important;
+}
+
+.prose h3 {
+  color: #c084fc !important;
+  font-weight: 700 !important;
+  margin-top: 2.5rem !important;
+}
+
+.prose p {
+  line-height: 1.8 !important;
+  letter-spacing: 0.01em;
+}
+
+.prose li {
+  line-height: 1.7 !important;
+}
