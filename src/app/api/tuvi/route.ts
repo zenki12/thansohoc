@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { generateTuViMock } from "@/lib/tuviHelper";
 
 export const maxDuration = 60;
@@ -25,16 +25,37 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
+    // Tắt các bộ lọc an toàn vì Tử Vi/Huyền học hay có các cung Tật Ách, Tử Tức, Nô Bộc dễ bị nhận diện nhầm là "Harassment" hoặc "Dangerous Content"
+    const safetySettings = [
+      {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+    ];
+
     // Tăng maxOutputTokens lên cực đại để AI có thể viết phân tích rất dài
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: prompt }] }],
+      safetySettings,
       generationConfig: { temperature: 0.8, topP: 0.9, maxOutputTokens: 6000 }
     });
 
     return NextResponse.json({ text: result.response.text() });
-  } catch (error) {
-    console.error("AI Error:", error);
-    // Nếu có lỗi, tự động trả về Mock Report
-    return NextResponse.json({ text: generateTuViMock(inputData) });
+  } catch (error: any) {
+    console.error("AI Error in TuVi:", error);
+    // Trả về kèm LỖI THỰC TẾ để dễ debug nếu nó vẫn fail, cộng theo mock report để dự phòng
+    return NextResponse.json({ text: `**[HỆ THỐNG GHI NHẬN LỖI TỪ AI:** ${error?.message || "Lỗi không xác định"}]**\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateTuViMock(inputData)}` });
   }
 }
