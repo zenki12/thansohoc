@@ -6,6 +6,7 @@ import { calculateNumerology, NumerologyAnalysis } from "@/lib/numerologyHelper"
 import { ArrowLeft, Sparkles, Loader2, Download, Star } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useReactToPrint } from "react-to-print";
 
 function ResultContent() {
   const searchParams = useSearchParams();
@@ -16,34 +17,8 @@ function ResultContent() {
   const [stats, setStats] = useState<NumerologyAnalysis | null>(null);
   const [report, setReport] = useState<string>("");
   const [loading, setLoading] = useState(true);
-  const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const handleDownloadPDF = async () => {
-    if (!contentRef.current) return;
-    setIsDownloading(true);
-    
-    try {
-      // @ts-ignore
-      const html2pdf = (await import('html2pdf.js')).default;
-      const element = contentRef.current;
-      
-      const opt: any = {
-        margin:       0,
-        filename:     `ThanSoHoc_${name || 'BanDo'}.pdf`,
-        image:        { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#020617' },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-
-      await html2pdf().set(opt).from(element).save();
-    } catch (error) {
-      console.error("Lỗi tạo PDF:", error);
-      alert("Lỗi tạo PDF, vui lòng thử lại.");
-    } finally {
-      setIsDownloading(false);
-    }
-  };
+  const handlePrint = useReactToPrint({ contentRef, documentTitle: `ThanSoHoc_${name}` });
 
   useEffect(() => {
     if (!name || !dob) {
@@ -77,9 +52,8 @@ function ResultContent() {
         <button onClick={() => router.push("/")} className="text-white/60 hover:text-white flex items-center gap-2 transition-colors">
           <ArrowLeft className="w-5 h-5" /> Quay lại
         </button>
-        <button disabled={isDownloading} onClick={handleDownloadPDF} className={`text-white px-5 py-2.5 rounded-full font-medium shadow-lg transition-all flex items-center gap-2 ${isDownloading ? 'bg-purple-800 cursor-not-allowed opacity-70' : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-purple-600/30 active:scale-95'}`}>
-          {isDownloading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-          {isDownloading ? "Đang tạo PDF..." : "Tải về PDF"}
+        <button onClick={() => handlePrint()} className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-full font-medium shadow-lg shadow-purple-600/30 active:scale-95 transition-all flex items-center gap-2">
+          <Download className="w-4 h-4" /> Tải về PDF
         </button>
       </div>
 
