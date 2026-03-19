@@ -31,10 +31,10 @@ function TuViResultContent() {
       try {
         const prompt = generateTuViAIPrompt(inputData);
         
-        const response = await fetch("/api/analyze", {
+        const response = await fetch("/api/tuvi", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt }),
+          body: JSON.stringify({ prompt, name, dob, time, gender }),
         });
 
         if (!response.ok) {
