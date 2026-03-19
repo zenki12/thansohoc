@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { tarotDeck, TarotCard } from "@/lib/tarotData";
-import { Atom, Sparkles, Lock, ArrowRight, ArrowLeft, Heart, Briefcase, Eye, Send } from "lucide-react";
+import { Atom, Sparkles, Lock, ArrowRight, ArrowLeft, Heart, Briefcase, Eye, Send, Home, DollarSign, Activity } from "lucide-react";
 import Link from "next/link";
 
 const shuffle = (array: any[]) => array.sort(() => Math.random() - 0.5);
@@ -9,10 +9,11 @@ const shuffle = (array: any[]) => array.sort(() => Math.random() - 0.5);
 export default function TarotPage() {
   const [step, setStep] = useState(0);
   
-  // Rút gọn state, user chọn ở Dashboard là thiết lập luôn Topic & Spread
   const [topic, setTopic] = useState("Thông điệp vũ trụ");
   const [spread, setSpread] = useState(1);
   const [question, setQuestion] = useState("");
+  
+  const [quickTopics, setQuickTopics] = useState<string[]>([]);
   
   const [drawnCards, setDrawnCards] = useState<(TarotCard & { isReversed: boolean })[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
@@ -80,6 +81,15 @@ export default function TarotPage() {
     }
   };
 
+  const availableQuickTopics = [
+    { label: "Tổng Quan", icon: <Eye />, color: "text-amber-600", bg: "bg-amber-50" },
+    { label: "Tình Cảm", icon: <Heart />, color: "text-rose-600", bg: "bg-rose-50" },
+    { label: "Công Việc", icon: <Briefcase />, color: "text-blue-600", bg: "bg-blue-50" },
+    { label: "Tài Chính", icon: <DollarSign />, color: "text-emerald-600", bg: "bg-emerald-50" },
+    { label: "Gia Đình", icon: <Home />, color: "text-indigo-600", bg: "bg-indigo-50" },
+    { label: "Sức Khỏe", icon: <Activity />, color: "text-teal-600", bg: "bg-teal-50" }
+  ];
+
   return (
     <div className="min-h-screen bg-[#FFFDF9] text-[#2D3748] font-sans selection:bg-orange-200 relative overflow-hidden flex flex-col items-center">
       
@@ -114,33 +124,50 @@ export default function TarotPage() {
                </div>
                <h2 className="text-3xl font-black mb-3">Thông Điệp Hôm Nay</h2>
                <p className="text-indigo-200 mb-8 max-w-md mx-auto">Một lá bài mang năng lượng chủ đạo trong ngày, giúp bạn định hướng tâm trí.</p>
-               <button onClick={() => startDrawing("Thông điệp ngày mới", 1)} className="px-10 py-4 bg-white text-indigo-900 font-black rounded-full shadow-lg hover:scale-105 transition-transform flex items-center gap-2 mx-auto">
+               <button onClick={() => startDrawing("Thông điệp ngày mới", 1)} className="px-10 py-4 bg-white text-indigo-900 font-black rounded-full shadow-lg hover:scale-105 transition-transform flex items-center gap-2 mx-auto relative z-10">
                   <Atom className="w-5 h-5" /> Rút 1 Lá Ngay
                </button>
             </div>
 
             {/* 3-Card Thematic Spreads */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
+            <div className="space-y-6 flex flex-col items-center">
+              <div className="flex items-center gap-4 w-full">
                  <h3 className="text-2xl font-black text-gray-800">Trải Bài Nhanh (3 Lá)</h3>
                  <div className="flex-1 h-[1px] bg-gray-200"></div>
-                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Miễn Phí</span>
+                 <span className={`text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full ${quickTopics.length === 3 ? 'bg-orange-100 text-orange-600' : 'bg-gray-100 text-gray-500'}`}>
+                    Đã chọn ({quickTopics.length}/3)
+                 </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  { label: "Tổng Quan", icon: <Eye />, color: "text-amber-600", bg: "bg-amber-50" },
-                  { label: "Tình Cảm", icon: <Heart />, color: "text-rose-600", bg: "bg-rose-50" },
-                  { label: "Công Việc", icon: <Briefcase />, color: "text-blue-600", bg: "bg-blue-50" }
-                ].map(t => (
-                  <button key={t.label} 
-                    onClick={() => startDrawing(t.label, 3)}
-                    className="p-8 rounded-3xl bg-white border-2 border-gray-100 hover:border-orange-300 hover:shadow-xl hover:-translate-y-1 transition-all text-center flex flex-col items-center gap-4 group">
-                    <div className={`w-16 h-16 rounded-full ${t.bg} ${t.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                       {t.icon}
-                    </div>
-                    <span className="text-xl font-bold text-gray-800">{t.label}</span>
-                  </button>
-                ))}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full">
+                {availableQuickTopics.map(t => {
+                  const isSelected = quickTopics.includes(t.label);
+                  const isMax = quickTopics.length >= 3;
+                  const isDisabled = !isSelected && isMax;
+                  return (
+                    <button key={t.label} 
+                      onClick={() => {
+                        if(isSelected) setQuickTopics(quickTopics.filter(x => x !== t.label));
+                        else if(!isMax) setQuickTopics([...quickTopics, t.label]);
+                      }}
+                      disabled={isDisabled}
+                      className={`p-6 md:p-8 rounded-[2rem] border-2 transition-all flex flex-col items-center gap-4 group 
+                        ${isSelected ? 'bg-orange-50 border-orange-400 shadow-[0_10px_20px_rgba(249,115,22,0.15)] ring-4 ring-orange-100' : 'bg-white border-gray-100 hover:border-orange-200'}
+                        ${isDisabled ? 'opacity-40 grayscale cursor-not-allowed' : 'hover:-translate-y-1 hover:shadow-lg'}
+                      `}>
+                      <div className={`w-14 h-14 rounded-full ${t.bg} ${t.color} flex items-center justify-center`}>
+                         {t.icon}
+                      </div>
+                      <span className={`text-lg md:text-xl font-bold ${isSelected ? 'text-orange-900' : 'text-gray-800'}`}>{t.label}</span>
+                      {isSelected && <div className="absolute inset-0 border-2 border-orange-400 rounded-[2rem] pointer-events-none"></div>}
+                    </button>
+                  );
+                })}
+              </div>
+              
+              <div className={`transition-all duration-500 w-full pt-4 ${quickTopics.length > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+                <button onClick={() => startDrawing(quickTopics.join(" - "), 3)} className="px-12 py-5 bg-gray-900 border-2 border-transparent text-white font-black rounded-full shadow-xl hover:bg-orange-600 transition-all text-lg flex items-center gap-3 mx-auto">
+                   Bắt Đầu Rút 3 Lá <ArrowRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
 

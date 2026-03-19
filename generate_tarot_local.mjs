@@ -66,12 +66,16 @@ majors.forEach(m => {
 
 suits.forEach(s => {
   ranks.forEach(r => {
+    let cardImage = `https://sacred-texts.com/tarot/pkt/img/${s[0]}${r[0]}.jpg`;
+    if (s[0] === 'pe' && r[0] === 'ki') {
+      cardImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pents14.jpg/220px-Pents14.jpg'; // Reliable fallback
+    }
     cards.push({
       id: `${s[0]}${r[0]}`,
       name_en: `${r[1].length > 2 ? r[1] : parseInt(r[1])} of ${s[1]}`, // Just to format english name properly if wanted, but fine
       name_vn: `${r[2]} ${s[2]}`,
       type: 'minor',
-      image: `https://sacred-texts.com/tarot/pkt/img/${s[0]}${r[0]}.jpg`,
+      image: cardImage,
       uprightMeaning: `${r[3]} kết hợp với ${s[3]}`,
       reversedMeaning: `Cản trở: ${r[3]} kết hợp với ${s[4]}`,
       description: `Lá bài Ẩn phụ bộ ${s[2]}`
