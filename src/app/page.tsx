@@ -335,14 +335,27 @@ export default function Home() {
 
       </main>
 
-      {/* Footer minimal */}
-      <footer className="relative z-50 border-t border-gray-200 bg-[#FAFAFA] py-8 px-6 text-center text-gray-400 font-medium text-sm flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
-         <p>HuyenHoc.AI © 2026. All rights reserved.</p>
-         <div className="flex gap-6 mt-4 md:mt-0">
-           <a href="#" className="hover:text-orange-500 transition-colors">Chính sách bảo mật</a>
-           <a href="#" className="hover:text-orange-500 transition-colors">Điều khoản dịch vụ</a>
-         </div>
-      </footer>
+        {/* -------------------- FOOTER -------------------- */}
+        <footer className="py-12 bg-gray-50/50 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center gap-6">
+            <div className="flex items-center gap-2 text-gray-500 font-medium text-sm md:text-base bg-white px-6 py-2 rounded-full border border-gray-100 shadow-sm">
+              <span>Made with</span>
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse" />
+              <span>by</span>
+              <span className="text-gray-800 font-bold ml-1">Xuân Thái</span>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 font-medium">
+              <a href="#" className="hover:text-orange-500 transition-colors">Chính sách bảo mật</a>
+              <span className="text-gray-300 hidden md:inline">•</span>
+              <a href="#" className="hover:text-orange-500 transition-colors">Điều khoản dịch vụ</a>
+              <span className="text-gray-300 hidden md:inline">•</span>
+              <a href="#" className="hover:text-orange-500 transition-colors">Liên hệ</a>
+            </div>
+            
+            <p className="text-gray-400 text-xs text-center mt-2">© 2026 Xuân Thái. All rights reserved.</p>
+          </div>
+        </footer>
       {/* Back to Top Floating Button */}
       <button 
         onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
