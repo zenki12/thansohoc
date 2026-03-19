@@ -2,18 +2,33 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, ArrowRight, Compass, Moon, Star } from "lucide-react";
+import { Sparkles, ArrowRight, Compass, Moon, Star, Sun, User, Clock } from "lucide-react";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<'thansohoc' | 'tuvi'>('thansohoc');
+  
+  // Shared state
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
+  
+  // Tu Vi specific state
+  const [birthTime, setBirthTime] = useState("");
+  const [gender, setGender] = useState("nam");
+  
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !dob) return;
-    const params = new URLSearchParams({ name, dob });
-    router.push(`/result?${params.toString()}`);
+    
+    if (activeTab === 'thansohoc') {
+      const params = new URLSearchParams({ name, dob });
+      router.push(`/result?${params.toString()}`);
+    } else {
+      if (!birthTime) return;
+      const params = new URLSearchParams({ name, dob, time: birthTime, gender });
+      router.push(`/tuvi/result?${params.toString()}`);
+    }
   };
 
   return (
@@ -25,90 +40,136 @@ export default function Home() {
          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style={{ animationDelay: '3s' }}></div>
          <div className="absolute top-[40%] left-[60%] w-[40vw] h-[40vw] bg-rose-900/10 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style={{ animationDelay: '5s' }}></div>
          
-         {/* Subtle Stars */}
          <Star className="absolute top-[15%] left-[15%] w-6 h-6 text-white/10 animate-pulse" />
          <Star className="absolute top-[25%] right-[20%] w-8 h-8 text-yellow-100/10 animate-pulse" style={{ animationDelay: '1s' }} />
          <Star className="absolute bottom-[20%] left-[25%] w-5 h-5 text-purple-200/10 animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="z-10 w-full max-w-xl mx-auto">
-        <div className="relative p-[1px] rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent shadow-2xl">
+      <div className="z-10 w-full max-w-xl mx-auto mt-8">
+        
+        {/* Tab Selector */}
+        <div className="flex bg-white/5 backdrop-blur-md rounded-full p-1.5 mb-8 border border-white/10 shadow-lg max-w-sm mx-auto relative z-20">
+          <button 
+            type="button"
+            onClick={() => setActiveTab('thansohoc')}
+            className={`flex-1 py-3 px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 ${activeTab === 'thansohoc' ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
+          >
+            <Compass className="w-4 h-4" /> Thần Số Học
+          </button>
+          <button 
+            type="button"
+            onClick={() => setActiveTab('tuvi')}
+            className={`flex-1 py-3 px-4 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 ${activeTab === 'tuvi' ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md' : 'text-white/50 hover:text-white/80'}`}
+          >
+            <Sun className="w-4 h-4" /> Lá Số Tử Vi
+          </button>
+        </div>
+
+        <div className="relative p-[1px] rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent shadow-2xl transition-all duration-500">
           <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl rounded-[2.5rem]"></div>
           
-          <div className="relative px-8 py-12 sm:px-14 sm:py-16 rounded-[2.5rem] bg-gradient-to-br from-black/20 to-black/60 shadow-inner">
+          <div className="relative px-8 py-10 sm:px-14 sm:py-14 rounded-[2.5rem] bg-gradient-to-br from-black/20 to-black/60 shadow-inner">
             
-            {/* Logo area */}
-            <div className="flex justify-center mb-8 relative">
-              <div className="absolute inset-0 bg-purple-500/30 blur-2xl rounded-full w-24 h-24 mx-auto"></div>
-              <div className="relative w-24 h-24 bg-gradient-to-br from-indigo-500 via-purple-600 to-purple-900 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.4)] border border-purple-400/30">
-                <Compass className="w-12 h-12 text-white drop-shadow-md" />
-              </div>
-            </div>
-
-            <div className="text-center mb-12">
-              <h1 className="text-4xl sm:text-5xl font-black mb-4 tracking-widest uppercase text-white drop-shadow-lg leading-tight">
-                Bản Đồ <br/><span className="gold-gradient-text">Thần Số Học</span>
+            <div className="text-center mb-10">
+              <h1 className="text-3xl sm:text-4xl font-black mb-3 tracking-widest uppercase text-white drop-shadow-lg leading-tight">
+                {activeTab === 'thansohoc' ? (
+                  <>Bản Đồ <br/><span className="gold-gradient-text">Thần Số Học</span></>
+                ) : (
+                  <>Giải Mã <br/><span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-500 to-orange-500">Lá Số Tử Vi</span></>
+                )}
               </h1>
-              <p className="text-purple-200/60 text-xs sm:text-sm tracking-[0.3em] font-bold uppercase">
-                Giải mã thiết kế linh hồn
+              <p className="text-white/60 text-xs sm:text-sm tracking-[0.2em] font-medium uppercase">
+                {activeTab === 'thansohoc' ? "Khám phá thiết kế linh hồn" : "Bình giải vận mệnh trọn đời"}
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               
-              <div className="space-y-3 relative group">
-                <label htmlFor="name" className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-purple-400">
-                  Họ và tên khai sinh <span className="text-red-400/80">*</span>
+              <div className="space-y-2 relative group">
+                <label className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-white/90">
+                  Họ và tên <span className="text-red-400/80">*</span>
                 </label>
                 <div className="relative">
                   <input
-                    id="name"
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="VD: NGUYỄN VĂN A"
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-purple-500 focus:bg-white/10 text-white placeholder-white/20 transition-all outline-none font-bold text-lg shadow-inner uppercase"
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-white/50 focus:bg-white/10 text-white placeholder-white/20 transition-all outline-none font-bold text-base shadow-inner uppercase"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-500"></div>
                 </div>
               </div>
 
-              <div className="space-y-3 relative group">
-                <label htmlFor="dob" className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-purple-400">
+              <div className="space-y-2 relative group">
+                <label className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-white/90">
                   Ngày sinh dương lịch <span className="text-red-400/80">*</span>
                 </label>
                 <div className="relative">
                   <input
-                    id="dob"
                     type="date"
                     required
                     value={dob}
                     onChange={(e) => setDob(e.target.value)}
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-purple-500 focus:bg-white/10 text-white placeholder-white/20 transition-all outline-none font-bold text-lg appearance-none shadow-inner tracking-widest uppercase"
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-white/50 focus:bg-white/10 text-white placeholder-white/20 transition-all outline-none font-bold text-base appearance-none shadow-inner tracking-widest uppercase"
                     style={{ colorScheme: "dark" }}
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-500"></div>
                 </div>
               </div>
+
+              {activeTab === 'tuvi' && (
+                <div className="grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                  <div className="space-y-2 relative group">
+                    <label className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-white/90">
+                      Giới tính <span className="text-red-400/80">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-amber-500 focus:bg-white/10 text-white transition-all outline-none font-bold text-base shadow-inner uppercase appearance-none"
+                      >
+                        <option value="nam" className="bg-slate-900">Nam Mệnh</option>
+                        <option value="nu" className="bg-slate-900">Nữ Mệnh</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 relative group">
+                    <label className="block text-xs font-bold text-white/50 tracking-[0.2em] uppercase ml-2 transition-colors group-focus-within:text-white/90">
+                      Giờ sinh <span className="text-red-400/80">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="time"
+                        required={activeTab === 'tuvi'}
+                        value={birthTime}
+                        onChange={(e) => setBirthTime(e.target.value)}
+                        className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-amber-500 focus:bg-white/10 text-white transition-all outline-none font-bold text-base shadow-inner uppercase appearance-none"
+                        style={{ colorScheme: "dark" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full py-5 px-6 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-orange-500 hover:from-purple-500 hover:via-fuchsia-500 hover:to-orange-400 text-white rounded-2xl font-black text-lg shadow-[0_0_40px_rgba(192,132,252,0.4)] transform transition-all active:scale-[0.98] flex items-center justify-center gap-3 group border border-white/20 tracking-wider"
+                  className={`w-full py-5 px-6 rounded-2xl font-black text-lg transform transition-all active:scale-[0.98] flex items-center justify-center gap-3 group border border-white/20 tracking-wider ${
+                    activeTab === 'thansohoc' 
+                      ? 'bg-gradient-to-r from-purple-600 via-fuchsia-600 to-orange-500 hover:from-purple-500 hover:via-fuchsia-500 hover:to-orange-400 shadow-[0_0_30px_rgba(192,132,252,0.4)] text-white'
+                      : 'bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-500 hover:via-orange-500 hover:to-red-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] text-white'
+                  }`}
                 >
                   <Sparkles className="w-5 h-5 text-yellow-200" />
-                  GIẢI MÃ BẢN MỆNH
+                  {activeTab === 'thansohoc' ? 'GIẢI MÃ BẢN MỆNH' : 'LẬP LÁ SỐ TỬ VI'}
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </button>
               </div>
 
             </form>
           </div>
-        </div>
-        
-        <div className="text-center mt-10 text-white/20 text-[10px] font-bold tracking-[0.3em] uppercase flex items-center justify-center gap-2">
-           <Moon className="w-3 h-3" /> Năng lượng Pythagoras
         </div>
       </div>
     </main>
