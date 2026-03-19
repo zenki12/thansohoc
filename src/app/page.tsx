@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp } from "lucide-react";
+import { Sparkles, Telescope, BrainCircuit, RotateCw, Fingerprint, Network, Target, Compass, Zap, Heart, Anchor, Scale, Shield, ArrowUp, Atom } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
@@ -46,11 +46,11 @@ export default function Home() {
 
       {/* -------------------- NAVBAR -------------------- */}
       <nav className="relative z-50 flex items-center justify-between px-8 md:px-16 py-6 backdrop-blur-sm border-b border-orange-500/10">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-rose-500 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30">
-            <Sparkles className="text-white w-6 h-6" />
+        <div className="flex items-center gap-3 cursor-pointer group group-hover:bg-gray-50 p-2 rounded-2xl transition-all">
+          <div className="w-10 h-10 flex items-center justify-center text-orange-400 group-hover:rotate-[360deg] transition-transform duration-700 ease-in-out">
+            <Atom className="w-10 h-10 relative z-10" strokeWidth={2.5} />
           </div>
-          <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-600 tracking-tight">Khám Phá AI</span>
+          <span className="text-[26px] font-black text-gray-600 tracking-tight">HuyềnHọc.AI</span>
         </div>
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-gray-600">
           <a href="#gioi-thieu" className="hover:text-orange-500 transition-colors">Giới thiệu</a>
