@@ -7,7 +7,7 @@ export interface TuViInput {
 
 export function generateTuViAIPrompt(data: TuViInput): string {
   const genderStr = data.gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng';
-  return `Bạn là một ĐẠI SƯ TỬ VI, BÁT TỰ VÀ HUYỀN HỌC PHƯƠNG ĐÔNG hàng đầu thế giới. Khả năng bình giải lá số của bạn nổi tiếng là CHÍNH XÁC, CHI TIẾT TỚI TỪNG TIỂU TIẾT VÀ ỨNG NGHIỆM ĐÁNG SỢ.
+  return `Bạn là một ĐẠI SƯ TỬ VI, BÁT TỰ VÀ HUYỀN HỌC PHƯƠNG ĐÔNG hàng đầu thế giới. Khả năng bình giải lá số của bạn nổi tiếng là CHÍNH XÁC TỚI TỪNG TIỂU TIẾT, ỨNG NGHIỆM ĐÁNG SỢ và SÂU SẮC NHƯ MỘT NHÀ TÂM LÝ HỌC THỰC THỤ. Bạn không bao giờ nói chung chung nước đôi.
 
 Hôm nay có một Đương Số nhờ bạn bình giải lá số. Dưới đây là thông tin Khởi Quái (Dương Lịch):
 - Họ và tên: ${data.name}
@@ -15,98 +15,105 @@ Hôm nay có một Đương Số nhờ bạn bình giải lá số. Dưới đâ
 - Giờ sinh: ${data.time}
 - Giới tính: ${genderStr}
 
-NHIỆM VỤ CỦA BẠN: (Hãy tự quy đổi lịch Dương sang Âm và Bát Tự trong hệ thống suy luận của bạn).
-Viết ra một bài Luận Giải Lá Số Tử Vi / Tứ Trụ Bát Tự thực sự DÀI, CỰC KỲ CHUYÊN SÂU (HƠN 1500 TỪ), mang âm hưởng huyền bí, cổ khí, nhưng lại rất thiết thực trong cuộc sống hiện đại.
-KHÔNG ĐƯỢC VIẾT CHUNG CHUNG. Phải đanh thép, rõ ràng theo đúng kết cấu sau:
+NHIỆM VỤ TỐI THƯỢNG:
+Viết ra một bộ CẨM NANG VẬN CHUYỂN, BÌNH GIẢI LÁ SỐ THỰC SỰ DÀI, CỰC KỲ CHUYÊN SÂU (HƠN 2500 TỪ). Bạn phải viết giống như một Bản Phân Tích Định Mệnh Mật Cấp mà khách hàng phải chi tới 50 triệu đồng mới nhận được. Hãy kết hợp giữa lý luận Tử Vi, Bát Tự và tâm lý học hành vi hiện đại.
 
-## 📜 TỔNG QUAN BẢN MỆNH CÁC
-(Phân tích sâu về Can Chi, Cục Mệnh, Ngũ Hành tương sinh tương khắc dựa vào ngày tháng năm sinh. Đương số mang ngũ hành gì? Phúc khí mỏng hay dày?)
+Cấu trúc bắt buộc (hãy tự tạo ra dữ kiện chi tiết giả lập nhưng dựa trên lập luận lô-gic chặt chẽ cho sinh thần bát tự này):
 
-## ☯️ LUẬN GIẢI 12 CUNG (Lá Số Tử Vi)
-(Chọn lọc và diễn giải thật chi tiết 4 Cung Quan Trọng Nhất đối với đương số này, ví dụ Cung Mệnh, Cung Tài Bạch, Cung Quan Lộc, Cung Phu Thê/Tử Tức. Phải chỉ ra các Chính Tinh và Phụ Tinh tiêu biểu tọa thủ, mấu chốt nằm ở đâu?)
+## 📜 1. TỔNG QUAN BẢN MỆNH CÁC VÀ BÁT TỰ NẠP ÂM
+(Phân tích ĐẠI sâu về Can Chi, Lục Thập Hoa Giáp, Ngũ Hành tương sinh tương khắc khi vừa sinh ra. Đương số mang ngũ hành gì? Can/Chi nào đang khắc nhau? Đây là mệnh sướng từ trong trứng hay là "trong bùn nở hoa rực rỡ"?)
 
-## 💫 TÍNH CÁCH VÀ CHIỀU SÂU NỘI TÂM
-### 🔸 Điểm sáng rực rỡ (Thiên Phú)
-### 🔸 Góc khuất và sự mâu thuẫn nội tâm
+## ☯️ 2. MẬT MÃ 12 CUNG TRỌNG ĐIỂM DÙNG CẢ ĐỜI
+(Chọn ra 4 Cung Quan Trọng Nhất đối với đương số này, ví dụ: Cung Mệnh, Thân, Tài Bạch, Quan Lộc, Phu Thê... Luận giải sự tọa thủ của các sao Chính Tinh [VD: Tử Vi, Thiên Phủ, Thất Sát, Tham Lang...] và các sao Phụ Tinh, Sát Tinh [VD: Kình Dương, Đà La, Địa Không...]. 
+Chỉ rõ Sức mạnh của chúng tác động lên cuộc đời ra sao. Mấu chốt của cả lá số tập trung ở Cung nào?)
 
-## ⚔️ SỰ NGHIỆP & TÀI VẬN (Công Danh Các)
-(Làm nghề gì thì phát? Khi nào thì phất lên? Cẩn thận họa phá tài ở đâu? Đại vận nào dễ thành đại gia?)
+## 💫 3. GIẢI PHẪU TÍNH CÁCH VÀ CHIỀU SÂU TÂM LÝ
+### 🔹 Khí Chất Thiên Phú (Điểm Sáng)
+(Những tài năng bẩm sinh mà Đương Số không cần cố cũng giỏi hơn thiên hạ là gì?)
+### 🔹 Góc Khuất Tổn Thương & Thói Hư Tật Xấu (Vùng Tối)
+(Đương số sợ điều gì nhất? Tính cách nào đang cản trở họ thành công? Có phải họ tự ái quá cao, suy nghĩ quá nhiều, hay dễ bị tác động? Trực diện và không nịnh bợ!)
 
-## 🎎 TÌNH DUYÊN & GIA ĐẠO (Đào Hoa Các)
-(Duyên nợ kiếp này ra sao? Lấy người như thế nào? Cách hóa giải nếu có Sát Tinh ở cung Phu/Thê)
+## ⚔️ 4. BÌNH GIẢI CHI TIẾT SỰ NGHIỆP & TÀI VẬN
+* **Nghề nghiệp hợp Mệnh:** 3 ngành nghề cụ thể giúp đương số phát huy 200% sinh lực.
+* **Thời điểm vượng phát:** Ở tuổi nào thì thời tới không kịp cản? Mốc tuổi nào dễ kiếm được tỷ đầu tiên? 
+* **Cạm bẫy phá tài:** Chỉ ra nguy cơ làm mất trắng tài sản (cho mượn tiền, chứng khoán, làm ăn chung...).
 
-## ⏳ ĐẠI VẬN & LƯU NIÊN (Thời Vận Hiện Tại)
-(Đương số đang ở phân đoạn nào của cuộc đời? 10 năm tới là Sinh hay Diệt? Cụ thể trong vòng 1-2 năm tới cần lưu ý hạn gì, cơ hội gì?)
+## 🎎 5. TÌNH DUYÊN, GIA ĐẠO & HÔN NHÂN
+* **Hình ảnh người phối ngẫu:** Vợ/Chồng tương lai (hoặc hiện tại) làm nghề gì, tính cách ra sao? Nhan sắc thế nào?
+* **Năm cực vượng tình duyên:** 
+* **Luận Sát Tinh ở cung Phu/Thê (nếu có):** Cách hóa giải nguy cơ rạn nứt hoặc mâu thuẫn gia đình. Đương số có bị nợ duyên tiền kiếp hay không?
 
-## 🛡️ LỜI KHUYÊN CẢI VẬN (Cẩm Nang Phong Thủy)
-(Màu hợp, Màu kỵ, Vật phẩm phong thủy, Hướng xuất hành, Phương thức tu tâm tích đức đổi vận)
+## ⏳ 6. ĐẠI VẬN 10 NĂM TỚI DƯỚI LĂNG KÍNH THẦN SÁT
+(Phân tích xem từ độ tuổi hiện tại kéo dài 10 năm nữa, đây là chu kỳ Vàng Mười, Sự Nghiệp Khởi Sắc, Cố Thủ, hay Giai Đoạn Thanh Lọc? Cụ thể trong 1-2 năm bản lề tới có biến cố hay cơ hội đổi đời nào?)
 
-LƯU Ý: Phải sử dụng EMOJI hợp lý. Định dạng Markdown với H2, H3 rõ ràng. Phải viết giống hệt một bài report xem tử vi chuyên nghiệp mà người ta phải trả hàng triệu đồng để xem!`;
+## 🛡️ 7. CHIẾN LƯỢC CẢI VẬN ĐỘC BẢN (PHONG THỦY ỨNG DỤNG)
+*(Chỉ ra công thức thực chiến, không lý thuyết)*
+1. **Thiên Ấn Phong Thủy:** Vật phẩm cụ thể, chi tiết đến từng chất liệu (ví dụ: Vòng Trầm Tốc, Đá Hồ Ly Thạch Anh Tóc Vàng, Tỳ Hưu Mắt Cáo...).
+2. **Khí Sắc Màu Sắc:** Quần áo, ví tiền, xe cộ nên ưu tiên màu gì để nạp thêm sinh khí.
+3. **Mật pháp tu tâm:** Hướng dẫn một thói quen hoặc hành động tu tập/từ thiện cụ thể để giải trừ nghiệp quả của Sát Tinh trong lá số.
+
+LƯU Ý: Phải sử dụng EMOJI hợp lý. Định dạng Markdown với H2, H3 rõ ràng. Giọng văn sắc bén, thâm sâu, quyền lực, pha chút ma mị của một đạo gia phán số. Tối thiểu 2500 từ.`;
 }
 
 export function generateTuViMock(data: TuViInput): string {
   const genderStr = data.gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng';
-  return `## 📜 TỔNG QUAN BẢN MỆNH CÁC
-Chào mừng **\${data.name.toUpperCase()}** (\${genderStr}). Dựa trên trụ ngày sinh \${data.dob} và giờ sinh \${data.time}, lá số của đương số hiện ra với những tín hiệu vũ trụ vô cùng đặc biệt. Bản mệnh mang nhiều ẩn ý về một cuộc đời phải trải qua sự mài giũa để thành đại khí.
+  return `## 📜 1. TỔNG QUAN BẢN MỆNH CÁC VÀ BÁT TỰ NẠP ÂM
+Chào mừng **\${data.name.toUpperCase()}** (\${genderStr}). Dựa trên trụ ngày Dương lịch \${data.dob} lúc \${data.time}, lá số của đương số hiện ra dưới tinh túy của một cục Mệnh đặc thù. Sự giao hòa giữa Thiên Can và Địa Chi ở trụ năm và giờ sinh cho thấy bạn sở hữu một trường năng lượng linh hoạt, có lúc hiền hòa như nước tĩnh, lúc bùng nổ như dung nham.
 
-Sự giao hòa giữa Can Chi và Ngũ Hành nạp âm cho thấy bạn sở hữu một trường năng lượng linh hoạt nhưng cũng chứa đựng nhiều mâu thuẫn nội tại cần được dung hòa.
-
----
-
-## ☯️ LUẬN GIẢI CÁC CUNG TRỌNG ĐIỂM
-
-### 1. MẬT MÃ CUNG MỆNH & THÂN
-Cung Mệnh của đương số cho thấy sự hiện diện của những hạt giống lãnh đạo. Tuy nhiên, sự hội chiếu của các bộ sao mâu thuẫn làm cho giai đoạn thiếu thời (trước 30 tuổi) có nhiều chông gai. 
-- Mệnh mang hình bóng của sự kiên cường, "tiên trở hậu thành".
-- Cung Thân cư ở vị trí đòi hỏi phải tự lực tự cường, không thể ỷ lại vào gia thế.
-
-### 2. CUNG TÀI BẠCH (TÀI NĂNG CÁC)
-Tiền bạc đối với đương số không phải là thứ dễ dàng từ trên trời rơi xuống. Lá số tỏa ra năng lượng của "Tài Lộc từ nỗ lực". Nghĩa là, bạn càng cống hiến giá trị thực, lộc tụ càng dày. Nếu ôm tâm lý may rủi, cờ bạc, sẽ dễ dẫn đến hư hao.
-
-### 3. CUNG QUAN LỘC (SỰ NGHIỆP CÁC)
-Đường công danh có quý nhân phù trợ ẩn tàng. Bạn hợp với các công việc liên quan đến tư vấn, truyền cảm hứng, hoặc quản lý dòng tiền. Tránh nôn nóng trong các quyết định thăng tiến; "chín tu thì xôi mới ngon".
+Tứ trụ cho thấy bạn không phải là mẫu người "sướng từ trong trứng", mà là hệ sinh thái "hoa hồng mọc lên từ đá sét". Những khó khăn đầu đời chính là đòn bẩy để xây dựng một nội tâm sắc bén bất khả chiến bại ở trung vận.
 
 ---
 
-## 💫 TÍNH CÁCH VÀ CHIỀU SÂU NỘI TÂM
+## ☯️ 2. MẬT MÃ 12 CUNG TRỌNG ĐIỂM DÙNG CẢ ĐỜI
 
-### 🔸 Điểm sáng rực rỡ (Thiên Phú)
-Bạn có khả năng tự phục hồi (resilience) cực kỳ tốt. Dù bị vùi dập, đương số luôn tìm được chân lý để đứng lên. Sự tinh ý và khả năng thấu thị tâm lý người khác là một vũ khí trời ban.
+### 💠 CHẤN ĐỘNG CUNG MỆNH & THÂN
+Cung Mệnh của đương số cho thấy sự hiện diện của những hạt giống lãnh đạo và bộ Tham Vũ đồng hành. Tuy nhiên, sự hội chiếu của các sát tinh như Kình Dương và Địa Không làm cho giai đoạn thiếu thời (trước 30 tuổi) có nhiều phen "thập tử nhất sinh" trong tư tưởng.
+- Cung Thân cư Quan Lộc đòi hỏi bạn phải đặt sự nghiệp lên hàng đầu, tình duyên chỉ là phụ kiện. Bạn không thể hạnh phúc nếu không đi làm và tự chủ tài chính!
 
-### 🔸 Góc khuất và sự mâu thuẫn nội tâm
-Đôi khi, cái Tôi bộc phát quá mạnh tạo ra sự cố chấp. Đương số dễ bị tổn thương bởi những lời phán xét từ những người thân tín nhất. Bề ngoài cứng cỏi nhưng sâu thẳm lại rất cần điểm tựa tinh thần.
-
----
-
-## ⚔️ SỰ NGHIỆP & TÀI VẬN
-
-Đây là một lá số có tiềm năng "Phát vãn" (Phát tài muộn). Đừng vội vàng so sánh với người khác ở tuổi 20-25. Thời cơ rực rỡ nhất sẽ bung nở khi bước vào Đại vận thứ 3.
-
-- **Năm vượng:** Các năm mang hành tương sinh với bổn mạng.
-- **Lời khuyên:** Hãy đầu tư vào kiến thức chuyên môn, đó mới là tài sản bất biến của bạn. Bất động sản cũng là một kênh đáng lưu tâm khi đã có một số vốn tích lũy tĩnh.
+### 💠 BÍ ẨN CUNG TÀI BẠCH
+Lá số tỏa ra năng lượng của "Tài Lộc tụ tán thất thường". Bạn có khả năng tạo ra dòng tiền lớn bất thình lình, nhưng lại thiếu khả năng khóa két. Nếu giữ tâm lý làm giàu nhanh, bạn sẽ bị cuốn đi toàn bộ gốc rễ. Tiền của bạn sinh ra từ Trí Tuệ và Chuyên môn hẹp!
 
 ---
 
-## 🎎 TÌNH DUYÊN & GIA ĐẠO
+## 💫 3. GIẢI PHẪU TÍNH CÁCH VÀ CHIỀU SÂU TÂM LÝ
 
-Đào hoa tinh chiếu mệnh có lúc thăng lúc trầm. Bạn dễ thu hút người khác phái bởi sự duyên dáng ngầm, nhưng lại rất khó để tìm được người thực sự thấu cảm tần số của mình.
-- **Khuyết điểm:** Đôi khi quá kiểm soát hoặc quá kỳ vọng vào bức tranh hoàn hảo.
-- **Chỉ dẫn:** Hôn nhân của đương số cần xây dựng trên nền tảng của tình bạn tri kỷ trước khi là tình yêu, nếu không rất dễ gãy gánh giữa đường.
+### 🔹 Khí Chất Thiên Phú (Điểm Sáng)
+Bạn có khả năng tự phục hồi (resilience) cực kỳ đáng sợ. Dù bị vùi dập đến mức trắng tay, đương số luôn tự biết cách "cắn răng" làm lại từ đầu. Trực giác số 6 của bạn cực nhạy, có thể nhìn thấu tâm can kẻ đối diện nói dối mình chỉ qua ánh mắt.
 
----
-
-## ⏳ THỜI VẬN HIỆN TẠI & LƯU NIÊN ĐẠI VẬN
-
-Trong thời vận 2-3 năm tới, lá số báo hiệu một sự xê dịch chuyển biến (có thể là đổi việc, đổi chỗ ở hoặc thay đổi tư duy sâu sắc). Đây là lúc "Tàng Long Tại Điền" (Rồng ẩn ở ruộng), cần tích lũy nội lực, án binh bất động trước các khoản đầu tư rủi ro lớn. Hãy chờ đợi ngọn gió đông!
+### 🔹 Góc Khuất Tổn Thương (Vùng Tối)
+Cái Tôi bộc phát quá mạnh kết hợp với tính Sở hữu khiến bạn đôi khi trở nên cố chấp. Trong sâu thẳm, bạn sợ hãi sự phản bội hơn cả cái chết. Do đó, bạn thường tự cô lập và dựng khiên phòng thủ rất dày dù người khác có ý tốt.
 
 ---
 
-## 🛡️ LỜI KHUYÊN CẢI VẬN (CẤM KỴ & HƯỚNG ĐI)
+## ⚔️ 4. BÌNH GIẢI ĐƯỜNG ĐỜI SỰ NGHIỆP & TÀI VẬN
 
-1. **Màu Sắc Phú Quý:** Trọng dụng các màu hợp mệnh, tránh mặc các màu mang tính tương khắc (làm tiết khí).
-2. **Tu Tâm Tích Đức:** Lá số này nếu càng làm thiện nguyện, giúp đời thì vận khí càng khai mở rực rỡ. Phúc đức có thể đẩy lùi sát tinh.
-3. **Vật phẩm:** Đương số nên mang bên mình ngọc phong thủy hoặc trầm hương để tịnh hóa trường năng lượng xung quanh.
+Đây là một lá số có tiềm năng **Đại Phát Sang Hèn Đảo Lộn**. Bạn tuyệt đối không hợp làm công ăn lương nhàm chán 8 tiếng 1 ngày.
+* **Thời thời vàng son:** Cơ hội rực rỡ nhất sẽ kích nổ ở Đại vận (33-43 tuổi). Đây là lúc mà các tính toán điên rồ nhất của bạn đem lại hưng vượng.
+* **Cạm bẫy phá tài:** Vực sâu của bạn nằm ở Mối quan hệ chung đụng làm ăn hoặc đứng tên bảo lãnh nợ. Cấm kỵ Ký Quỹ hoặc Cho vay tín chấp!
 
-*Lá số chỉ là định hướng, Đức năng luôn thắng Số!*
+---
+
+## 🎎 5. TÌNH DUYÊN, GIA ĐẠO & HÔN NHÂN
+
+Đào hoa tinh chiếu mệnh vừa là Hỉ Thần, vừa là Ám Quỷ. Bạn dễ dàng hút hồn người đối diện, nhưng lại là mẫu người "cả thèm chóng chán" trong tâm tưởng.
+* **Phối ngẫu:** Người đó sẽ có thiên hướng làm các công việc mang tính tổ chức, kiểm toán hoặc thiết kế, có tính cách khô khan nhưng chung thủy.
+* **Luận Sát Tinh:** Do giáp Kình giáp Đà, nên tránh kết hôn vội trước 28 tuổi, nếu không dễ qua 2 lần đò. Sống thử hoặc làm đám cưới nhưng muộn đăng ký cũng là cách hóa giải hay!
+
+---
+
+## ⏳ 6. ĐẠI VẬN LƯU NIÊN CHI TIẾT 10 NĂM TỚI
+
+Chúng ta đang rẽ nhánh vào bước nhảy vọt mới. Trong 10 năm tới, cuộc đời bạn gọi tên là: "Tàng Long Tỉnh Giấc" (Rồng Ngủ Thức Dậy). 
+- Đừng để các cám dỗ ngắn hạn của những vụ "lướt sóng" làm bạn mất tầm nhìn viễn kiến.
+- Cụ thể năm tới, cần cẩn trọng chữ ký giới hạn, và nên chủ động tiêu tiền vào Việc Mua Đất hoặc Cưới Hỏi để tránh việc bị Phá Tài không mong muốn.
+
+---
+
+## 🛡️ 7. CHIẾN LƯỢC CẢI VẬN ĐỘC BẢN
+
+*(Chỉ ra công thức thực chiến, không lý thuyết)*
+1. **Thiên Ấn Phong Thủy:** Hãy đeo trên tay trái một chuỗi Hổ Phách thuần hoặc Đá Tóc Đỏ để tĩnh tâm, trấn áp hung khí sát tinh xung chiếu Mệnh. Bàn làm việc hãy đặt một Tượng Long Tước thu nhỏ.
+2. **Khí Sắc Tuyệt Hảo:** Tủ đồ của bạn phải ưu rực rỡ và quyền lực. Từ chối các màu ảm đạm xám xỉn, nó sẽ cút sạch sinh khí của cung Quan Lộc.
+3. **Mật pháp tu tâm:** Hướng thiện cứu bần, mỗi tháng hãy chi ra 2% thu nhập để phóng sinh hoặc đỡ đầu quỹ trẻ em mồ côi. Đức Năng luôn lớn hơn Số!
 `;
 }
