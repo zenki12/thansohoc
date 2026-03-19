@@ -337,15 +337,28 @@ export default function Home() {
 
         {/* -------------------- FOOTER -------------------- */}
         <footer className="py-12 bg-gray-50/50 border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center gap-6">
-            <div className="flex items-center gap-2 text-gray-500 font-medium text-sm md:text-base bg-white px-6 py-2 rounded-full border border-gray-100 shadow-sm">
+          <div className="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center gap-6">
+            
+            <div className="text-center space-y-3 mb-4">
+              <p className="text-gray-600 font-medium">✨ Khám phá bản thân hoàn toàn <span className="text-orange-500 font-bold uppercase">Miễn Phí</span></p>
+              <p className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
+                Sứ mệnh của công cụ này là mang đến một góc nhìn tham khảo hữu ích, giúp bạn có thêm nguồn động lực tích cực và vạch ra những định hướng mới cho tương lai. Hãy luôn nhớ rằng lộ trình cuộc đời nằm trong tay bạn.
+              </p>
+              <p className="text-orange-500 italic font-serif text-lg md:text-xl mt-4 font-semibold tracking-wide">
+                "Đức năng thắng số..."
+              </p>
+            </div>
+
+            <div className="w-16 h-[1px] bg-gray-200"></div>
+
+            <div className="flex items-center gap-2 text-gray-500 font-medium text-sm md:text-base bg-white px-6 py-2 rounded-full border border-gray-100 shadow-sm mt-2">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse" />
               <span>by</span>
               <span className="text-gray-800 font-bold ml-1">Xuân Thái</span>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 font-medium">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 font-medium tracking-wide">
               <a href="#" className="hover:text-orange-500 transition-colors">Chính sách bảo mật</a>
               <span className="text-gray-300 hidden md:inline">•</span>
               <a href="#" className="hover:text-orange-500 transition-colors">Điều khoản dịch vụ</a>
@@ -353,7 +366,7 @@ export default function Home() {
               <a href="#" className="hover:text-orange-500 transition-colors">Liên hệ</a>
             </div>
             
-            <p className="text-gray-400 text-xs text-center mt-2">© 2026 Xuân Thái. All rights reserved.</p>
+            <p className="text-gray-400 text-xs text-center mt-2 uppercase tracking-widest font-medium">© 2026 Xuân Thái. All rights reserved.</p>
           </div>
         </footer>
       {/* Back to Top Floating Button */}
