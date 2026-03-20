@@ -47,37 +47,42 @@ YÊU CẦU PHÂN TÍCH
 
 BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON SAU (Không kèm markdown code block text nào khác):
 {
-  "hookInsight": "2-3 câu Tổng quan (Hook). Nêu rõ tình huống và gợi mở hướng đi.",
-  "fullStory": "Phân tích cụ thể TỪNG LÁ BÀI gắn với câu hỏi, sau đó diễn giải toàn bộ trải bài thành một CÂU CHUYỆN THỰC TẾ logic.",
-  "conclusion": "Trả lời TRỰC DIỆN câu hỏi (Nên/Không nên...) và Giải thích LÝ DO.",
-  "advice": "Lời khuyên hành động RẤT CỤ THỂ."
+  "hook": "2-3 câu Tổng quan. Nêu rõ tình huống và gợi mở hướng đi.",
+  "cardAnalysis": "Phân tích cụ thể TỪNG LÁ BÀI gắn với câu hỏi / hoàn cảnh.",
+  "story": "Kết nối các lá bài thành một CÂU CHUYỆN THỰC TẾ logic. Làm rõ rào cản, động lực.",
+  "directAnswer": "Trả lời TRỰC DIỆN câu hỏi (Nên/Không nên / Yes/No). Thật ngắn gọn, dứt khoát.",
+  "reasoning": "Giải thích LÝ DO rõ ràng tại sao lại có kết luận đó. Dựa trên yếu tố nào từ bài?",
+  "action": "Lời khuyên hành động RẤT CỤ THỂ."
 }`;
 
     let data;
     try {
-        const chatCompletion = await groq.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
-        model: "llama-3.3-70b-versatile", // Use the powerful model as primary
-        temperature: 0.7,
-        max_tokens: 2500,
-        response_format: { type: "json_object" },
+        // Primary: Gemini 2.0 Flash (Handles complex logic and Vietnamese nuance perfectly)
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-2.0-flash",
+            generationConfig: { responseMimeType: "application/json" }
         });
+        const result = await model.generateContent(prompt);
+        const responseText = result.response.text();
+        data = JSON.parse(responseText);
 
-        let aiContent = chatCompletion.choices[0]?.message?.content || "{}";
-        data = JSON.parse(aiContent);
-    } catch (groqError: any) {
-        console.warn("Groq failed (likely quota), falling back to Gemini...", groqError?.message);
+    } catch (geminiError: any) {
+        console.warn("Gemini failed, falling back to Groq Llama...", geminiError?.message);
         try {
-            const model = genAI.getGenerativeModel({ 
-                model: "gemini-2.0-flash",
-                generationConfig: { responseMimeType: "application/json" }
+            // Fallback: Groq Llama 3.3 70b or 8b
+            const chatCompletion = await groq.chat.completions.create({
+                messages: [{ role: "user", content: prompt }],
+                model: "llama-3.3-70b-versatile", // Or "llama-3.1-8b-instant" if quota is still an issue
+                temperature: 0.7,
+                max_tokens: 2500,
+                response_format: { type: "json_object" },
             });
-            const result = await model.generateContent(prompt);
-            const responseText = result.response.text();
-            data = JSON.parse(responseText);
-        } catch (geminiError: any) {
-            console.error("Gemini fallback also failed:", geminiError);
-            return NextResponse.json({ error: "Lỗi kết nối vũ trụ từ cả 2 ngọn tháp, vui lòng thử lại sau!" }, { status: 500 });
+            let aiContent = chatCompletion.choices[0]?.message?.content || "{}";
+            data = JSON.parse(aiContent);
+
+        } catch (groqError: any) {
+            console.error("Groq fallback also failed:", groqError);
+            return NextResponse.json({ error: "Lỗi kết nối toàn bộ hệ thống thấu thị, vui lòng thử lại sau!" }, { status: 500 });
         }
     }
 

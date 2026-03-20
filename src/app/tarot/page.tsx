@@ -302,28 +302,40 @@ export default function TarotPage() {
                  <Sparkles className="w-40 h-40 text-orange-500" />
               </div>
               <p className="text-2xl md:text-3xl text-gray-800 font-sans leading-relaxed font-bold relative z-10 text-center">
-                "{result.hookInsight}"
+                "{result.hook}"
               </p>
             </div>
 
             {/* Paywall Container */}
             <div className="relative rounded-[2.5rem] overflow-hidden bg-white border border-gray-200 shadow-md">
               <div className={`p-8 md:p-12 space-y-12 transition-all duration-1000 ${!isUnlocked ? 'blur-md opacity-30 select-none pointer-events-none max-h-[400px]' : 'max-h-[5000px]'}`}>
+                
+                {/* 2. Phân Tích Từng Lá Bài */}
                 <div>
                   <h3 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 font-black mb-6 uppercase tracking-wider flex items-center gap-2">
-                    <Atom className="w-6 h-6 text-orange-500" /> Bức Tranh Toàn Cảnh
+                    <Atom className="w-6 h-6 text-orange-500" /> Giải Mã Chi Tiết
                   </h3>
-                  <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium">{result.fullStory}</p>
+                  <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium mb-8">{result.cardAnalysis}</p>
+                </div>
+
+                {/* 3. Cốt Truyện Gắn Kết */}
+                <div className="bg-orange-50/50 p-8 rounded-3xl border border-orange-100/50">
+                  <h3 className="text-lg text-orange-800 font-black mb-4 uppercase tracking-wider">Bức Tranh Toàn Cảnh</h3>
+                  <p className="text-gray-800 leading-relaxed font-medium whitespace-pre-line">{result.story}</p>
                 </div>
                 
+                {/* 4 & 5. Kết Luận Trực Diện + Lý Do */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                    <h3 className="text-lg text-gray-800 font-black mb-4 uppercase tracking-wider">Kết luận ngắn gọn</h3>
-                    <p className="text-gray-600 leading-relaxed font-medium">{result.conclusion}</p>
+                    <h3 className="text-lg text-gray-800 font-black mb-4 uppercase tracking-wider">Chốt Lại (Kết luận)</h3>
+                    <p className="text-rose-600 text-xl font-black mb-4 uppercase">{result.directAnswer}</p>
+                    <p className="text-gray-600 leading-relaxed font-medium">{result.reasoning}</p>
                   </div>
-                  <div className="bg-orange-50 p-8 rounded-3xl border border-orange-100">
-                    <h3 className="text-lg text-orange-800 font-black mb-4 uppercase tracking-wider">Hành động cần làm</h3>
-                    <p className="text-orange-900/80 leading-relaxed font-bold">{result.advice}</p>
+                  
+                  {/* 6. Lời khuyên hành động */}
+                  <div className="bg-indigo-50 p-8 rounded-3xl border border-indigo-100">
+                    <h3 className="text-lg text-indigo-800 font-black mb-4 uppercase tracking-wider">Hành động cần làm</h3>
+                    <p className="text-indigo-900/80 leading-relaxed font-bold whitespace-pre-line">{result.action}</p>
                   </div>
                 </div>
               </div>
