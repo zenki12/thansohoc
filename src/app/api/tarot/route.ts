@@ -37,9 +37,10 @@ BẮT BUỘC trả về ĐÚNG định dạng JSON nguyên bản như sau (khôn
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
-      model: "llama-3.3-70b-versatile",
+      // Switch to an 8B model which has a separate/higher token quota compared to 70B
+      model: "llama-3.1-8b-instant",
       temperature: 0.7,
-      max_tokens: 2500,
+      max_tokens: 2000,
       response_format: { type: "json_object" },
     });
 
