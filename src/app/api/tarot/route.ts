@@ -11,33 +11,47 @@ export async function POST(req: Request) {
   try {
     const { topic, spreadType, question, drawnCards } = await req.json();
 
-    let prompt = `Bạn là một Reader Tarot huyền bí, thấu cảm và có kết nối tâm linh sâu sắc. Khách hàng đang băn khoăn về chủ đề: "${topic}".
-Câu hỏi cụ thể của họ (nếu có): "${question || 'Hãy cho tôi một thông điệp tổng quan năng lượng hiện tại.'}"
-Họ đã bốc trải bài ${spreadType} lá.
-Các lá bài vũ trụ đã gửi gắm cho họ:
+    let prompt = `Bạn là một Tarot reader chuyên nghiệp với hơn 15 năm kinh nghiệm. Bạn không chỉ giải nghĩa lá bài mà còn giúp người hỏi hiểu rõ vấn đề và đưa ra định hướng cụ thể.
+Điều quan trọng nhất:
+👉 Mọi phân tích phải bám chặt vào câu hỏi của người dùng
+👉 Không được nói chung chung
+👉 Phải trả lời đúng “vấn đề họ đang cần quyết định”
+
+INPUT
+• Chủ đề: ${topic}
+• Câu hỏi: ${question || 'Hãy cho tôi một thông điệp tổng quan năng lượng hiện tại.'}
+• Trải bài: ${spreadType} lá
+• Các lá bài:
 `;
 
     drawnCards.forEach((c: any, index: number) => {
         prompt += `- Lá thứ ${index + 1}: ${c.name_vn} (${c.name_en}). Chiều bốc được: ${c.isReversed ? 'Ngược (Reversed)' : 'Xuôi (Upright)'}.
-Ý nghĩa cốt lõi của lá này: ${c.isReversed ? c.reversedMeaning : c.uprightMeaning}
-Mô tả ảnh: ${c.description}
+Ý nghĩa: ${c.isReversed ? c.reversedMeaning : c.uprightMeaning}
+Story: ${c.description}
 
 `;
     });
 
-    prompt += `
-Nhiệm vụ của bạn:
-Dựa vào ý nghĩa cốt gốc của các lá bài trên, hãy phân tích, tổng hợp và "kể một câu chuyện" luận giải bằng **Tiếng Việt** chuẩn xác, không bị lỗi font hay dùng từ dịch máy móc. 
-Hãy phân tích ĐÀO SÂU vào vấn đề tâm lý, cặn kẽ và chi tiết như một buổi tham vấn tâm lý trị giá hàng trăm đô. Phân tích gốc rễ của năng lượng kết nối, diễn giải kịch bản, và chỉ ra mặt khuất của vấn đề. Phân tích sự liên kết chặt chẽ giữa các lá bài (nếu >1 lá).
+    prompt += `NGUYÊN TẮC CỐT LÕI
+• Mỗi ý nghĩa lá bài đều phải liên hệ trực tiếp đến câu hỏi
+• Không giải nghĩa theo kiểu sách vở chung chung
+• Luôn đặt câu hỏi: “Điều này ảnh hưởng gì đến quyết định của người hỏi?”
 
-BẮT BUỘC trả về ĐÚNG định dạng JSON nguyên bản như sau (không kèm text nào khác ngoài JSON):
+YÊU CẦU PHÂN TÍCH
+1. Tổng quan: Nêu rõ tình huống hiện tại liên quan trực tiếp đến câu hỏi.
+2. Phân tích từng lá: Giải thích CỤ THỂ sự ảnh hưởng của nó tới bối cảnh câu hỏi.
+3. Cốt truyện: Làm rõ vì sao họ phân vân, rào cản là gì, động lực là gì.
+4. Trả lời rực diện: Nếu YES/NO thì phải nói rõ Nên / Không nên / Chưa nên. Không mập mờ.
+5. Giải thích lý do rõ ràng.
+6. Lời khuyên hành động rấp cụ thể (Nếu hành động thì lưu ý gì, nếu chưa thì chuẩn bị gì).
+
+BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON SAU (Không kèm markdown code block text nào khác):
 {
-  "hookInsight": "2-3 câu hội tụ tinh hoa trải bài, cực kỳ 'trúng tim đen', khơi gợi sự tò mò mạnh. Không dùng từ Hán Việt khó hiểu.",
-  "fullStory": "Phân tích CỰC KỲ CHI TIẾT (khoảng 20-30 dòng) từng lá bài khớp với bối cảnh câu hỏi, kết nối chúng thành câu chuyện diễn biến tâm lý/sự việc sâu sắc đụng chạm đến phần con người nhất.",
-  "conclusion": "Kết luận tổng thể chốt gọn vấn đề một cách dứt khoát.",
-  "advice": "Lời khuyên hành động chân thành, thực tế, chỉ ra đúng 'huyệt đạo' giúp họ thay đổi cục diện hiện tại."
-}
-Đảm bảo bạn format JSON chuẩn.`;
+  "hookInsight": "2-3 câu Tổng quan (Hook). Nêu rõ tình huống và gợi mở hướng đi.",
+  "fullStory": "Phân tích cụ thể TỪNG LÁ BÀI gắn với câu hỏi, sau đó diễn giải toàn bộ trải bài thành một CÂU CHUYỆN THỰC TẾ logic.",
+  "conclusion": "Trả lời TRỰC DIỆN câu hỏi (Nên/Không nên...) và Giải thích LÝ DO.",
+  "advice": "Lời khuyên hành động RẤT CỤ THỂ."
+}`;
 
     let data;
     try {
