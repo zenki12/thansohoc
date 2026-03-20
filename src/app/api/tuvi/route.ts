@@ -38,6 +38,13 @@ export async function POST(req: Request) {
         throw new Error("Không có API Key của cả Gemini và Groq");
       }
 
+      // Giới hạn siêu ngặt nghèo của Groq free tier là 6000 TPM. 
+      // Do đó, nếu rớt đài xuống Groq, ta phải cắt bỏ hoàn toàn file tuviKnowledge.json khổng lồ ra khỏi prompt để cứu vãn.
+      let groqPrompt = prompt;
+      if (prompt.length > 5000) {
+         groqPrompt = `Tưởng tượng bạn là một chuyên gia tử vi lão làng. Dựa vào thông tin khách hàng: Tên ${name}, sinh ngày ${dob} lúc ${time}, giới tính ${gender}. Hãy tự mình luận giải thật chi tiết 12 cung tử vi, không cần đọc sách bí kíp nữa vì hệ thống đang quá tải. Hãy viết khoảng 2000 từ phân tích các cung: Bản Mệnh, Phu Thê, Tài Bạch, Quan Lộc, Phụ Mẫu, vv.`;
+      }
+
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -46,9 +53,9 @@ export async function POST(req: Request) {
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instant",
-          messages: [{ role: "user", content: prompt }],
+          messages: [{ role: "user", content: groqPrompt }],
           temperature: 0.7,
-          max_tokens: 6000 // Cẩm nang dài
+          max_tokens: 2500 // 2500 + prompt tokens <= 6000 TPM
         })
       });
 
