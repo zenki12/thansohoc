@@ -1,0 +1,778 @@
+{
+  "stars": [
+    {
+      "name": "Tử Vi",
+      "type": "Đế tinh, Nam Bắc Đẩu tinh, Dương Thổ",
+      "meaning": "Chủ uy quyền, tài lộc, phúc đức; tượng trưng cho sự thông minh, trung hậu, nghiêm cẩn và oai phong.",
+      "rules": "An tại cung nào giáng phúc cung đó. Đi với Tả, Hữu, Xương, Khúc, Khôi, Việt thì uy quyền hiển hách, ví như quần thần khánh hội. Gặp Thất Sát ví như vua mang kiếm báu. Kỵ gặp Không Kiếp, Tuần Triệt làm giảm uy lực, bôn ba lao khổ."
+    },
+    {
+      "name": "Liêm Trinh",
+      "type": "Tù tinh, Đào hoa thứ 2, Bắc Đẩu tinh, Âm Hỏa",
+      "meaning": "Chủ quan lộc, hình ngục; tượng trưng cho sự liêm khiết, thẳng thắn hoặc khắc nghiệt, tàn ác, dục vọng.",
+      "rules": "Đắc địa thủ Mệnh Thân có tính đào hoa. Hãm địa gặp Xương, Phù hoặc Sát tinh là Tù tinh, chủ kiện cáo, tù tội. Đi với Tham Lang ở Tỵ Hợi là phiêu lãng, tù tội."
+    },
+    {
+      "name": "Thiên Đồng",
+      "type": "Phúc tinh, Nam Đẩu tinh, Dương Thủy",
+      "meaning": "Chủ phúc thọ, dung hòa, từ thiện; tính hay canh cải, thất thường.",
+      "rules": "Đắc địa chủ sự may mắn, vui vẻ. Hãm địa chủ tai họa, thị phi. Ở cung Tật ách hóa giải nhiều tai ương."
+    },
+    {
+      "name": "Vũ Khúc",
+      "type": "Tài tinh, Cương tinh, Bắc Đẩu tinh, Âm Kim",
+      "meaning": "Chủ tài lộc, sự cương nghị, dũng mãnh. Hãm địa thì tham lam, ương ngạnh, phá tán. Tính chất như sao Cô, Quả.",
+      "rules": "Gặp Tham Lang đồng hành phát muộn (ngoài 30 tuổi). Miếu vượng gặp Sát tinh không đáng lo, nhưng hãm địa gặp Sát Kỵ Hình thì tai nạn, bần hàn."
+    },
+    {
+      "name": "Thái Dương",
+      "type": "Quý tinh, Nam Đẩu tinh, Dương Hỏa",
+      "meaning": "Chủ quan lộc; biểu tượng mặt trời, người cha, người chồng; tượng trưng quang minh, bác ái, thông minh, nhân hậu.",
+      "rules": "Thuận lý khi sinh ban ngày. Kỵ Không Kiếp, Hình, Riêu, Kỵ làm giảm thọ, hỏng mắt. Hãm địa cần gặp Tuần Triệt để tăng vẻ sáng sủa. Đắc địa gặp Hóa Kỵ (mây ngũ sắc chầu) lại cực tốt."
+    },
+    {
+      "name": "Thiên Cơ",
+      "type": "Thiện tinh, Nam Đẩu tinh, Âm Mộc",
+      "meaning": "Chủ huynh đệ, phúc thọ; tượng trưng trí tuệ, tinh thần, sự khéo léo, mưu cơ.",
+      "rules": "Gặp Xương Khúc, Khôi Việt, Tả Hữu, Song Hao đắc địa là hưởng phú quý, uy danh. Hãm địa gặp Sát Kỵ Hình thường tàn tật, phiêu bạt."
+    },
+    {
+      "name": "Thiên Phủ",
+      "type": "Tài tinh, Quyền tinh, Nam Đẩu tinh, Âm Thổ",
+      "meaning": "Chủ tài lộc, quyền tước; tính nhân hậu, từ thiện, năng lực giải trừ bệnh tật.",
+      "rules": "Chế được tính hung ác của Kình, Đà, Hỏa, Linh. Rất kỵ Tuần, Triệt, Không Kiếp ví như kho tàng phá vỡ, hao tán."
+    },
+    {
+      "name": "Thái Âm",
+      "type": "Phú tinh, Bắc Đẩu tinh, Âm Thủy",
+      "meaning": "Chủ điền trạch; biểu tượng mặt trăng, người mẹ, người vợ; tính khoan hòa, nhân hậu, tinh khiết.",
+      "rules": "Rất sáng sủa khi sinh ban đêm (đặc biệt từ mùng 10 đến rằm). Kỵ Không Kiếp, Riêu, Đà, Kỵ gây bệnh tật, đau mắt. Hãm địa cần Tuần, Triệt."
+    },
+    {
+      "name": "Tham Lang",
+      "type": "Hung tinh, Dâm tinh, Bắc Đẩu tinh, Âm Thủy (đới Mộc)",
+      "meaning": "Chủ họa phúc, uy quyền; tượng trưng dục vọng, vật chất, sự xuất thế (khi hãm) hoặc tham lam, hung bạo.",
+      "rules": "Gặp Hỏa tinh, Linh tinh ở miếu địa (Tứ Mộ) cực kỳ phú quý (cách Tham Hỏa tương phùng). Gặp Đào Hồng hoặc hãm địa chủ dâm dật, họa tửu sắc."
+    },
+    {
+      "name": "Cự Môn",
+      "type": "Ám tinh, Bắc Đẩu tinh, Âm Thủy",
+      "meaning": "Chủ ngôn ngữ, thị phi, nghi hoặc; tính vui vẻ nhưng hay gây khẩu thiệt, kiện cáo.",
+      "rules": "Đắc địa ở Tý Ngọ (Thạch trung ẩn ngọc) cần Hóa Lộc hoặc Tuần Triệt phá thạch. Hãm địa (Thìn Tuất) rất xấu, gây rắc rối, thị phi. Kỵ Hóa Kỵ (ngôn ngữ bất cẩn)."
+    },
+    {
+      "name": "Thiên Tướng",
+      "type": "Quyền tinh, Dũng tinh, Nam Đẩu tinh, Dương Thủy",
+      "meaning": "Chủ quan lộc, phúc thiện; tính đôn hậu, từ ái, can đảm, ưa thanh sắc.",
+      "rules": "Chế hóa được Sát tinh và tính ác của Liêm Trinh. Kỵ Tuần, Triệt và Thiên Hình (ví như tướng mất đầu) dễ dính tai họa khủng khiếp."
+    },
+    {
+      "name": "Thiên Lương",
+      "type": "Thọ tinh, Ấm tinh, Nam Đẩu tinh, Âm Mộc (đới Thổ)",
+      "meaning": "Chủ phụ mẫu, phúc thọ; tính nhân hậu, giải trừ bệnh tật, tai họa.",
+      "rules": "Gặp Nhật ở Mão (Nhật xuất phù tang) cực quý. Ở Tỵ Hợi hãm địa tính phiêu bồng, dâm bôn."
+    },
+    {
+      "name": "Thất Sát",
+      "type": "Quyền tinh, Dũng tinh, Nam Đẩu tinh, Dương Kim (đới Hỏa)",
+      "meaning": "Chủ sát phạt, uy quyền, oai phong lẫm liệt; biểu tượng sự quyết liệt.",
+      "rules": "Gặp Tử Vi thành gươm báu. Kỵ Không Kiếp, Kình Đà, Hỏa Linh dễ tổn thọ, mang tật. Hãm địa hung bạo, liều lĩnh."
+    },
+    {
+      "name": "Phá Quân",
+      "type": "Hao tinh, Hung tinh, Bắc Đẩu tinh, Âm Thủy",
+      "meaning": "Chủ Phu thê, Tử tức, Nô bộc; biểu tượng sự phá hoại, tiêu hao, dũng mãnh, tàn bạo.",
+      "rules": "Tọa thủ ở đâu hao tán ở đó. Đi với Hao tinh thì càng phá. Hãm địa cực độc, kỵ Sát tinh. Đắc địa (Tý Ngọ) gặp Sát tinh lại lập đại công thời loạn."
+    },
+    {
+      "name": "Hóa Lộc",
+      "type": "Cát tinh, Thổ (đới Mộc/Thủy)",
+      "meaning": "Chủ tài lộc, sự may mắn, lộc ăn, giải trừ tai họa.",
+      "rules": "Kỵ gặp Không Kiếp, Tán tài. Cùng Lộc Tồn ở Mệnh thì lại giảm sự tốt đẹp."
+    },
+    {
+      "name": "Hóa Quyền",
+      "type": "Quý tinh, Quyền tinh, Mộc (đới Thủy)",
+      "meaning": "Chủ uy quyền, oai vệ, sinh sát, nắm giữ trọng trách.",
+      "rules": "Gặp Tử Phủ, Cự Vũ tạo uy quyền hiển hách. Gặp Sát tinh dễ liều lĩnh, thất bại. Kỵ Tuần Triệt làm quyền bị chiết giảm."
+    },
+    {
+      "name": "Hóa Khoa",
+      "type": "Quý tinh, Văn tinh, Thủy/Mộc",
+      "meaning": "Chủ khoa giáp, thông minh, cứu khổn phò nguy, giải trừ tai ách mạnh nhất.",
+      "rules": "Gặp Khôi Việt Xương Khúc đỗ cao, danh tiếng. Gặp Sát tinh cũng vô hại, giải được tai họa."
+    },
+    {
+      "name": "Hóa Kỵ",
+      "type": "Ám tinh, Thủy",
+      "meaning": "Độc hiểm, ích kỷ, đa nghi, nhầm lẫn, thị phi khẩu thiệt, cản trở. Lại có tính giữ của.",
+      "rules": "Đắc địa ở Thìn Tuất Sửu Mùi đi với Nhật Nguyệt là mây ngũ sắc chầu, rất rực rỡ. Ở Tỵ Hợi chế được tính ác của Liêm Tham. Hãm địa đi với Nhật Nguyệt gây đui mù, tàn tật."
+    },
+    {
+      "name": "Kình Dương / Đà La",
+      "type": "Sát tinh, Bắc Đẩu tinh, Kim đới Hỏa",
+      "meaning": "Chủ sát phạt, hình thương, tàn tật, bướng bỉnh (Kình) và ám tật, nham hiểm (Đà).",
+      "rules": "Đắc địa Thìn Tuất Sửu Mùi chủ dũng mãnh, mưu lược. Kình Dương cư Ngọ thủ Mệnh (Mã đầu đới kiếm) uy quyền nhưng dễ tổn thọ. Hãm địa gây đâm chém, họa tù tội, ngã đau."
+    },
+    {
+      "name": "Hỏa Tinh / Linh Tinh",
+      "type": "Đoản thọ sát tinh, Nam Đẩu tinh, Hỏa đới Kim",
+      "meaning": "Chủ sát phạt, thâm trầm, nóng nảy, thiêu đốt, giảm thọ.",
+      "rules": "Đắc địa (Dần Mão Thìn Tỵ Ngọ). Gặp Tham Lang, Vũ Khúc đắc địa thành tái thế anh hùng. Đi với Không Kiếp chủ chết đâm chém, sét đánh."
+    },
+    {
+      "name": "Địa Không / Địa Kiếp",
+      "type": "Sát tinh/Ác tinh, Hỏa",
+      "meaning": "Ích kỷ, gian trá, bần tiện, gây phá hoại, tai nạn thê thảm, tán tài.",
+      "rules": "Tọa Tỵ Hợi đắc địa hoạnh phát hoạnh phá (bạo phát bạo tàn). Lâm Mệnh thủ Tứ sinh (như nửa chừng gãy cánh), chết non, cùng khổ. Cực kỳ kỵ với Tử, Phủ, Cự, Cơ, Đồng, Lương, Nhật, Nguyệt."
+    },
+    {
+      "name": "Văn Xương / Văn Khúc",
+      "type": "Văn tinh, Kim / Thủy đới Hỏa",
+      "meaning": "Chủ văn chương, mỹ thuật, khoa giáp, khéo léo.",
+      "rules": "Hội với Không Kiếp, Riêu Kỵ thành dâm đãng, giảm thọ. Nữ mệnh tối kỵ (dâm bôn). Gặp Khôi Việt đỗ cao."
+    },
+    {
+      "name": "Thiên Khôi / Thiên Việt",
+      "type": "Quý tinh, Hỏa đới Kim / Hỏa đới Mộc",
+      "meaning": "Chủ khoa giáp, chức tước, cứu giải tai họa, cao thượng. Còn gọi là Thiên Ất Quý Nhân.",
+      "rules": "Ở Mệnh/Thân thường là con trưởng. Gặp Tử Phủ, Khoa Quyền Lộc là quan chức lớn. Kỵ Hỏa, Linh, Hình dễ gặp họa sấm sét, điện giật."
+    },
+    {
+      "name": "Tả Phù / Hữu Bật",
+      "type": "Trợ tinh, Thổ / Thủy",
+      "meaning": "Chủ quyền lệnh, sự giúp đỡ, phò tá, rộng lượng.",
+      "rules": "Tăng cường tính chất của các sao đồng cung (tốt làm tốt thêm, ác làm ác thêm). Đóng ở cung Mộ gặp cát tinh thì cực phú quý. Đóng ở cung Thê thiếp dễ có hai đời vợ."
+    },
+    {
+      "name": "Đại Hao / Tiểu Hao",
+      "type": "Bại tinh, Hỏa",
+      "meaning": "Hoang phí, tán tài, ly tán, di chuyển.",
+      "rules": "Đắc địa ở Mão Dậu (Chúng thủy triều đông) kiếm tiền như nước. Gặp Sát tinh tai nạn đao súng, gặp Lộc tán tài."
+    },
+    {
+      "name": "Tang Môn / Bạch Hổ",
+      "type": "Bại tinh, Mộc / Kim",
+      "meaning": "Dũng mãnh, tang tóc, tai họa, đau ốm, hao hụt.",
+      "rules": "Đắc địa Dần Thân Mão Dậu có tài thao lược. Hổ ngậm kiếm (Hình ở Dần) oai phong hiển đạt võ nghiệp. Gặp Tấu Thư (Hổ đội hòm sắt) lợi thi cử."
+    },
+    {
+      "name": "Thiên Hình",
+      "type": "Sát tinh / Hình tinh, Hỏa đới Kim",
+      "meaning": "Sát phạt, binh nghiệp, đâm chém, mổ xẻ, pháp luật, uy dũng.",
+      "rules": "Miếu vượng (Dần Mão Dậu Tuất) hiển đạt võ nghiệp. Gặp Không Kiếp, Tuần Triệt thành tai nạn hình ngục, đâm chém đẫm máu. Chế được tính dâm của Đào Hồng."
+    },
+    {
+      "name": "Thiên Diêu / Thiên Y",
+      "type": "Dâm tinh / Ám tinh, Thủy",
+      "meaning": "Chủ huyễn hoặc, đa nghi, dâm đãng, tửu sắc (Diêu) và liên quan ngành y dược, bệnh tật (Y).",
+      "rules": "Đắc địa (Dần Mão Dậu Tuất) ở Mệnh không bị sắc dục làm hại. Hãm gặp Đào Hồng cực kỳ dâm bôn."
+    },
+    {
+      "name": "Đào Hoa / Hồng Loan / Thiên Hỷ",
+      "type": "Mộc / Thủy / Thủy",
+      "meaning": "Vui vẻ, lẳng lơ, hỷ sự, hoa nguyệt, cưới hỏi, đẹp đẽ.",
+      "rules": "Làm Tử Phủ, Nhật Nguyệt thêm rực rỡ. Gặp Không Kiếp, Kỵ, Sát tinh duyên trắc trở, dâm loạn, sát phu."
+    },
+    {
+      "name": "Lộc Tồn",
+      "type": "Phú tinh, Thổ",
+      "meaning": "Phú quý, tài lộc, nhân hậu, giữ của, nhưng cũng mang tính cô độc, lạnh lùng.",
+      "rules": "Gặp Không Kiếp, Tuần Triệt phá sản, cùng khổ. Đi với Hóa Lộc ở Mệnh cản trở nhau. Lộc Mã giao trì chủ bôn ba sinh tài."
+    },
+    {
+      "name": "Thiên Mã",
+      "type": "Hỏa",
+      "meaning": "Thay đổi chỗ ở, bôn ba, nghị lực, xe cộ.",
+      "rules": "Cần đi với Lộc Tồn, Tràng Sinh, Tử Phủ. Rất kỵ Tuần, Triệt, Không, Kiếp, Đà, Tuyệt (Ngựa chết/Ngựa què)."
+    },
+    {
+      "name": "Thiên Khốc / Thiên Hư",
+      "type": "Bại tinh / Ám tinh, Kim / Thủy",
+      "meaning": "Sầu thảm, đau yếu (đặc biệt bệnh hô hấp, răng), xui xẻo.",
+      "rules": "Đắc địa ở Tý Ngọ thì Tiền bần hậu phú, có uy danh lừng lẫy."
+    },
+    {
+      "name": "Thái Tuế",
+      "type": "Hỏa",
+      "meaning": "Lý luận đanh thép, thị phi, kiện cáo, khinh người.",
+      "rules": "Hành Hỏa, thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Thiếu Dương / Thiếu Âm",
+      "type": "Hỏa / Thủy",
+      "meaning": "Thông minh, nhân hậu, giải bệnh tật nhỏ.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Quan Phù / Quan Phủ",
+      "type": "Hỏa",
+      "meaning": "Tranh chấp, pháp luật, a tòng (Phù).",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Tử Phù / Trực Phù",
+      "type": "Hỏa",
+      "meaning": "Rắc rối, buồn thảm, thưa kiện.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Tuế Phá",
+      "type": "Hỏa",
+      "meaning": "Ngang ngược, phá tán, đau răng.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Long Đức / Phúc Đức",
+      "type": "Thủy / Thổ",
+      "meaning": "Đoan chính, từ thiện, giải hung họa.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Điếu Khách",
+      "type": "Hỏa",
+      "meaning": "Khoe khoang, tai nạn, cờ bạc.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Bệnh Phù",
+      "type": "Thổ",
+      "meaning": "Ốm đau, tai họa, suy nhược.",
+      "rules": "Thuộc vòng Thái Tuế."
+    },
+    {
+      "name": "Bác Sĩ",
+      "type": "Thủy",
+      "meaning": "Thông minh, thanh nhàn.",
+      "rules": "Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Lực Sĩ",
+      "type": "Hỏa",
+      "meaning": "Sức khỏe, uy quyền, dũng mãnh.",
+      "rules": "Kình Lực đồng cung bất mãn, bất đắc chí. Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Thanh Long",
+      "type": "Thủy",
+      "meaning": "May mắn, vui mừng.",
+      "rules": "Đi với Hóa Kỵ thành Rồng mây. Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Tướng Quân",
+      "type": "Mộc",
+      "meaning": "Uy dũng, nóng nảy, làm liều.",
+      "rules": "Đi với Quốc Ấn/Thiên Tướng rất hiển hách. Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Tấu Thư",
+      "type": "Kim",
+      "meaning": "Tinh tế, ăn nói khéo, nghệ thuật, giấy tờ.",
+      "rules": "Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Phi Liêm",
+      "type": "Hỏa",
+      "meaning": "Nhanh nhẹn, thị phi, đâm chém (như cung tên).",
+      "rules": "Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Hỷ Thần",
+      "type": "Hỏa",
+      "meaning": "Vui vẻ, lợi cưới hỏi.",
+      "rules": "Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Phục Binh",
+      "type": "Hỏa",
+      "meaning": "Mưu mô, ám hại, trộm cắp, a tòng.",
+      "rules": "Thuộc vòng Lộc Tồn."
+    },
+    {
+      "name": "Tràng Sinh",
+      "type": "Thủy",
+      "meaning": "Phúc thọ vững bền.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Mộc Dục",
+      "type": "Thủy",
+      "meaning": "Canh cải, dâm dật.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Quan Đới",
+      "type": "Kim",
+      "meaning": "Chức vị, trói buộc.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Lâm Quan",
+      "type": "Kim",
+      "meaning": "Khoe khoang, lấy điệu.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Đế Vượng",
+      "type": "Kim",
+      "meaning": "Thịnh đạt, lãnh đạo.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Suy",
+      "type": "Thủy",
+      "meaning": "Sa sút, yếu kém.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Bệnh",
+      "type": "Hỏa",
+      "meaning": "Đau ốm.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Tử",
+      "type": "Thủy",
+      "meaning": "Thâm trầm, chết chóc, giấu của.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Mộ",
+      "type": "Thổ",
+      "meaning": "Ngu si, chôn giấu.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Tuyệt",
+      "type": "Thổ",
+      "meaning": "Cùng tận, bế tắc.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Thai",
+      "type": "Thổ",
+      "meaning": "Dâm dật, sinh nở.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Dưỡng",
+      "type": "Mộc",
+      "meaning": "Nuôi nấng, chăm sóc.",
+      "rules": "Thuộc vòng Tràng Sinh."
+    },
+    {
+      "name": "Tuần Trung Không Vong / Triệt Lộ Không Vong",
+      "type": "Ác tinh kìm hãm / Không Vong",
+      "meaning": "Án ngữ, kìm hãm, làm đảo lộn ý nghĩa của cung và sao tọa thủ (tốt thành xấu, xấu thành tốt).",
+      "rules": "Rất cần cho cung Vô Chính Diệu. Tối kỵ ở Mệnh Thân vì làm gián đoạn mọi sự. Triệt ảnh hưởng mạnh trước 30 tuổi, Tuần ảnh hưởng suốt đời. Đóng chung 1 cung phá hoại khốc liệt."
+    },
+    {
+      "name": "Thiên Thương / Thiên Sứ",
+      "type": "Ám tinh / Hung tinh, Thổ / Thủy",
+      "meaning": "Gây buồn thảm, bệnh tật, tang thương.",
+      "rules": "Thương luôn ở Nô, Sứ luôn ở Tật. Gặp Xương Khúc tác họa khủng khiếp. Thường dùng để dự đoán đại tai ách trong Hạn."
+    },
+    {
+      "name": "Thiên La / Địa Võng",
+      "type": "Thổ",
+      "meaning": "Hiểm ác, kìm hãm, lưới trời đất, bắt bớ giam cầm.",
+      "rules": "La luôn ở Thìn, Võng luôn ở Tuất. Hạn gặp Sát tinh xâm phạm rất dễ phá sản, tù tội."
+    },
+    {
+      "name": "Kiếp Sát",
+      "type": "Hỏa",
+      "meaning": "Sát phạt, mổ xẻ, tai họa đâm chém.",
+      "rules": "Còn gọi là \"Địa Kiếp thứ hai\", thủ ở Mệnh/Tật thì tính mạng nguy hiểm."
+    },
+    {
+      "name": "Lưu Hà",
+      "type": "Thủy",
+      "meaning": "Tai nạn sông nước, đâm chém, máu me, thâm trầm, lưu loát trong ăn nói.",
+      "rules": "Gặp Kiếp Sát tác họa khủng khiếp, nam chết đường, nữ sản nạn. Đi với Thanh Long thành rồng vẫy vùng."
+    },
+    {
+      "name": "Phá Toái",
+      "type": "Hỏa đới Kim",
+      "meaning": "Phá ngang, hao tán, trở ngại mọi việc, cuống họng.",
+      "rules": "Mệnh có Phá Toái đồng cung với Phá Quân (toán quân lưỡng phá) oai dũng, hiển đạt võ nghiệp."
+    },
+    {
+      "name": "Thiên Tài / Thiên Thọ",
+      "type": "Thổ",
+      "meaning": "Thiên Tài giảm ảnh hưởng tốt/xấu của sao đồng cung; Thiên Thọ tăng phúc thọ.",
+      "rules": "Tài che khuất ánh sáng Nhật Nguyệt sáng, nhưng làm Nhật Nguyệt hãm sáng lên."
+    },
+    {
+      "name": "Cô Thần / Quả Tú",
+      "type": "Thổ / Hỏa",
+      "meaning": "Cô độc, lạnh lùng, khó tính, hiếm muộn, giữ của.",
+      "rules": "Cản trở hôn nhân, kỵ đóng cung Thê Thiếp, Tử Tức."
+    },
+    {
+      "name": "Đẩu Quân",
+      "type": "Hỏa",
+      "meaning": "Nghiêm nghị, khắc nghiệt, giữ của.",
+      "rules": "Đóng Quan Lộc gặp cát tinh Tử Phủ thì lừng lẫy, giữ của rất chắc. Dùng để tính Nguyệt Lệnh (tháng hạn)."
+    },
+    {
+      "name": "Hoa Cái",
+      "type": "Kim",
+      "meaning": "Đẹp đẽ, uy nghi, phú quý (khi đắc địa). Hãm địa chủ chưng diện dâm đãng.",
+      "rules": "Hội cùng Long, Phượng, Hổ (Tứ Linh) cực kỳ uy danh. Gặp Mộc Dục, Riêu thì dâm dật."
+    },
+    {
+      "name": "Thiên Trù",
+      "type": "Thổ",
+      "meaning": "Chủ lộc ăn uống, gia tăng tài lộc.",
+      "rules": "Đi cùng Lộc Tồn hoặc cát tinh rất vượng."
+    },
+    {
+      "name": "Quốc Ấn / Đường Phù / Thai Phụ / Phong Cáo",
+      "type": "Thổ",
+      "meaning": "Quốc Ấn (quyền tước, dấu triện), Đường Phù (nhà đất), Thai Phụ/Phong Cáo (bằng sắc, phong tặng).",
+      "rules": "Quốc Ấn gặp Tuần Triệt bị sứt mẻ. Thai Cáo gặp cát tinh hiển đạt công danh."
+    },
+    {
+      "name": "Ân Quang / Thiên Quý",
+      "type": "Hỏa / Thổ",
+      "meaning": "Ân điển, thần thánh phù hộ, ân nghĩa thủy chung.",
+      "rules": "Tọa Mệnh, Thân sang trọng hơn người. Giải trừ tai họa rất mạnh, kìm chế sao dâm đãng."
+    },
+    {
+      "name": "Thiên Quan / Thiên Phúc / Thiên Đức / Nguyệt Đức",
+      "type": "Hỏa / Thổ / Hỏa / Hỏa",
+      "meaning": "Đức độ, từ thiện, tín ngưỡng, giải nạn.",
+      "rules": "Kết hợp thành Tứ Đức giúp tiêu trừ tính dâm dục của Đào Hồng."
+    },
+    {
+      "name": "Thiên Giải / Địa Giải / Giải Thần / Thiên Khố",
+      "type": "Thủy / Thổ / Thổ / Thổ",
+      "meaning": "Giải tai ách, gặp may mắn. (Riêng Thiên Khố chủ về của cải, giữ tiền).",
+      "rules": "Thiên/Địa Giải hóa hung thành cát. Giải Thần hạn gặp thì tán tài nhưng tránh họa. Thiên Khố đóng Mệnh/Tài thì giàu nhưng kẹt sỉ."
+    },
+    {
+      "name": "Lưu Niên Văn Tinh",
+      "type": "Hỏa",
+      "meaning": "Thông minh, chuộng bằng sắc, lợi ích cầu công danh.",
+      "rules": "Đi cùng Hóa Khoa thì thi tất đỗ."
+    },
+    {
+      "name": "Tam Thai / Bát Tọa",
+      "type": "Thổ",
+      "meaning": "Bệ vệ, đường bệ, thích nhàn hạ, có quý nhân phù trợ.",
+      "rules": "Đóng chung hoặc giáp cung Mệnh mang lại địa vị cao."
+    }
+  ],
+  "houses": [
+    {
+      "name": "Cung Mệnh (và Cung Thân)",
+      "meaning": "Thể hiện dung mạo, tài năng, nhân cách, tâm tính, trí tuệ, tình cảm, sở thích và nội tâm con người.",
+      "role": "Là căn bản của lá số, đại diện cho cá nhân. Quyết định vận mệnh từ khi sinh ra đến khoảng 30 tuổi; từ 30 tuổi trở đi chịu ảnh hưởng mạnh của cung Thân (hậu vận) nhưng vẫn phải kết hợp xem Mệnh. Thuộc nhóm các cung cường quan trọng nhất.",
+      "rules": "Cần xét sự thuận nghịch lý Âm Dương và sinh khắc Ngũ Hành giữa Bản Mệnh - Cục - Cung an Mệnh - Sao tọa thủ. Xem xét vị trí đắc/hãm địa của chính tinh, nếu vô chính diệu thì coi chính tinh xung chiếu như chính tinh tọa thủ. Luôn phải xem phối hợp với ba cung hội chiếu là Thiên Di, Quan Lộc, Tài Bạch."
+    },
+    {
+      "name": "Cung Phụ Mẫu",
+      "meaning": "Thể hiện sự thọ yểu, giàu nghèo, sang hèn của cha mẹ, cũng như sự hòa hợp hay xung khắc giữa đương số với cha mẹ.",
+      "role": "Thường là cung nhược đối với người lớn, nhưng đặc biệt quan trọng đối với trẻ nhỏ (dưới 13 tuổi) hoặc trong thời gian sống chung với gia đình.",
+      "rules": "Phải kết hợp nhận định Nhật, Nguyệt trên toàn bản đồ lá số để xem cha hay mẹ mất trước. Gặp nhiều sát tinh, bại tinh, Tuần, Triệt thường sớm khắc một trong hai thân, ly tán."
+    },
+    {
+      "name": "Cung Phúc Đức",
+      "meaning": "Thể hiện tình trạng của tiền kiếp, dòng họ, âm phần (mồ mả), sự thịnh suy tụ tán của họ hàng, cũng như mức độ hưởng thụ, phúc thọ của đương số trong đời.",
+      "role": "Là cung cường cực kỳ quan trọng, chi phối và làm tăng/giảm sự tốt xấu của toàn bộ 11 cung số còn lại.",
+      "rules": "Phúc Đức tốt giúp giải trừ nhiều bệnh tật tai ương. Để xem mồ mả, lấy cung Phúc Đức làm chính mộ. Cung Phúc vô chính diệu rất cần Tuần, Triệt án ngữ hoặc Tam Không hội hợp."
+    },
+    {
+      "name": "Cung Điền Trạch",
+      "meaning": "Thể hiện nhà cửa, ruộng nương, cơ xưởng, xe cộ, bất động sản và hoàn cảnh sinh hoạt gia đình.",
+      "role": "Thể hiện của cải cố định (bất động sản), đóng vai trò bổ túc cho cung Tài Bạch để định mức độ giàu nghèo.",
+      "rules": "Xem xét chính tinh tọa thủ là sao giữ của hay sao phá sản. Cần các sao tài tinh đắc địa. Rất kỵ gặp Đại Tiểu Hao, Tuần, Triệt, Không, Kiếp dẫn đến phá tán tổ nghiệp."
+    },
+    {
+      "name": "Cung Quan Lộc",
+      "meaning": "Thể hiện công danh, sự nghiệp, chức vụ, khả năng chuyên môn, nghề nghiệp và tiền tài do chức vụ mang lại.",
+      "role": "Là cung cường, đóng vai trò sinh kế và địa vị xã hội.",
+      "rules": "Cần các sao quyền tinh, tài tinh đắc địa để hiển đạt chức vị. Gặp Tuần, Triệt, Không, Kiếp thì công danh trắc trở. Nếu vô chính diệu, mượn chính tinh xung chiếu tại cung Phu Thê."
+    },
+    {
+      "name": "Cung Nô Bộc",
+      "meaning": "Thể hiện tình trạng giao thiệp với người dưới quyền, tôi tớ, bạn bè, người cộng tác, và cả nhân tình/người tình.",
+      "role": "Thể hiện nhân sự trợ lực trong sự nghiệp, hoặc mầm mống của sự phản trắc, ngoại tình, đa phu đa thê.",
+      "rules": "Phải kết hợp nhận định cùng cung Mệnh. Cung Nô hội tụ nhiều sao tình dục kết hợp cung Phu Thê xấu là dấu hiệu rõ rệt của sự ngoại tình."
+    },
+    {
+      "name": "Cung Thiên Di",
+      "meaning": "Thể hiện hoàn cảnh xã hội, thời thế, sự giao thiệp đối ngoại và những may rủi, lợi ích hay tai họa khi rời khỏi nhà/xuất ngoại.",
+      "role": "Là cung cường xung chiếu trực tiếp cung Mệnh, quyết định sự đắc thời hay lỡ vận của đương số khi ra ngoài xã hội.",
+      "rules": "Cần cát tinh, lộc tinh để ra ngoài gặp quý nhân. Gặp Không, Kiếp, Sát, Kỵ thì bất lợi. So sánh độ tốt xấu giữa Mệnh và Di để khuyên đương số nên ly hương hay ở nhà lập nghiệp."
+    },
+    {
+      "name": "Cung Tật Ách",
+      "meaning": "Thể hiện thể chất, sức khỏe, tì vết, bệnh tật, tai ương họa hại trong đời và nguyên nhân/hoàn cảnh lúc nhắm mắt.",
+      "role": "Bình thường xem là cung nhược, nhưng đặc biệt trở thành cung cường đối với người già, trẻ nhỏ hoặc người mang trọng bệnh.",
+      "rules": "Phải kết hợp xem Mệnh, Thân, Phúc Đức. Cung Tật Ách vô cùng hoan hỷ nếu có Tuần, Triệt án ngữ, giúp giải trừ bệnh nạn, tai ương hiệu quả."
+    },
+    {
+      "name": "Cung Tài Bạch",
+      "meaning": "Thể hiện năng lực kinh tế, tài chính, động sản (tiền bạc, của cải), và sinh kế làm giàu.",
+      "role": "Là cung cường, đóng vai trò trụ cột cho hạnh phúc vật chất thế tục, kết hợp với cung Điền Trạch.",
+      "rules": "Phối hợp xem cùng Mệnh, Thân, Phúc, Quan, Di. Cần các tài tinh đắc địa và sao trợ tài. Các sát tinh thường chủ việc kiếm tiền lúc náo loạn. Gặp Tuần, Triệt thì kiếm tiền gian nan."
+    },
+    {
+      "name": "Cung Tử Tức",
+      "meaning": "Thể hiện số lượng, giới tính con cái, con dị bào/con nuôi, sinh hoạt tình dục, và sự hòa hợp hay hình khắc giữa cha mẹ với con cái.",
+      "role": "Chi phối hạnh phúc gia đình và sự nương tựa, nối dõi ở hậu vận của đương số.",
+      "rules": "Nam đẩu tinh chủ nhiều con trai; Bắc đẩu tinh chủ nhiều con gái. Phối hợp cung Phúc Đức và Mệnh Thân để kết luận. Gặp Tuần, Triệt, Không, Kiếp, Sát, Kỵ, Cô, Quả thường chủ hiếm muộn."
+    },
+    {
+      "name": "Cung Phu Thê (Thê Thiếp / Phu Quân)",
+      "meaning": "Thể hiện quan hệ vợ chồng, tình trạng gia đạo, hình dáng, tính cách, mức độ tài giỏi hay sự nghiệp của người phối ngẫu.",
+      "role": "Là cung cường có ý nghĩa then chốt, xung chiếu và bổ túc trực tiếp cho cung Quan Lộc.",
+      "rules": "Cần phối hợp với cung Mệnh, Thân, Phúc Đức. Có sát tinh, hình bại tinh hoặc Tuần, Triệt án ngữ thường dẫn đến hình khắc, bất hòa, chia ly. Bộ tinh tốt chủ lấy được người hiền tài."
+    },
+    {
+      "name": "Cung Huynh Đệ",
+      "meaning": "Thể hiện tình trạng anh chị em ruột thịt, anh em dị bào, sự thân thiết/bất hòa, và những bạn hữu coi như anh em ruột.",
+      "role": "Cùng với Mệnh, Phụ Mẫu hợp thành bộ ba ảnh hưởng sâu sắc đến đương số trong thời gian chung sống tại gia đình.",
+      "rules": "Phối hợp luận cùng cung Phúc Đức. Nam đẩu tinh chủ anh em trai nhiều, Bắc đẩu tinh chủ chị em gái nhiều. Gặp Sát tinh, Hóa Kỵ, Đại Tiểu Hao thì anh em ly tán, bất hòa."
+    }
+  ],
+  "rules": [
+    "IF [Năm sinh và tháng sinh cùng thuộc Âm hoặc cùng thuộc Dương] THEN [Thuận lý, độ số gia tăng]",
+    "IF [Năm sinh và tháng sinh khác Âm Dương] THEN [Nghịch lý, độ số giảm thiểu]",
+    "IF [Năm, tháng, ngày, giờ sinh tương sinh ngũ hành tuần tự] THEN [Rất quý]",
+    "IF [Bản Mệnh sinh Cục] THEN [Rất tốt]",
+    "IF [Cục sinh Bản Mệnh] THEN [Tốt đẹp nhưng không bằng Bản Mệnh sinh Cục]",
+    "IF [Bản Mệnh khắc Cục] THEN [Rất xấu, độ số bị chiết giảm]",
+    "IF [Năm sinh và Cung an Mệnh cùng Âm hoặc cùng Dương] THEN [Thuận lý, độ số gia tăng]",
+    "IF [Năm sinh và Cung an Mệnh khác Âm Dương] THEN [Nghịch lý, độ số giảm thiểu]",
+    "IF [Cung an Mệnh là Sinh địa của Bản Mệnh] THEN [Rất tốt]",
+    "IF [Cung an Mệnh là Vượng địa của Bản Mệnh] THEN [Được nhiều lợi ích]",
+    "IF [Cung an Mệnh là Bại địa của Bản Mệnh] THEN [Rất xấu]",
+    "IF [Cung an Mệnh là Tuyệt địa của Bản Mệnh] THEN [Rất đáng lo ngại]",
+    "IF [Hành của Chính diệu sinh hành Bản Mệnh] THEN [Rất tốt]",
+    "IF [Hành Bản Mệnh sinh hành Chính diệu] THEN [Rất xấu]",
+    "IF [Hành Bản Mệnh khắc hành Chính diệu] THEN [Càng xấu hơn]",
+    "IF [Cung Mệnh Vô chính diệu] THEN [Coi Chính diệu xung chiếu như Chính diệu tọa thủ]",
+    "IF [Cung Mệnh Vô chính diệu tại Tứ Mộ] THEN [Cùng khổ và giảm thọ]",
+    "IF [Cung Mệnh Vô chính diệu tại Tứ Mộ + gặp Tuần/Triệt án ngữ hoặc nhiều sao sáng hội hợp] THEN [Đỡ lo ngại, suốt đời no cơm ấm áo]",
+    "IF [Cung Mệnh Vô chính diệu tại Tý/Ngọ + gặp nhiều sao mờ ám xấu xa] THEN [Cùng khổ hoặc chết non]",
+    "IF [Cung Mệnh Vô chính diệu tại Tý/Ngọ + có Hóa Lộc tọa thủ] THEN [Giàu nhưng giảm thọ]",
+    "IF [Cung Mệnh Vô chính diệu tại Tý/Ngọ + không có Hóa Lộc tọa thủ] THEN [Nghèo mà sống lâu]",
+    "IF [Cung Mệnh có Tuần, Cung Thân có Triệt (hoặc ngược lại) + có Cơ Nguyệt Đồng Lương sáng sủa] THEN [Suốt đời xứng ý toại lòng, về già danh giá]",
+    "IF [Cung Mệnh có Triệt, Cung Thân có Tuần + Vô chính diệu] THEN [Xứng ý toại lòng, thọ, về già sung sướng]",
+    "IF [Mệnh có Tử Vi/Thiên Phủ + Tả Hữu hội hợp] THEN [Hưởng phú quý trọn đời]",
+    "IF [Mệnh có Tử Vi/Thiên Phủ + Kình Dương đồng cung] THEN [Buôn bán lớn, rất giàu]",
+    "IF [Mệnh có Tử Vi + Phủ, Vũ, Tướng, Tả, Hữu, Long, Phượng, Khoa, Quyền, Lộc, Ấn (Quần thần khánh hội)] THEN [Phú quý tột độ, uy danh lừng lẫy, tăng thọ]",
+    "IF [Mệnh có Quần thần khánh hội + gặp Kình, Kiếp] THEN [Thời loạn không thể tạo đại sự]",
+    "IF [Mệnh tại Tỵ/Hợi có Tử Vi, Thất Sát, Hóa Quyền đồng cung] THEN [Quý hiển, uy danh lừng lẫy]",
+    "IF [Mệnh có Tử Vi/Vũ Khúc miếu/vượng/đắc địa] THEN [Có nhiều tài năng]",
+    "IF [Mệnh có Tử Vi/Vũ Khúc/Phá Quân + Kình, Đà] THEN [Không thích công danh, chỉ thích buôn bán, khá giả]",
+    "IF [Mệnh có Tử Vi/Vũ Khúc + nhiều Sát tinh] THEN [Làm thầy tu hoặc quan nhỏ, thích xưng anh hùng]",
+    "IF [Mệnh tại Tứ Mộ có Tử Vi/Phá Quân] THEN [Gian quyệt, bất trung, bất hiếu]",
+    "IF [Mệnh tại Thìn/Tuất/Sửu/Mùi có Tử Vi/Phá Quân + Cát tinh hội hợp] THEN [Phú quý tột bậc, uy quyền hiển hách]",
+    "IF [Mệnh tại Sửu có Tử Vi, Phá Quân đồng cung + Không có Tả Hữu/Cát tinh] THEN [Gian tham độc ác, quan nhỏ tham nhũng, dốt nát]",
+    "IF [Mệnh tại Mão/Dậu có Tử Vi + Kiếp, Không] THEN [Tu hành, muốn xuất thế]",
+    "IF [Mệnh có Tử Vi + Kiếp, Không, Hồng, Đào] THEN [Giảm thọ]",
+    "IF [Mệnh có Tử Vi + Xương, Khúc] THEN [Hưởng giàu sang]",
+    "IF [Mệnh có Tử Vi + Khoa, Quyền, Lộc] THEN [Sáng sủa tốt đẹp]",
+    "IF [Mệnh có Tử Vi + Kình, Đà, Không, Kiếp] THEN [Mờ ám xấu xa, như hoa bị bão dập]",
+    "IF [Mệnh tại Tý/Ngọ có Tử Vi + Khoa, Quyền, Lộc chiếu] THEN [Phú quý song toàn]",
+    "IF [Mệnh có Tử Vi + Quyền, Lộc + Kình, Đà] THEN [Giàu sang nhưng vô đạo, bất chính]",
+    "IF [Mệnh có Tử Vi, Lộc Tồn đồng cung + Phụ, Bật chiếu] THEN [Quý không thể nói hết]",
+    "IF [Mệnh tại Mão có Vũ Khúc, Thất Sát (hoặc Phá, Liêm) đồng cung] THEN [Đề phòng tai nạn điện, lửa, sét, thần kinh]",
+    "IF [Mệnh có Vũ Khúc hãm địa + Kình, Đà, Quả Tú] THEN [Vì tiền mà nguy khốn]",
+    "IF [Mệnh có Vũ Khúc miếu/vượng/đắc + Văn Khúc đồng cung] THEN [Thông minh, đa tài, học rộng]",
+    "IF [Mệnh có Vũ Khúc miếu/vượng + Khôi/Việt] THEN [Làm quan tài chính]",
+    "IF [Mệnh có Vũ Khúc miếu/đắc + Lộc, Mã hội hợp] THEN [Phát tài ở xa quê hương]",
+    "IF [Mệnh tại Dần/Thân có Vũ Khúc + Lộc, Quyền] THEN [Cực kỳ giàu có]",
+    "IF [Mệnh có Vũ Khúc hãm địa + Kiếp Sát + Kình Dương chiếu] THEN [Giết người, bất hiếu]",
+    "IF [Mệnh tại Tứ Sinh/Tứ Mộ có Vũ Khúc + Phá Quân, Kỵ, Sát tinh] THEN [Khéo tay, làm thợ, chuyên kỹ nghệ/thủ công]",
+    "IF [Mệnh tại Sửu có Thái Dương (Mão), Thái Âm (Hợi) hợp chiếu] THEN [Kinh bang tế thế, giàu sang, phò tá nguyên thủ]",
+    "IF [Mệnh có Thái Dương, Thái Âm sáng sủa hợp chiếu] THEN [Quý hiển, nhẹ bước thang mây]",
+    "IF [Mệnh vô chính diệu có Nhật, Nguyệt sáng chiếu] THEN [Thông minh, học 1 biết 10]",
+    "IF [Mệnh vô chính diệu có Nhật, Nguyệt sáng chiếu + Tuần/Triệt án ngữ] THEN [Hoàn mỹ]",
+    "IF [Mệnh tại Sửu có Thái Dương (Tỵ), Thái Âm (Dậu) chiếu] THEN [Rất quý hiển]",
+    "IF [Mệnh tại Mùi có Thái Dương (Mão), Thái Âm (Hợi) chiếu] THEN [Thi đỗ cao]",
+    "IF [Mệnh tại Sửu có Nhật, Nguyệt đồng cung (Mùi) chiếu] THEN [Tài giỏi, quyền cao chức trọng]",
+    "IF [Mệnh/Thân tại Sửu/Mùi có Nhật, Nguyệt đồng cung + Không có cát tinh] THEN [Mờ ám, no cơm ấm áo nhưng không quý hiển]",
+    "IF [Mệnh tại Tuất có Nhật + Nguyệt (Thìn) chiếu (hoặc ngược lại)] THEN [Rất mờ ám xấu xa]",
+    "IF [Mệnh tại Tuất có Nhật + Nguyệt (Thìn) chiếu + Tuần/Triệt hoặc Thiên Không] THEN [Trở nên sáng sủa, giàu sang, sống lâu]",
+    "IF [Mệnh tại Thìn có Nhật + Nguyệt (Tuất) chiếu] THEN [Rực rỡ tốt đẹp]",
+    "IF [Mệnh tại Thìn có Nhật + Nguyệt (Tuất) chiếu + Xương, Tuế, Lộc, Quyền, Phụ, Cáo, Tả, Hữu] THEN [Nhất cử thành danh, chúng nhân tôn phục]",
+    "IF [Mệnh tại Tỵ có Nhật + Lộc, Mã, Sinh, Phụ, Bật] THEN [Đại phú thời bình]",
+    "IF [Mệnh tại Tỵ có Nhật + Tướng, Ấn, Binh, Hình + Không bị Tuần/Triệt] THEN [Đại thành công thời loạn]",
+    "IF [Mệnh có Thiên Cơ hãm địa + Cự Môn đồng cung] THEN [Quỷ quyệt, xảo trá]",
+    "IF [Mệnh có Thiên Cơ hãm địa + Sát tinh đồng cung] THEN [Trộm cướp bất lương]",
+    "IF [Mệnh tại Thìn/Tuất có Cơ, Lương đồng cung] THEN [Nhân từ, phúc thọ song toàn, giỏi đàm binh]",
+    "IF [Mệnh tại Thìn/Tuất có Cơ, Lương đồng cung + Tuần/Triệt/Sát tinh] THEN [Tu hành mới yên thân]",
+    "IF [Mệnh tại Thìn/Tuất có Cơ, Lương đồng cung + Cát tinh hội hợp] THEN [Giàu sang trọn đời]",
+    "IF [Mệnh tại Tuất có Thiên Phủ + Tuổi Giáp/Kỷ + Không Sát tinh] THEN [Hoạnh phát danh tài tột bậc]",
+    "IF [Mệnh/Thân tại Dần có Phủ, Tử Vi + Khoa, Quyền, Lộc + Kình, Bật] THEN [Uy quyền quân sự/chính trị lớn lao]",
+    "IF [Mệnh/Thân tại Dần có Phủ, Tử Vi + Khoa, Quyền, Lộc + Không, Kiếp/Tuần, Triệt] THEN [Vô dụng, phá cách]",
+    "IF [Mệnh tại Ngọ/Tuất có Thiên Phủ + Thiên Tướng chiếu] THEN [Quan chức, giàu sang (Tuổi Giáp cực quý)]",
+    "IF [Mệnh có Thiên Phủ + Thiên Tướng chiếu + Thiên Lương nhị hợp] THEN [Quần thần khánh hội, phú quý uy danh]",
+    "IF [Mệnh có Thiên Phủ + Xương, Khúc, Tả, Hữu] THEN [Cao đệ ân vinh, đỗ cao]",
+    "IF [Mệnh có Tham Lang, Liêm Trinh đồng cung + Nam mệnh] THEN [Lang bạt, lãng đãng]",
+    "IF [Mệnh có Tham Lang, Liêm Trinh đồng cung + Nữ mệnh] THEN [Đa dâm]",
+    "IF [Mệnh tại Dần/Thân có Liêm Trinh + Văn Xương đồng cung] THEN [Vào tù]",
+    "IF [Mệnh có Tham Lang miếu/vượng + Hỏa/Linh đồng cung/chiếu] THEN [Đại phú quý, uy danh, võ tướng/quyền cao chức trọng]",
+    "IF [Mệnh có Cự Môn miếu/vượng/đắc + Hổ, Tuế, Phù] THEN [Biết luật pháp, làm quan tòa/thầy kiện]",
+    "IF [Mệnh tại Tý/Ngọ có Cự Môn vượng + Hóa Lộc hoặc Tuần/Triệt] THEN [Học rộng tài cao, phú quý (Thạch trung ẩn ngọc)]",
+    "IF [Mệnh tại Tý/Ngọ có Cự Môn vượng + Không Hóa Lộc/Tuần/Triệt (hoặc gặp Lộc Tồn)] THEN [Đa học đa năng nhưng không gặp thời]",
+    "IF [Mệnh tại Dần có Cự, Nhật đồng cung] THEN [Hưởng giàu sang trọn vẹn, danh tài gồm đủ]",
+    "IF [Mệnh tại Thân có Cự, Nhật đồng cung] THEN [Khá giả nhưng không toàn mỹ bằng cung Dần]",
+    "IF [Mệnh tại Thân có Cự, Nhật đồng cung tại Dần xung chiếu] THEN [Quý hiển trước, phú túc sau]",
+    "IF [Mệnh tại Dần có Cự, Nhật đồng cung tại Thân xung chiếu] THEN [Hưởng giàu sang, trì danh thực lộc]",
+    "IF [Mệnh tại Dần/Thân có Cự, Nhật đồng cung + Quyền, Phượng] THEN [Phú quý song toàn]",
+    "IF [Mệnh tại Dần/Thân có Cự, Nhật đồng cung + Lộc Tồn đồng cung] THEN [Suốt đời không xứng ý toại lòng]",
+    "IF [Nữ mệnh tuổi Ất/Tân tại Mão/Dậu có Cự, Cơ đồng cung + Không Tuần/Triệt] THEN [Đa tài thao lược, vượng phu ích tử]",
+    "IF [Mệnh tại Mão/Dậu có Cự, Cơ đồng cung + Lộc Tồn] THEN [Ngôn ngữ bất cẩn]",
+    "IF [Mệnh có Cự Môn + Lộc Tồn] THEN [Ngôn ngữ bất cẩn]",
+    "IF [Mệnh tại Thìn/Tuất có Cự Môn + Tuần/Triệt/La/Võng + Hóa Khoa] THEN [Tài du thuyết]",
+    "IF [Tuổi Tân có Mệnh tại Tứ Mộ có Cự Môn] THEN [Khá giả]",
+    "IF [Tuổi Tân có Mệnh tại Tứ Mộ có Cự Môn + Tả, Hữu] THEN [Cứu mệnh, giải tai họa, bệnh tật]",
+    "IF [Mệnh có Cự Môn + Tứ Sát (Kình, Đà, Hỏa, Linh)] THEN [Rất mờ ám xấu xa, tai họa, kiện tụng]",
+    "IF [Tuổi Tân/Đinh có Mệnh tại Dần/Thân có Phá Quân + Hỏa, Việt] THEN [Giỏi máy móc, chuyên kỹ nghệ]",
+    "IF [Mệnh tại Thìn/Tuất có Phá Quân] THEN [Gian ác, bất nhân]",
+    "IF [Mệnh tại Thìn/Tuất có Phá Quân + Hóa Khoa đồng cung hoặc Tuần án ngữ] THEN [Thẳng thắn, lương thiện]",
+    "IF [Tuổi Mậu/Quý có Mệnh tại Thìn/Tuất có Phá Quân + Hóa Khoa/Tuần] THEN [Hoạnh phát danh tài]",
+    "IF [Mệnh tại Tứ Mộ có Kình Dương, Hỏa Tinh đồng cung] THEN [Oai quyền xuất chúng]",
+    "IF [Mệnh tại Tứ Mộ có Kình, Hỏa + Tham, Vũ đồng cung] THEN [Tái thế anh hùng, uy trấn biên cương]",
+    "IF [Mệnh/Thân có Kình, Đà, Linh, Hỏa hội hợp] THEN [Gù lưng hoặc tật ở lưng]",
+    "IF [Mệnh/Thân có Kình, Đà, Linh, Hỏa hãm địa] THEN [Cùng khổ cô đơn, chết thê thảm]",
+    "IF [Mệnh có Hóa Khoa tọa thủ] THEN [Thanh tú, nhân hậu, từ thiện, thông minh]",
+    "IF [Mệnh có Hóa Khoa + Tử, Phủ, Xương, Khúc, Khôi, Việt] THEN [Thi đỗ cao, chức lớn, danh tiếng lừng lẫy]",
+    "IF [Mệnh có Hóa Khoa + Xương, Khúc, v.v. + nhiều Sát tinh] THEN [Bậc mô phạm văn tài xuất chúng]",
+    "IF [Mệnh có Hóa Kỵ tọa thủ] THEN [Mang tật chân tay/kém mắt, gặp nhiều tai họa]",
+    "IF [Mệnh có Hóa Quyền, Hóa Lộc trùng phùng] THEN [Tài quan song mỹ, phú quý song toàn]",
+    "IF [Mệnh có Quyền, Lộc trùng phùng + Cát tinh] THEN [Uy danh lừng lẫy, quyền áp chúng]",
+    "IF [Mệnh có Quyền, Lộc trùng phùng + Sát tinh/xấu xa] THEN [Chỉ có hư danh bề ngoài]",
+    "IF [Mệnh có Hóa Quyền, Thiên Khốc đồng cung] THEN [Minh danh uy thế lừng lẫy]",
+    "IF [Mệnh tại Tý/Ngọ có Quyền, Khốc đồng cung] THEN [Toàn mỹ, hưởng giàu sang quyền thế]",
+    "IF [Mệnh có Hóa Khoa, Hóa Lộc trùng phùng + Cát tinh] THEN [Xuất tướng nhập tướng, quan chức lớn]",
+    "IF [Thái Dương tọa Dần/Mão/Thìn/Tỵ/Ngọ + Thái Âm tọa Thân/Dậu/Tuất/Hợi/Tý + Sinh ban ngày] THEN [Cha mất trước mẹ]",
+    "IF [Thái Dương tọa Dần/Mão/Thìn/Tỵ/Ngọ + Thái Âm tọa Thân/Dậu/Tuất/Hợi/Tý + Sinh ban đêm] THEN [Mẹ mất trước cha]",
+    "IF [Thái Dương tọa Thân/Dậu/Tuất/Hợi/Tý + Thái Âm tọa Dần/Mão/Thìn/Tỵ/Ngọ + Sinh ban ngày] THEN [Mẹ mất trước cha]",
+    "IF [Thái Dương tọa Thân/Dậu/Tuất/Hợi/Tý + Thái Âm tọa Dần/Mão/Thìn/Tỵ/Ngọ + Sinh ban đêm] THEN [Cha mất trước mẹ]",
+    "IF [Nhật, Nguyệt đồng cung Sửu/Mùi + Không Tuần/Triệt + Sinh ban ngày] THEN [Mẹ mất trước cha]",
+    "IF [Nhật, Nguyệt đồng cung Sửu/Mùi + Không Tuần/Triệt + Sinh ban đêm] THEN [Cha mất trước mẹ]",
+    "IF [Nhật, Nguyệt đồng cung Sửu/Mùi + Có Tuần/Triệt + Sinh ban ngày] THEN [Cha mất trước mẹ]",
+    "IF [Nhật, Nguyệt đồng cung Sửu/Mùi + Có Tuần/Triệt + Sinh ban đêm] THEN [Mẹ mất trước cha]",
+    "IF [Cung Phụ Mẫu có Tử Vi đơn thủ tại Ngọ] THEN [Cha mẹ quý hiển, giàu có, sống lâu]",
+    "IF [Cung Phụ Mẫu có Tử Vi đơn thủ tại Tý] THEN [Cha mẹ khá giả]",
+    "IF [Cung Phụ Mẫu có Tử Vi, Phủ đồng cung] THEN [Cha mẹ giàu sang, để lại nhiều của cải]",
+    "IF [Cung Phụ Mẫu có Không, Kiếp] THEN [Hai thân vất vả, bất hòa, không hợp tính con]",
+    "IF [Cung Phụ Mẫu có Lộc Tồn] THEN [Hai thân có của nhưng con phá tán, không hợp tính]",
+    "IF [Cung Phụ Mẫu có Cô, Quả] THEN [Hai thân không hợp tính, con không ở gần lâu]",
+    "IF [Cung Phụ Mẫu có Cô, Quả + Sát tinh] THEN [Sớm khắc một thân, làm con nuôi họ khác]",
+    "IF [Cung Phụ Mẫu có Đào, Hồng] THEN [Cha mẹ tài hoa phóng đãng]",
+    "IF [Cung Phụ Mẫu có Đào, Hồng + Vượng, Thai] THEN [Cha có vợ lẽ/ngoại tình hoặc mẹ bất chính]",
+    "IF [Cung Phụ Mẫu có Tuần, Triệt án ngữ] THEN [Sớm khắc một thân, sớm xa cách hoặc làm con nuôi]",
+    "IF [Cung Phúc Đức có 1 Chính diệu] THEN [Âm phần chịu ảnh hưởng ngôi mộ tượng trưng bởi chính diệu đó]",
+    "IF [Cung Phúc Đức có 2 Chính diệu cùng hành] THEN [Chịu ảnh hưởng cả 2 ngôi mộ gần nhau]",
+    "IF [Cung Phúc Đức có 2 Chính diệu khác hành + 1 Chính diệu sinh Bản mệnh] THEN [Chịu ảnh hưởng ngôi mộ của Chính diệu sinh Bản mệnh]",
+    "IF [Cung Phúc Đức có 2 Chính diệu khác hành + không Chính diệu nào sinh Bản mệnh + Bản mệnh sinh 1 Chính diệu] THEN [Chịu ảnh hưởng ngôi mộ của Chính diệu được Bản mệnh sinh]",
+    "IF [Cung Phúc Đức có 2 Chính diệu khác hành + không sinh qua lại + Bản mệnh hòa 1 Chính diệu] THEN [Chịu ảnh hưởng ngôi mộ của Chính diệu hòa Bản mệnh]",
+    "IF [Cung Phúc Đức Vô chính diệu] THEN [Lấy Chính diệu xung chiếu làm Chính diệu tọa thủ để xét mộ]",
+    "IF [Cung Tử Tức có Nam Đẩu tinh] THEN [Con trai nhiều hơn con gái]",
+    "IF [Cung Tử Tức có Bắc Đẩu tinh] THEN [Con gái nhiều hơn con trai]",
+    "IF [Cung Tử Tức có Nam Đẩu và Bắc Đẩu đồng cung + Cung Dương] THEN [Con trai nhiều hơn con gái]",
+    "IF [Cung Tử Tức có Nam Đẩu và Bắc Đẩu đồng cung + Cung Âm] THEN [Con gái nhiều hơn con trai]",
+    "IF [Cung Tử Tức là Dương cung] THEN [Sinh con trai đầu lòng dễ nuôi]",
+    "IF [Cung Tử Tức là Âm cung] THEN [Sinh con gái đầu lòng dễ nuôi]",
+    "IF [Sinh ban ngày + Cung Tử Tức có Thái Dương mờ ám tọa thủ/Thái Âm chiếu] THEN [Con khó nuôi, hiếm muộn]",
+    "IF [Sinh ban đêm + Cung Tử Tức có Thái Âm mờ ám tọa thủ/Thái Dương chiếu] THEN [Con khó nuôi, hiếm muộn]",
+    "IF [Cung Tử Tức có Thiên Tướng, Tuyệt / Thái Âm, Thiên Phúc / Cự Môn, Thiên Cơ đồng cung + Cung Dương] THEN [Có con dị bào cùng cha khác mẹ]",
+    "IF [Cung Tử Tức có Thiên Tướng, Tuyệt / Thái Âm, Thiên Phúc / Cự Môn, Thiên Cơ đồng cung + Cung Âm] THEN [Có con dị bào cùng mẹ khác cha]",
+    "IF [Cung Tử Tức có Sát, Hình, Hổ đồng cung] THEN [Tuyệt tự]",
+    "IF [Cung Tử Tức có Sát, Thai] THEN [Hay bị sảy thai]",
+    "IF [Cung Tử Tức có Kình, Đà, Không, Kiếp] THEN [Hiếm con, sinh con ngẩn ngơ]",
+    "IF [Cung Tử Tức có Tả, Hữu, Thai] THEN [Con dị bào khá giả, hiếu thảo]",
+    "IF [Cung Tử Tức có Khốc, Hư, Dưỡng] THEN [Sinh nhiều nuôi ít]",
+    "IF [Cung Nô Bộc có Sát, Phá, Liêm, Tham + Cung Mệnh có Tử, Phủ, Cự, Nhật, Cơ, Nguyệt, Đồng, Lương sáng sủa] THEN [Tôi tớ lấn quyền, phản trắc]",
+    "IF [Cung Nô Bộc có Xương, Khúc, Khôi, Việt sáng sủa] THEN [Bạn bè danh chức, nên kết giao]",
+    "IF [Cung Nô Bộc có Xương, Khúc, Khôi, Việt mờ ám xấu xa] THEN [Nên lánh xa người danh giá học thức vì hay làm hại]",
+    "IF [Cung Nô Bộc có Tả Phụ, Hữu Bật sáng sủa] THEN [Người giúp việc đắc lực, bạn bè khá giả]",
+    "IF [Cung Nô Bộc có Tả Phụ, Hữu Bật mờ ám] THEN [Người giúp việc điên đảo, bạn bè lừa đảo]",
+    "IF [Cung nhập hạn sinh Chính diệu hạn + Chính diệu hạn sinh Bản mệnh] THEN [Thuận lý, rất tốt]",
+    "IF [Hành cung hạn khắc hành Chính diệu hạn / Chính diệu hạn khắc Bản mệnh] THEN [Nghịch lý, rất xấu]",
+    "IF [Bản Mệnh Kim + Tiểu hạn đến cung Tý] THEN [Hao tổn Bản Mệnh, mắc tai ương]",
+    "IF [Bản Mệnh Mộc + Tiểu hạn đến cung Ngọ] THEN [Rực rỡ nhưng không bền, khó tránh họa]",
+    "IF [Bản Mệnh Thủy + Tiểu hạn đến cung Dần] THEN [Bế tắc, trắc trở, không toại nguyện]",
+    "IF [Bản Mệnh Hỏa + Tiểu hạn đến cung Dậu] THEN [Nguy khốn, tai ương khủng khiếp]",
+    "IF [Bản Mệnh Thổ + Tiểu hạn đến cung Mão] THEN [Suy nhược, hoại thương, bệnh thần kinh/khí huyết]",
+    "IF [Đại hạn và Tiểu hạn cùng gặp Không Vong + Tử Vi (Đế ngộ Không Vong)] THEN [Mạng vong (ngoại trừ tại cung Ngọ)]",
+    "IF [Lưỡng hạn trùng phùng tại Tý + có Thương, Sứ, Kình, Đà, Tuế] THEN [Nguy đến tính mạng]",
+    "IF [Hạn gặp Thương (tại Tý/Thìn/Mão/Ngọ/Mùi) hoặc Sứ (tại Dần/Thân/Tỵ/Hợi) + Thái Tuế] THEN [Tai họa ghê gớm, tính mạng lâm nguy nếu không có sao giải]",
+    "IF [Tiểu hạn có Lộc, Mã, Sát hội hợp + Tam Không xâm phạm] THEN [Lộc Mã bị khốn, hạn xấu, thất bại]",
+    "IF [Đại/Tiểu hạn gặp Tứ Phái Hồng Đào, Quyền Lộc + Tam Không, Địa Kiếp, Kiếp Sát (Quân Vương ngụy giả)] THEN [Đổi việc nhưng chẳng ra gì]",
+    "IF [Mệnh/Quan có Tử Vi + Tả, Hữu/Thiếu Dương, Thiếu Âm giáp cung] THEN [Quý cục (Kim dư phù giá)]",
+    "IF [Mệnh/Quan có Tử Vi sáng tọa thủ + Thiên Phủ chiếu (hoặc ngược lại)] THEN [Quý cục (Tử Phủ triều viên)]",
+    "IF [Mệnh/Quan có Tử Vi sáng tọa thủ + Phụ, Bật hợp chiếu] THEN [Quý cục (Phụ Bật củng chủ)]",
+    "IF [Mệnh/Quan có Phủ sáng tọa thủ + Tướng chiếu (hoặc ngược lại)] THEN [Quý cục (Phủ Tướng triều viên)]",
+    "IF [Mệnh/Quan tại Mão/Dậu có Cự, Cơ đồng cung] THEN [Quý cục (Cự Cơ Mão Dậu)]",
+    "IF [Mệnh/Quan tại Dần/Thân có Thất Sát tọa thủ + Tử, Phủ chiếu] THEN [Quý cục (Thất Sát triều đẩu)]",
+    "IF [Mệnh vô chính diệu + Đắc Tam Không + Nhật Nguyệt chiếu] THEN [Thượng cách, phát công khanh]",
+    "IF [Mệnh/Thân có Sát, Phá, Liêm, Vũ hãm + Kình, Đà, Không, Kiếp, Song Hao, Hóa Kỵ] THEN [Bần tiện cách]",
+    "IF [Mệnh/Thân/Quan có Vũ, Tướng, Sát, Phá, Liêm, Tham đắc địa + Khôi, Việt, Tả, Hữu, Khoa, Quyền, Lộc, Binh, Hình, Tướng, Ấn] THEN [Võ chức cách, uy quyền hiển hách]",
+    "IF [Mệnh có Cự, Nhật hoặc Tử, Phủ đắc địa] THEN [Không thể buôn bán]",
+    "IF [Mệnh/Thân có Tử, Phủ đắc địa + Kình Dương đồng cung] THEN [Thương gia giỏi]",
+    "IF [Nữ mệnh có Đào Hoa + Thiên Mã] THEN [Đa dâm, theo trai]",
+    "IF [Nữ mệnh có Mộc Dục, Hoa Cái thủ Mệnh] THEN [Hoang dâm]",
+    "IF [Nữ mệnh có Thái Âm hãm địa/Cô Thần/Quả Tú] THEN [Chủ khắc phu]",
+    "IF [Nữ mệnh có Hồng Loan tọa Tứ Mộ] THEN [Số khóc chồng (sát phu)]",
+    "IF [Nữ mệnh có Đào Hoa ngộ Thiên Mã] THEN [Có đôi (ngoại tình)]",
+    "IF [Mệnh nam/nữ có Tham, Liêm tại Tỵ/Hợi] THEN [Nam lãng đãng phiêu lưu, Nữ đa dâm]",
+    "IF [Mệnh có Vũ, Tham] THEN [Người nhỏ, tham lam]",
+    "IF [Mệnh có Cự, Cơ tại Dậu] THEN [Thâm môi]",
+    "IF [Mệnh có Khôi, Việt] THEN [Khôi ngô (Khôi), Da đen (Việt)]",
+    "IF [Mệnh có Khốc, Hư] THEN [Quanh mắt tròn thâm]",
+    "IF [Mệnh có Tham, Đào] THEN [Tóc tốt xanh râm]",
+    "IF [Mệnh có Tứ Linh (Cái, Hổ, Phượng, Long)] THEN [Công danh quyền thế]",
+    "IF [Mệnh có Tả, Hữu đắc địa đồng cung] THEN [Thanh nhàn, hiển vinh]",
+    "IF [Mệnh có Thiên Quan, Thiên Phúc] THEN [Tu hành / Có lòng thiện]",
+    "IF [Mệnh có Cô Thần, Quả Tú] THEN [Cô độc, không màng giao du]",
+    "IF [Người lớn quá 60 tuổi hạn gặp Hồng, Đào, Hỷ, Không, Kỵ] THEN [Tính mạng lâm nguy]"
+  ],
+  "patterns": [
+    "Tử Phủ Vũ Tướng",
+    "Sát Phá Liêm Tham",
+    "Cơ Nguyệt Đồng Lương",
+    "Cự Nhật",
+    "Vô Chính Diệu",
+    "Phi thường cách",
+    "Thượng cách",
+    "Trung cách",
+    "Hạ cách",
+    "Tài Ấm Giáp Ấn",
+    "Nhật Nguyệt Chiếu Bích",
+    "Lộc Mã Giao Trì",
+    "Tử Phủ Triều Viên",
+    "Quần Thần Khánh Hội",
+    "Thất Sát Triều Đẩu",
+    "Cự Cơ Mão Dậu",
+    "Nguyệt Lãng Thiên Môn",
+    "Sinh Bất Phùng Thời",
+    "Lộc Phùng Lưỡng Sát",
+    "Mã Lạc Không Vong",
+    "Không Kiếp Sát Hội",
+    "Thạch trung ẩn ngọc",
+    "Tham Hỏa tương phùng",
+    "Nhật xuất phù tang",
+    "Mã đầu đới kiếm",
+    "Bạo phát bạo tàn",
+    "Nửa chừng gãy cánh",
+    "Hổ ngậm kiếm",
+    "Hổ đội hòm sắt",
+    "Chúng thủy triều đông",
+    "Tiền bần hậu phú",
+    "Quân Vương ngụy giả",
+    "Kim dư phù giá",
+    "Phụ Bật củng chủ",
+    "Phủ Tướng triều viên",
+    "Thượng cách, phát công khanh",
+    "Bần tiện cách",
+    "Võ chức cách"
+  ]
+}
