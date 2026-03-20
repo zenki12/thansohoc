@@ -18,6 +18,8 @@ export default function TarotPage() {
   const [drawnCards, setDrawnCards] = useState<(TarotCard & { isReversed: boolean })[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
   const [loadingText, setLoadingText] = useState("");
+  const [shuffledDeck, setShuffledDeck] = useState<number[]>([]);
+  const [selectedDeckIndexes, setSelectedDeckIndexes] = useState<number[]>([]);
   const [result, setResult] = useState<any>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
@@ -31,25 +33,38 @@ export default function TarotPage() {
   const startDrawing = (selectedTopic: string, selectedSpread: number) => {
     setTopic(selectedTopic);
     setSpread(selectedSpread);
-    setDrawnCards([]);
-    setFlippedIndexes([]);
-    setStep(1); // Go to Draw screen
+    setQuestion("");
+    setLoadingText("");
+
+    // Create 78-card deck and Shuffle
+    const newDeck = Array.from({ length: 78 }, (_, i) => i);
+    for (let i = newDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
+    }
+    setShuffledDeck(newDeck);
+    setSelectedDeckIndexes([]);
+    setDrawnCards([]); // Clear previous draws
+    
+    setStep(1); // Start drawing
   };
 
-  useEffect(() => {
-    if (step === 1 && drawnCards.length === 0) {
-      const shuffled = shuffle([...tarotDeck]).slice(0, spread);
-      const cardsObj = shuffled.map(c => ({
-         ...c,
-         isReversed: Math.random() > 0.6
-      }));
-      setDrawnCards(cardsObj);
-    }
-  }, [step, spread, drawnCards]);
-
-  const handleFlip = (idx: number) => {
-    if (!flippedIndexes.includes(idx)) {
-      setFlippedIndexes([...flippedIndexes, idx]);
+  const handlePickCard = (deckIndex: number) => {
+    if (selectedDeckIndexes.length < spread && !selectedDeckIndexes.includes(deckIndex)) {
+      const newSelection = [...selectedDeckIndexes, deckIndex];
+      setSelectedDeckIndexes(newSelection);
+      
+      if (newSelection.length === spread) {
+        // Finalize drawing: map to actual tarot data with random reversed logic
+        const finalCards = newSelection.map(idx => {
+          const actualCardIndex = shuffledDeck[idx];
+          return {
+            ...tarotDeck[actualCardIndex],
+            isReversed: Math.random() > 0.5
+          };
+        });
+        setDrawnCards(finalCards);
+      }
     }
   };
 
@@ -196,65 +211,133 @@ export default function TarotPage() {
                   placeholder="Ghi rõ điều bạn đang trăn trở... (Ví dụ: Tôi có nên đầu tư dự án này không?)"
                   value={question} onChange={(e) => setQuestion(e.target.value)}
                 />
-                <button onClick={() => startDrawing("Phân tích chuyên sâu", 5)} className="w-full py-4 bg-gray-900 text-white font-black rounded-2xl shadow-xl hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => startDrawing("Phân tích chuyên sâu", 5)} className="w-full py-4 bg-gray-900 text-white font-black rounded-2xl shadow-xl ">
                   <Send className="w-5 h-5" /> Gửi Câu Hỏi Lên Vũ Trụ
                 </button>
             </div>
           </div>
         )}
 
-        {/* STEP 1: DRAW CARDS */}
+        {/* STEP 1: DRAW CARDS (FANNED DECK) */}
         {step === 1 && (
-          <div className="w-full max-w-5xl mx-auto text-center space-y-12 animate-in fade-in duration-700">
+          <div className="w-full mx-auto text-center space-y-12 animate-in fade-in duration-700">
              <button onClick={()=>setStep(0)} className="text-gray-400 hover:text-orange-500 font-bold flex items-center gap-2 justify-center mx-auto mb-4 transition-colors"><ArrowLeft className="w-4 h-4"/> Rút lại từ đầu</button>
              
-             <div className="space-y-4">
+             <div className="space-y-4 max-w-4xl mx-auto px-4">
                <h1 className="text-3xl md:text-5xl font-black text-gray-800">
-                 Năng lượng của bạn đang hội tụ
+                 Trực giác vẫy gọi
                </h1>
-               <p className="text-gray-500 font-medium text-lg px-4">
-                 Hãy dùng trực giác, <span className="text-orange-500 font-bold">click vào lá bài</span> thu hút bạn nhất ({flippedIndexes.length}/{spread})
+               <p className="text-gray-500 font-medium text-lg">
+                 Hãy nhắm mắt, nhẩm trong đầu câu hỏi và <span className="text-orange-500 font-bold">chọn {spread} lá bài</span> thu hút bạn nhất ({selectedDeckIndexes.length}/{spread})
                </p>
             </div>
             
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-              {drawnCards.map((card, idx) => {
-                const isFlipped = flippedIndexes.includes(idx);
-                return (
-                  <div key={idx} onClick={() => handleFlip(idx)} className="relative w-40 h-[260px] md:w-56 md:h-[350px] cursor-pointer group" style={{ perspective: '1200px' }}>
-                    <div className="w-full h-full relative shadow-xl rounded-2xl hover:shadow-2xl hover:-translate-y-2" style={{ transformStyle: 'preserve-3d', transition: 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}>
-                      
-                      {/* Back of Card - Light theme mystical back */}
-                      <div className="absolute inset-0 w-full h-full rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-900 to-purple-900 overflow-hidden flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden' }}>
-                         <div className="absolute inset-2 border border-indigo-300/30 rounded-xl"></div>
-                         <Sparkles className="w-8 h-8 text-indigo-300/80 mb-6" />
-                         <span className="text-indigo-100 font-black tracking-widest text-sm">BẤM ĐỂ RÚT</span>
-                         <span className="text-indigo-300/70 font-bold tracking-[0.2em] text-[8px] mt-2 uppercase">Giữ nhịp thở</span>
-                      </div>
-                      
-                      {/* Front of Card */}
-                      <div className="absolute inset-0 w-full h-full rounded-2xl bg-white overflow-hidden flex flex-col shadow-inner border border-gray-100" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-                        <div className={`flex-1 relative overflow-hidden bg-gray-50 p-2 md:p-3 ${card.isReversed ? 'rotate-180' : ''}`}>
-                           <div className="w-full h-full relative rounded-xl overflow-hidden border border-gray-200">
-                             <img src={card.image} alt={card.name_vn} className="absolute inset-0 w-full h-full object-cover" />
+            {/* TRAY FOR SELECTED CARDS (SLOTS) */}
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 min-h-[300px] md:min-h-[360px] px-4 max-w-5xl mx-auto">
+               {Array.from({ length: spread }).map((_, idx) => {
+                  const pickedDeckIndex = selectedDeckIndexes[idx];
+                  const hasPicked = pickedDeckIndex !== undefined;
+                  const isAllPicked = selectedDeckIndexes.length === spread;
+                  const cardData = isAllPicked ? drawnCards[idx] : null;
+
+                  return (
+                     <div key={`slot-${idx}`} className="relative w-32 h-[220px] md:w-48 md:h-[330px] perspective-[1200px]">
+                        {hasPicked ? (
+                           <div className="w-full h-full relative shadow-xl rounded-2xl transition-all duration-1000 ease-in-out" 
+                                style={{ transformStyle: 'preserve-3d', transform: isAllPicked ? 'rotateY(180deg)' : 'rotateY(0deg)' }}>
+                              
+                              {/* Slot Card Back (Waiting) */}
+                              <div className="absolute inset-0 w-full h-full rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-900 to-purple-900 overflow-hidden flex flex-col items-center justify-center animate-in zoom-in-50 duration-500" style={{ backfaceVisibility: 'hidden' }}>
+                                 <div className="absolute inset-2 border border-indigo-300/30 rounded-xl"></div>
+                                 <Sparkles className="w-8 h-8 text-indigo-300/80 mb-4" />
+                                 <span className="text-indigo-100 font-black tracking-widest text-[10px] uppercase">Đã Chọn</span>
+                              </div>
+
+                              {/* Slot Card Front (Revealed) */}
+                              {isAllPicked && cardData && (
+                                <div className="absolute inset-0 w-full h-full rounded-2xl bg-white overflow-hidden flex flex-col shadow-inner border border-gray-100" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                                  <div className={`flex-1 relative overflow-hidden bg-gray-50 p-2 md:p-3 ${cardData.isReversed ? 'rotate-180' : ''}`}>
+                                    <div className="w-full h-full relative rounded-xl overflow-hidden border border-gray-200">
+                                      <img src={cardData.image} alt={cardData.name_vn} className="absolute inset-0 w-full h-full object-cover" />
+                                    </div>
+                                  </div>
+                                  <div className="h-16 bg-white border-t border-gray-100 flex flex-col items-center justify-center shrink-0 w-full px-2">
+                                    <p className="font-bold text-gray-800 text-sm center line-clamp-1 truncate w-full">{cardData.name_vn}</p>
+                                    <p className={`text-[10px] font-black uppercase tracking-widest mt-0.5 ${cardData.isReversed ? 'text-rose-500' : 'text-emerald-600'}`}>
+                                       {cardData.isReversed ? 'Ngược (R)' : 'Xuôi (U)'}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
                            </div>
-                        </div>
-                        <div className="h-16 bg-white border-t border-gray-100 flex flex-col items-center justify-center shrink-0 w-full px-2">
-                          <p className="font-bold text-gray-800 text-sm center line-clamp-1 truncate w-full">{card.name_vn}</p>
-                          <p className="text-[10px] text-orange-500 font-black uppercase tracking-widest mt-0.5">{card.isReversed ? 'Ngược (Reversed)' : 'Xuôi (Upright)'}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                        ) : (
+                           // Empty Slot
+                           <div className="w-full h-full rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50/50 flex flex-col items-center justify-center text-gray-300">
+                              <span className="font-medium text-sm uppercase tracking-widest mb-2">Lá thứ {idx + 1}</span>
+                              <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center animate-pulse">
+                                 <Sparkles className="w-5 h-5 text-gray-300" />
+                              </div>
+                           </div>
+                        )}
+                     </div>
+                  );
+               })}
             </div>
 
-            <div className={`transition-all duration-700 pt-8 ${flippedIndexes.length === spread ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none'}`}>
-               <button onClick={submitToAI} className="px-12 py-5 bg-gradient-to-r from-orange-500 to-rose-500 text-white font-black rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.4)] hover:shadow-[0_20px_40px_rgba(249,115,22,0.6)] hover:-translate-y-1 transition-all text-xl flex items-center justify-center gap-3 mx-auto">
-                 <Sparkles className="w-6 h-6 animate-pulse" /> Luận Giải Bối Cảnh Này
-               </button>
-            </div>
+            {/* BUTTON: READ SPREAD */}
+            {selectedDeckIndexes.length === spread && (
+              <div className="pt-8 pb-12 animate-in slide-in-from-bottom duration-500 max-w-lg mx-auto px-4">
+                 <button onClick={submitToAI} className="w-full py-5 bg-gradient-to-r from-orange-500 to-rose-500 text-white font-black rounded-2xl shadow-2xl hover:shadow-orange-500/30 transition-all text-xl flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                   <Sparkles className="w-6 h-6 animate-pulse" /> Luận Giải Tương Lai
+                 </button>
+              </div>
+            )}
+
+            {/* FANNED DECK AREA (78 CARDS) */}
+            {selectedDeckIndexes.length < spread && (
+               <div className="w-full relative mt-16 pb-24 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-50/80 to-transparent pointer-events-none z-10" />
+                  
+                  {/* Horizontally scrollable fanned section */}
+                  <div className="flex flex-nowrap overflow-x-auto pb-12 pt-16 px-[10vw] md:px-[25vw] scroll-smooth hide-scrollbar snap-x">
+                     <div className="flex items-center min-w-max pb-8 px-8">
+                        {shuffledDeck.map((_, idx) => {
+                           const isPicked = selectedDeckIndexes.includes(idx);
+                           
+                           // If picked, it becomes an invisible space preserver
+                           if (isPicked) {
+                              return <div key={idx} className={`w-14 h-24 md:w-20 md:h-32 shrink-0 ${idx > 0 ? '-ml-8 md:-ml-12' : ''}`} />;
+                           }
+                           
+                           return (
+                              <div 
+                                 key={idx} 
+                                 onClick={() => handlePickCard(idx)}
+                                 className={`
+                                    w-14 h-24 md:w-20 md:h-32 shrink-0 cursor-pointer 
+                                    rounded-lg md:rounded-xl overflow-hidden border border-indigo-300 shadow-md
+                                    bg-gradient-to-br from-indigo-800 to-purple-900
+                                    transition-all duration-300 ease-out origin-bottom
+                                    hover:-translate-y-8 hover:!scale-125 hover:z-50 hover:shadow-2xl hover:border-orange-300
+                                    ${idx > 0 ? '-ml-8 md:-ml-12 hover:ml-4' : ''}
+                                    group relative
+                                 `}
+                                 style={{ zIndex: 10 + idx }}
+                              >
+                                 <div className="absolute inset-1 border border-indigo-400/30 rounded-md md:rounded-lg"></div>
+                                 {/* Optional pattern to make it look like a deck back */}
+                                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-400 via-transparent to-transparent"></div>
+                              </div>
+                           );
+                        })}
+                     </div>
+                  </div>
+                  <p className="text-gray-400 text-sm font-medium uppercase tracking-widest absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse flex items-center gap-2">
+                    <ArrowLeft className="w-4 h-4" /> Vuốt ngang để chọn bài <ArrowRight className="w-4 h-4" />
+                  </p>
+               </div>
+            )}
+
           </div>
         )}
 
