@@ -42,7 +42,25 @@ export async function POST(req: Request) {
       // Do đó, nếu rớt đài xuống Groq, ta phải cắt bỏ hoàn toàn file tuviKnowledge.json khổng lồ ra khỏi prompt để cứu vãn.
       let groqPrompt = prompt;
       if (prompt.length > 5000) {
-         groqPrompt = `Tưởng tượng bạn là một chuyên gia tử vi lão làng. Dựa vào thông tin khách hàng: Tên ${name}, sinh ngày ${dob} lúc ${time}, giới tính ${gender}. Hãy tự mình luận giải thật chi tiết 12 cung tử vi, không cần đọc sách bí kíp nữa vì hệ thống đang quá tải. Hãy viết khoảng 2000 từ phân tích các cung: Bản Mệnh, Phu Thê, Tài Bạch, Quan Lộc, Phụ Mẫu, vv.`;
+         const genderStr = gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng';
+         groqPrompt = `Tưởng tượng bạn là một chuyên gia tử vi lão làng. Dựa vào thông tin khách hàng: Tên ${name}, sinh ngày dương: ${dob}, giờ sinh: ${time}, giới tính: ${genderStr}. 
+         
+Hãy tự mình luận giải thật chi tiết 12 cung tử vi, không cần dựa vào sách bí kíp. Hãy viết một bài bình luận siêu sâu sắc, khoảng 2500 từ theo đúng định dạng Markdown, BẮT BUỘC bao gồm 15 phần sau:
+## 1. Bản Mệnh
+## 2. Cung Phu Thê
+## 3. Tài Sản và Nghề Nghiệp (Cung Tài Bạch)
+## 4. Phụ Mẫu
+## 5. Cung Thiên Di
+## 6. Cung Tật Ách
+## 7. Cung Nô Bộc
+## 8. Cung Quan Lộc
+## 9. Cung Điền Trạch
+## 10. Cung Tử Tức
+## 11. Cung Huynh Đệ
+## 12. Cung Phúc Đức
+## 13. Đại Vận & Năm 2026
+## 14. Tổng Kết Vận Hạn Trong Đời
+## 15. TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI`;
       }
 
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
