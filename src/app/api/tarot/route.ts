@@ -41,9 +41,19 @@ YÊU CẦU PHÂN TÍCH
 1. Tổng quan: Nêu rõ tình huống hiện tại liên quan trực tiếp đến câu hỏi.
 2. Phân tích từng lá: Giải thích CỤ THỂ sự ảnh hưởng của nó tới bối cảnh câu hỏi.
 3. Cốt truyện: Làm rõ vì sao họ phân vân, rào cản là gì, động lực là gì.
-4. Trả lời rực diện: Nếu YES/NO thì phải nói rõ Nên / Không nên / Chưa nên. Không mập mờ.
+4. Trả lời trực diện: Nếu YES/NO thì phải nói rõ Nên / Không nên / Chưa nên. Không mập mờ.
 5. Giải thích lý do rõ ràng.
-6. Lời khuyên hành động rấp cụ thể (Nếu hành động thì lưu ý gì, nếu chưa thì chuẩn bị gì).
+6. Lời khuyên hành động rất cụ thể (Nếu hành động thì lưu ý gì, nếu chưa thì chuẩn bị gì).
+
+VÍ DỤ ÁP DỤNG (BẮT BUỘC HỌC THEO CÁCH TƯ DUY NÀY)
+Ví dụ nếu câu hỏi là: “Tôi có nên chuyển việc không?”
+👉 Phân tích của bạn bắt buộc phải bao gồm đủ các góc nhìn sâu sắc sau:
+• Nói về công việc hiện tại (đang ổn / bế tắc / áp lực / hay đang học được gì)
+• Nói về việc chuyển đi (cơ hội mở ra / rủi ro tiềm ẩn / timing thời điểm đã chín muồi chưa)
+• Kết luận rõ: NÊN / CHƯA NÊN / KHÔNG NÊN
+• Giải thích cặn kẽ vì sao lại chốt như vậy dựa trên các lá bài đã bốc.
+
+Hãy áp dụng bộ khung tư duy sâu sắc này cho MỌI câu hỏi của khách hàng. Mổ xẻ 2 mặt của vấn đề thực tế chứ không chỉ đọc thơ.
 
 BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON SAU (Không kèm markdown code block text nào khác):
 {
