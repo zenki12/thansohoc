@@ -5,13 +5,55 @@ export interface TuViInput {
   gender: string;
 }
 
+function getYearFromDob(dob: string): number {
+  const match = dob.match(/\b(19|20)\d{2}\b/);
+  if (match) return parseInt(match[0], 10);
+  return new Date().getFullYear();
+}
+
+function getAstroInfo(year: number) {
+  const cans = ["Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm"];
+  const chis = ["Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất"];
+  const animals = ["Lợn", "Chuột", "Trâu", "Hổ", "Mèo", "Rồng", "Rắn", "Ngựa", "Dê", "Khỉ", "Gà", "Chó"];
+  
+  // 1990 - 3 = 1987. 1987 % 10 = 7 (Canh). 1987 % 12 = 7 (Ngọ).
+  const cIndex = (year - 3) % 10;
+  const canIndex = cIndex < 0 ? cIndex + 10 : cIndex;
+  
+  const hIndex = (year - 3) % 12;
+  const chiIndex = hIndex < 0 ? hIndex + 12 : hIndex;
+  
+  const can = cans[canIndex];
+  const chi = chis[chiIndex];
+  const animal = animals[chiIndex];
+  
+  const canValue: Record<string, number> = { "Giáp": 1, "Ất": 1, "Bính": 2, "Đinh": 2, "Mậu": 3, "Kỷ": 3, "Canh": 4, "Tân": 4, "Nhâm": 5, "Quý": 5 };
+  const chiValue: Record<string, number> = { "Tý": 0, "Sửu": 0, "Ngọ": 0, "Mùi": 0, "Dần": 1, "Mão": 1, "Thân": 1, "Dậu": 1, "Thìn": 2, "Tỵ": 2, "Tuất": 2, "Hợi": 2 };
+  const menhMap = ["Kim", "Thủy", "Hỏa", "Thổ", "Mộc"];
+  
+  let sum = canValue[can] + chiValue[chi];
+  if (sum > 5) sum -= 5;
+  const menh = menhMap[sum - 1] || "Không rõ";
+  
+  return { can, chi, animal, menh };
+}
+
 export function generateTuViAIPrompt(data: TuViInput): string {
   const genderStr = data.gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng';
+  const year = getYearFromDob(data.dob);
+  const astro = getAstroInfo(year);
+
   return `Tưởng tượng bạn là 1 ông thầy tử vi cao tuổi, có trình độ cao, có nửa đời người chuyên luận đoán lá số vận mệnh con người. Từ giờ tôi muốn bạn tổng hợp các mục thông tin, các điểm chính yếu được trích dẫn trong tài liệu giải đoán lá số tử vi mà tôi đính kèm. Kèm theo những hiểu biết và kinh nghiệm giải đoán đỉnh cao của bạn để đưa ra các thông tin giải đoán lá số này. Khách hàng của bạn là:
 - Họ và tên: ${data.name}
 - Ngày sinh Dương Lịch: ${data.dob}
 - Giờ sinh: ${data.time}
 - Giới tính: ${genderStr}
+
+[THÔNG TIN BẮT BUỘC TUÂN THỦ DÀNH CHO AI]:
+Bất cứ khi nào nhắc đến Bản mệnh hay Tuổi của đương số, BẠN PHẢI tuyệt đối tuân thủ thông tin lịch vạn niên sau đây (Không được tự suy diễn sai lệch):
+- Tuổi Âm Lịch: ${astro.can} ${astro.chi} (Cầm tinh con ${astro.animal})
+- Mệnh Ngũ Hành: Mệnh ${astro.menh}
+Dựa vào 2 thông tin cốt lõi này, bạn hãy triển khai luận giải tử vi.
 
 YÊU CẦU ĐẶC BIỆT VỀ ĐỘ DÀI VÀ CHI TIẾT (RẤT QUAN TRỌNG):
 Bài luận này là một dịch vụ cao cấp, do đó bạn PHẢI viết cực kỳ dông dài, chi tiết và sâu sắc. Tổng bài luận PHẢI dài trên 2500 từ. Tại mỗi phần trong 14 phần dưới đây, bạn phải viết ít nhất 200 từ (khoảng 3-5 đoạn văn chi tiết). Hãy bóc tách vấn đề theo nhiều góc độ: ưu điểm, nhược điểm, lời khuyên hóa giải hung hiểm, phản biện, và ví dụ cụ thể hình tượng hóa. KHÔNG ĐƯỢC VIẾT NGẮN GỌN CHUNG CHUNG.
