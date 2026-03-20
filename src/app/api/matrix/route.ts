@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { calculateMatrixDestiny, generateMatrixPromptForAI } from "@/lib/matrixHelper";
 import { generateMatrixMockReport } from "@/lib/matrixMockData";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const maxDuration = 60;
 
@@ -21,43 +22,49 @@ export async function POST(req: Request) {
     stats = calculateMatrixDestiny(name, dob);
     const prompt = generateMatrixPromptForAI(name, dob, stats);
 
-    const apiKey = process.env.GROQ_API_KEY;
-    if (!apiKey || apiKey === "undefined") {
-      return NextResponse.json({ text: `**[LỖI HỆ THỐNG]: Không tìm thấy GROQ_API_KEY!**\nTrình duyệt / Server chưa có biến môi trường này.\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateMatrixMockReport(name, stats)}` });
+    let finalResponseText = "";
+
+    try {
+      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+      const result = await model.generateContent(prompt);
+      finalResponseText = result.response.text();
+    } catch (geminiError: any) {
+      console.warn("Gemini failed (Matrix), falling back to Groq...", geminiError?.message);
+
+      const apiKey = process.env.GROQ_API_KEY;
+      if (!apiKey || apiKey === "undefined") {
+        throw new Error("Không có API Key của cả Gemini và Groq");
+      }
+
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          messages: [{ role: "user", content: prompt }],
+          temperature: 0.8,
+          max_tokens: 3500
+        })
+      });
+
+      if (!response.ok) {
+        const errBody = await response.text();
+        throw new Error(`Groq API Error: ${response.status} - ${errBody}`);
+      }
+
+      const result = await response.json();
+      finalResponseText = result.choices?.[0]?.message?.content || "";
     }
 
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.8,
-        max_tokens: 3500
-      })
-    });
-
-    if (!response.ok) {
-      const errBody = await response.text();
-      throw new Error(`Groq API Error: ${response.status} - ${errBody}`);
+    if (!finalResponseText) {
+      throw new Error("AI returned empty response");
     }
 
-    const result = await response.json();
-    const responseText = result.choices?.[0]?.message?.content;
-    const finishReason = result.choices?.[0]?.finish_reason;
-
-    if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
-      return NextResponse.json({ text: responseText + `\n\n*(Hệ thống: AI đã ngừng tạo văn bản giữa chừng. Lý do: ${finishReason} - Vui lòng thử lại)*` });
-    }
-
-    if (!responseText) {
-      throw new Error("Groq API returned empty response");
-    }
-
-    return NextResponse.json({ text: responseText });
+    return NextResponse.json({ text: finalResponseText });
   } catch (error: any) {
     console.error("AI Error:", error);
     if (!stats) stats = calculateMatrixDestiny(name, dob);
