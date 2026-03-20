@@ -21,6 +21,13 @@ export default function TarotPage() {
   const [result, setResult] = useState<any>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
+  // Helper to prevent React crashes if AI returns an Array/Object instead of a String
+  const safeRender = (val: any) => {
+    if (!val) return "";
+    if (typeof val === "string") return val;
+    return JSON.stringify(val);
+  };
+
   const startDrawing = (selectedTopic: string, selectedSpread: number) => {
     setTopic(selectedTopic);
     setSpread(selectedSpread);
@@ -302,7 +309,7 @@ export default function TarotPage() {
                  <Sparkles className="w-40 h-40 text-orange-500" />
               </div>
               <p className="text-2xl md:text-3xl text-gray-800 font-sans leading-relaxed font-bold relative z-10 text-center">
-                "{result.hook}"
+                "{safeRender(result.hook)}"
               </p>
             </div>
 
@@ -315,27 +322,27 @@ export default function TarotPage() {
                   <h3 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 font-black mb-6 uppercase tracking-wider flex items-center gap-2">
                     <Atom className="w-6 h-6 text-orange-500" /> Giải Mã Chi Tiết
                   </h3>
-                  <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium mb-8">{result.cardAnalysis}</p>
+                  <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium mb-8">{safeRender(result.cardAnalysis)}</p>
                 </div>
 
                 {/* 3. Cốt Truyện Gắn Kết */}
                 <div className="bg-orange-50/50 p-8 rounded-3xl border border-orange-100/50">
                   <h3 className="text-lg text-orange-800 font-black mb-4 uppercase tracking-wider">Bức Tranh Toàn Cảnh</h3>
-                  <p className="text-gray-800 leading-relaxed font-medium whitespace-pre-line">{result.story}</p>
+                  <p className="text-gray-800 leading-relaxed font-medium whitespace-pre-line">{safeRender(result.story)}</p>
                 </div>
                 
                 {/* 4 & 5. Kết Luận Trực Diện + Lý Do */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
                     <h3 className="text-lg text-gray-800 font-black mb-4 uppercase tracking-wider">Chốt Lại (Kết luận)</h3>
-                    <p className="text-rose-600 text-xl font-black mb-4 uppercase">{result.directAnswer}</p>
-                    <p className="text-gray-600 leading-relaxed font-medium">{result.reasoning}</p>
+                    <p className="text-rose-600 text-xl font-black mb-4 uppercase">{safeRender(result.directAnswer)}</p>
+                    <p className="text-gray-600 leading-relaxed font-medium">{safeRender(result.reasoning)}</p>
                   </div>
                   
                   {/* 6. Lời khuyên hành động */}
                   <div className="bg-indigo-50 p-8 rounded-3xl border border-indigo-100">
                     <h3 className="text-lg text-indigo-800 font-black mb-4 uppercase tracking-wider">Hành động cần làm</h3>
-                    <p className="text-indigo-900/80 leading-relaxed font-bold whitespace-pre-line">{result.action}</p>
+                    <p className="text-indigo-900/80 leading-relaxed font-bold whitespace-pre-line">{safeRender(result.action)}</p>
                   </div>
                 </div>
               </div>
