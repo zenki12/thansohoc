@@ -22,10 +22,10 @@ export async function POST(req: Request) {
     try {
       const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
       const safetySettings = [
-        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE }
+        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
+        { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
+        { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
+        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH }
       ];
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", safetySettings });
       const result = await model.generateContent(prompt);
@@ -38,17 +38,17 @@ export async function POST(req: Request) {
         throw new Error("Không có API Key của cả Gemini và Groq");
       }
 
-      // Giới hạn siêu ngặt nghèo của Groq free tier là 6000 TPM. 
-      // Do đó, nếu rớt đài xuống Groq, ta phải cắt bỏ hoàn toàn file tuviKnowledge.json khổng lồ ra khỏi prompt để cứu vãn.
+      // Giới hạn Groq free tier là 6000 TPM. 
+      // Ta cắt bỏ file tuviKnowledge.json khổng lồ ra khỏi prompt để cứu vãn, giữ lại thông tin tính toán cơ bản.
       let groqPrompt = prompt;
-      if (prompt.length > 5000) {
-         const genderStr = gender === 'nam' ? 'Nam Mạng' : 'Nữ Mạng';
-         groqPrompt = `Tưởng tượng bạn là một chuyên gia tử vi lão làng. Dựa vào thông tin khách hàng: Tên ${name}, sinh ngày dương: ${dob}, giờ sinh: ${time}, giới tính: ${genderStr}. 
-         
-Hãy tự mình luận giải thật chi tiết 12 cung tử vi, không cần dựa vào sách bí kíp. Hãy viết một bài bình luận siêu sâu sắc, khoảng 2500 từ theo đúng định dạng Markdown, BẮT BUỘC bao gồm 15 phần sau:
+      const splitIndex = prompt.indexOf('[THÔNG TIN 2: SÁCH BÍ KÍP LUẬN GIẢI]');
+      if (splitIndex !== -1) {
+         groqPrompt = prompt.substring(0, splitIndex) + `
+[YÊU CẦU LUẬN GIẢI ĐẶC BIỆT TỪ HỆ THỐNG]
+Hãy tự mình luận giải thật chi tiết 12 cung tử vi dựa trên LÁ SỐ TỬ VI bên trên. Hãy viết bài bình luận siêu sâu sắc, khoảng 2500 từ theo đúng định dạng Markdown, BẮT BUỘC bao gồm 15 phần sau:
 ## 1. Bản Mệnh
 ## 2. Cung Phu Thê
-## 3. Tài Sản và Nghề Nghiệp (Cung Tài Bạch)
+## 3. Tài Sản & Nghề Nghiệp (Cung Tài Bạch)
 ## 4. Phụ Mẫu
 ## 5. Cung Thiên Di
 ## 6. Cung Tật Ách
@@ -60,7 +60,7 @@ Hãy tự mình luận giải thật chi tiết 12 cung tử vi, không cần d�
 ## 12. Cung Phúc Đức
 ## 13. Đại Vận & Năm 2026
 ## 14. Tổng Kết Vận Hạn Trong Đời
-## 15. TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI`;
+## 15. TỔNG KẾT & LỜI KHUYÊN`;
       }
 
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
