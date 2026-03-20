@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, Compass, Sun, Moon, Loader2, Download, Sparkles, Star, ArrowUp } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { generateTuViAIPrompt, generateTuViMock, TuViInput } from "@/lib/tuviHelper";
+import { generateTuViAIPrompt, generateTuViMock, TuViInput, getTuViChartUrl } from "@/lib/tuviHelper";
 
 function TuViResultContent() {
   const searchParams = useSearchParams();
@@ -17,6 +17,7 @@ function TuViResultContent() {
   const gender = searchParams.get("gender") || "nam";
 
   const [report, setReport] = useState<string>("");
+  const [chartUrl, setChartUrl] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function TuViResultContent() {
     }
 
     const inputData: TuViInput = { name, dob, time, gender };
+    setChartUrl(getTuViChartUrl(inputData));
 
     const fetchAnalysis = async () => {
       try {
@@ -110,9 +112,30 @@ function TuViResultContent() {
         </header>
 
         <section className="px-6 md:px-12 py-16 bg-white relative">
-          <div className="flex items-center justify-center gap-3 mb-10">
+          
+          {chartUrl && (
+            <div className="mb-16 flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <Sparkles className="text-orange-400 w-5 h-5" />
+                <h3 className="text-2xl font-black text-gray-800 uppercase tracking-widest text-center drop-shadow-sm">
+                  Bản Đồ Mệnh Lý
+                </h3>
+                <Sparkles className="text-orange-400 w-5 h-5" />
+              </div>
+              <div className="w-full max-w-4xl bg-white overflow-hidden rounded-2xl border-4 border-orange-100 shadow-2xl print:border-none print:shadow-none p-2 md:p-4 bg-gradient-to-br from-orange-50 to-white">
+                <img 
+                  src={chartUrl} 
+                  alt="Lá Số Tử Vi" 
+                  className="w-full h-auto object-contain rounded-xl shadow-inner" 
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center justify-center gap-3 border-t-2 border-dashed border-orange-200 pt-16 mb-10">
             <Sparkles className="text-orange-400 w-5 h-5" />
-            <h3 className="text-xl font-bold text-gray-800 uppercase tracking-widest text-center">
+            <h3 className="text-2xl font-black text-gray-800 uppercase tracking-widest text-center drop-shadow-sm">
               Cẩm Nang Mệnh Lý
             </h3>
             <Sparkles className="text-orange-400 w-5 h-5" />

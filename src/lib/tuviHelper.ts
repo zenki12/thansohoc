@@ -154,3 +154,61 @@ Giai đoạn thịnh vượng nhất rơi vào khoảng 35 - 55 tuổi. Giai đo
 ## 15. TỔNG KẾT & ĐỊNH HƯỚNG TƯƠNG LAI
 Tóm lại, lá số của bạn rất sáng ở hậu vận. Trong giai đoạn 3 năm sắp tới, hãy tập trung vào việc trau dồi chuyên môn và mở rộng mối quan hệ tích cực. Đừng ngại thử thách bản thân vì quý nhân đang chờ phía trước. Chúc bạn luôn giữ vững niềm tin và gặt hái thành công!`;
 }
+
+/**
+ * Xây dựng đường dẫn ảnh lá số tử vi từ lyso.vn
+ * Định dạng lyso.vn: https://lyso.vn/lasotuvi/{gender}/{hour}{minute}{day}{month}{year}/{year_xem}/{slug_name}.jpg
+ * @param data Dữ liệu đầu vào của người dùng
+ * @param yearXem Năm xem (ví dụ: 2026)
+ */
+export function getTuViChartUrl(data: TuViInput, yearXem: number = new Date().getFullYear()): string {
+  // Biến đổi giới tính: "nam" -> 1, "nu" -> 0
+  const genderCode = data.gender.toLowerCase() === 'nam' ? 1 : 0;
+  
+  // Tách ngày sinh (đầu vào từ form input type='date' thường có dạng YYYY-MM-DD hoặc YYYY/MM/DD)
+  // Nhưng ở form trang chủ, user đang nhập text hay plugin? Cần đảm bảo tách được dd, mm, yyyy
+  // Nếu form đang dùng MM/DD/YYYY hoặc YYYY-MM-DD đều cần Regex chuẩn hóa
+  let dd = "", mm = "", yyyy = "";
+  let dobParts = data.dob.split(/[-/]/);
+  if (dobParts.length === 3) {
+    if (dobParts[0].length === 4) {
+      // YYYY-MM-DD or YYYY/MM/DD
+      yyyy = dobParts[0];
+      mm = dobParts[1].padStart(2, "0");
+      dd = dobParts[2].padStart(2, "0");
+    } else {
+      // DD/MM/YYYY or MM/DD/YYYY, default to DD/MM/YYYY
+      dd = dobParts[0].padStart(2, "0");
+      mm = dobParts[1].padStart(2, "0");
+      yyyy = dobParts[2];
+    }
+  }
+
+  // Tách giờ sinh (đầu vào từ form có dạng HH:mm)
+  let hh = "12", min = "00";
+  if (data.time) {
+    const timeParts = data.time.split(":");
+    if (timeParts.length >= 2) {
+      hh = timeParts[0].padStart(2, "0");
+      min = timeParts[1].padStart(2, "0");
+    }
+  }
+
+  // Slugify name (Bỏ dấu, khoảng trắng -> gạch ngang)
+  const removeAccents = (str: string) => {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+  };
+  
+  const slugName = removeAccents(data.name)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '') // bỏ ký tự đặc biệt
+    .replace(/\s+/g, '-'); // Thay khoảng trắng bằng gạch ngang
+
+  const datetimeStr = `${hh}${min}${dd}${mm}${yyyy}`;
+  
+  // Trả về định dạng lyso.vn
+  return `https://lyso.vn/lasotuvi/${genderCode}/${datetimeStr}/${yearXem}/${slugName || "La-So-Tu-Vi"}.jpg`;
+}
