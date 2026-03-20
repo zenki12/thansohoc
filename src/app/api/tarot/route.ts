@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+
+export const maxDuration = 60; // Allow 60s timeout on Vercel
 
 export async function POST(req: Request) {
   try {
@@ -35,21 +39,37 @@ BẮT BUỘC trả về ĐÚNG định dạng JSON nguyên bản như sau (khôn
 }
 Đảm bảo bạn format JSON chuẩn.`;
 
-    const chatCompletion = await groq.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      // Switch to an 8B model which has a separate/higher token quota compared to 70B
-      model: "llama-3.1-8b-instant",
-      temperature: 0.7,
-      max_tokens: 2000,
-      response_format: { type: "json_object" },
-    });
+    let data;
+    try {
+        const chatCompletion = await groq.chat.completions.create({
+        messages: [{ role: "user", content: prompt }],
+        model: "llama-3.3-70b-versatile", // Use the powerful model as primary
+        temperature: 0.7,
+        max_tokens: 2500,
+        response_format: { type: "json_object" },
+        });
 
-    let aiContent = chatCompletion.choices[0]?.message?.content || "{}";
-    const data = JSON.parse(aiContent);
+        let aiContent = chatCompletion.choices[0]?.message?.content || "{}";
+        data = JSON.parse(aiContent);
+    } catch (groqError: any) {
+        console.warn("Groq failed (likely quota), falling back to Gemini...", groqError?.message);
+        try {
+            const model = genAI.getGenerativeModel({ 
+                model: "gemini-2.0-flash",
+                generationConfig: { responseMimeType: "application/json" }
+            });
+            const result = await model.generateContent(prompt);
+            const responseText = result.response.text();
+            data = JSON.parse(responseText);
+        } catch (geminiError: any) {
+            console.error("Gemini fallback also failed:", geminiError);
+            return NextResponse.json({ error: "Lỗi kết nối vũ trụ từ cả 2 ngọn tháp, vui lòng thử lại sau!" }, { status: 500 });
+        }
+    }
 
     return NextResponse.json(data);
   } catch (error) {
     console.error("Tarot AI Error:", error);
-    return NextResponse.json({ error: "Lỗi kết nối vũ trụ, vui lòng thử lại!" }, { status: 500 });
+    return NextResponse.json({ error: "Lỗi kết nối hệ thống, vui lòng thử lại!" }, { status: 500 });
   }
 }
