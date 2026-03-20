@@ -39,13 +39,18 @@ export async function POST(req: Request) {
       }
 
       // Giới hạn Groq free tier là 6000 TPM. 
-      // Ta cắt bỏ file tuviKnowledge.json khổng lồ ra khỏi prompt để cứu vãn, giữ lại thông tin tính toán cơ bản.
+      // Ta dùng bản Rút Gọn của tuviKnowledge (tuviKnowledgeMini) để nhồi vào Groq, đảm bảo dưới 3000 tokens mà AI vẫn bách phát bách trúng.
       let groqPrompt = prompt;
       const splitIndex = prompt.indexOf('[THÔNG TIN 2: SÁCH BÍ KÍP LUẬN GIẢI]');
       if (splitIndex !== -1) {
+         const importDB = require('../../../lib/tuviKnowledgeMini.ts');
+         const miniDB = importDB.tuviKnowledgeMini;
          groqPrompt = prompt.substring(0, splitIndex) + `
+[THÔNG TIN 2: SÁCH BÍ KÍP LUẬN GIẢI RÚT GỌN]
+${miniDB}
+
 [YÊU CẦU LUẬN GIẢI ĐẶC BIỆT TỪ HỆ THỐNG]
-Hãy tự mình luận giải thật chi tiết 12 cung tử vi dựa trên LÁ SỐ TỬ VI bên trên. Hãy viết bài bình luận siêu sâu sắc, khoảng 2500 từ theo đúng định dạng Markdown, BẮT BUỘC bao gồm 15 phần sau:
+Hãy tự mình luận giải thật chi tiết 12 cung tử vi dựa trên LÁ SỐ TỬ VI bên trên cùng BÍ KÍP RÚT GỌN. Hãy viết bài bình luận siêu sâu sắc, khoảng 2500 từ theo đúng định dạng Markdown, BẮT BUỘC bao gồm 15 phần sau:
 ## 1. Bản Mệnh
 ## 2. Cung Phu Thê
 ## 3. Tài Sản & Nghề Nghiệp (Cung Tài Bạch)
@@ -79,7 +84,7 @@ Hãy tự mình luận giải thật chi tiết 12 cung tử vi dựa trên LÁ 
 
       if (!response.ok) {
         const errBody = await response.text();
-        throw new Error(`Groq API Error: ${response.status} - ${errBody}`);
+        throw new Error(`Groq API Error: ${response.status} - ${errBody} | (Lỗi gốc Gemini văng: ${geminiError?.message})`);
       }
 
       const result = await response.json();
@@ -94,6 +99,6 @@ Hãy tự mình luận giải thật chi tiết 12 cung tử vi dựa trên LÁ 
   } catch (error: any) {
     console.error("AI Error in TuVi:", error);
     // Trả về kèm LỖI THỰC TẾ để dễ debug cộng theo mock report để dự phòng
-    return NextResponse.json({ text: `**[HỆ THỐNG GHI NHẬN LỖI TỪ AI:** ${error?.message || "Lỗi không xác định"}]**\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateTuViMock(inputData)}` });
+    return NextResponse.json({ text: `**[HỆ THỐNG GHI NHẬN LỖI TỪ AI:** ${error?.message || "Lỗi không xác định"}\n]**\n\n*(Dưới đây là phần luận giải cơ bản dự phòng)*\n\n${generateTuViMock(inputData)}` });
   }
 }
