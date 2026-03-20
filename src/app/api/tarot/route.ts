@@ -58,7 +58,12 @@ Hãy áp dụng bộ khung tư duy sâu sắc này cho MỌI câu hỏi của kh
 BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON SAU (Không kèm markdown code block text nào khác):
 {
   "hook": "2-3 câu Tổng quan. Nêu rõ tình huống và gợi mở hướng đi.",
-  "cardAnalysis": "Phân tích cụ thể TỪNG LÁ BÀI gắn với câu hỏi / hoàn cảnh.",
+  "cardAnalysis": [
+    {
+      "cardName": "Tên lá bài 1 (Kèm chiều Xuôi/Ngược)",
+      "analysis": "Phân tích cụ thể mốc nối lá bài này gắn với câu hỏi / hoàn cảnh."
+    }
+  ],
   "story": "Kết nối các lá bài thành một CÂU CHUYỆN THỰC TẾ logic. Làm rõ rào cản, động lực.",
   "directAnswer": "Trả lời TRỰC DIỆN câu hỏi (Nên/Không nên / Yes/No). Thật ngắn gọn, dứt khoát.",
   "reasoning": "Giải thích LÝ DO rõ ràng tại sao lại có kết luận đó. Dựa trên yếu tố nào từ bài?",

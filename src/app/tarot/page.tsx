@@ -322,7 +322,18 @@ export default function TarotPage() {
                   <h3 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 font-black mb-6 uppercase tracking-wider flex items-center gap-2">
                     <Atom className="w-6 h-6 text-orange-500" /> Giải Mã Chi Tiết
                   </h3>
-                  <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium mb-8">{safeRender(result.cardAnalysis)}</p>
+                  <div className="space-y-4 mb-8">
+                    {Array.isArray(result.cardAnalysis) ? (
+                      result.cardAnalysis.map((item: any, idx: number) => (
+                        <div key={idx} className="text-gray-700 leading-loose text-lg">
+                          <span className="font-black text-gray-900">• {item.cardName}: </span>
+                          <span className="font-medium">{item.analysis}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-gray-700 leading-loose text-lg whitespace-pre-line font-medium">{safeRender(result.cardAnalysis)}</p>
+                    )}
+                  </div>
                 </div>
 
                 {/* 3. Cốt Truyện Gắn Kết */}
