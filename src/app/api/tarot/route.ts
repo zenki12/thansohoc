@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
@@ -71,29 +71,37 @@ BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON SAU (Không kèm markdow
 }`;
 
     let data;
+    const cleanJSON = (str: string) => str.replace(/```json/g, "").replace(/```/g, "").trim();
+
     try {
         // Primary: Gemini 2.0 Flash (Handles complex logic and Vietnamese nuance perfectly)
         const model = genAI.getGenerativeModel({ 
             model: "gemini-2.0-flash",
-            generationConfig: { responseMimeType: "application/json" }
+            generationConfig: { responseMimeType: "application/json" },
+            safetySettings: [
+                { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+                { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
+                { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
+                { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+            ]
         });
         const result = await model.generateContent(prompt);
         const responseText = result.response.text();
-        data = JSON.parse(responseText);
+        data = JSON.parse(cleanJSON(responseText));
 
     } catch (geminiError: any) {
         console.warn("Gemini failed, falling back to Groq Llama...", geminiError?.message);
         try {
-            // Fallback: Groq Llama 3.3 70b or 8b
+            // Fallback: Groq Llama 3.1 8b-instant (70b gets rate-limited easily)
             const chatCompletion = await groq.chat.completions.create({
                 messages: [{ role: "user", content: prompt }],
-                model: "llama-3.3-70b-versatile", // Or "llama-3.1-8b-instant" if quota is still an issue
+                model: "llama-3.1-8b-instant",
                 temperature: 0.7,
                 max_tokens: 2500,
                 response_format: { type: "json_object" },
             });
             let aiContent = chatCompletion.choices[0]?.message?.content || "{}";
-            data = JSON.parse(aiContent);
+            data = JSON.parse(cleanJSON(aiContent));
 
         } catch (groqError: any) {
             console.error("Groq fallback also failed:", groqError);
